@@ -1,0 +1,777 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+<title>Unique</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css"> 
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css"> 
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+ 
+<!--[if lt IE 9]>
+    <script src="js/respond-1.1.0.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5element.js"></script>
+<![endif]-->
+ 
+<!-- Add this CSS to align the logo and nav in a single row -->
+<style>
+  /* Ensure logo and navbar are in the same row */
+  .header_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Logo size adjustment */
+  .header-logo {
+    max-width: 150px;  /* Set max width for the logo */
+    height: auto;  /* Maintain aspect ratio */
+  }
+
+  /* Optional: Adjust navbar to make it look better on smaller screens */
+  .navbar {
+    margin: 0;  /* Remove any margin to keep everything aligned */
+  }
+
+  /* Ensure the navbar links are horizontally aligned */
+  .navbar-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+  }
+
+  .navbar-nav li {
+    margin-right: 20px; /* Space between menu items */
+  }
+
+  /* Adjust the navbar toggle for mobile responsiveness */
+  #nav-toggle {
+    display: none;
+  }
+
+  /* Make navbar responsive for mobile */
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;  /* Stack items vertically */
+      text-align: center;
+    }
+
+    #nav-toggle {
+      display: block;  /* Show the toggle button on small screens */
+    }
+  }
+ /* Service Section Styles */
+#service {
+  background-color: #f9f9f9;
+  padding: 80px 0;
+}
+
+#service h2.section-title {
+  text-align: center;
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 40px;
+  font-family: 'Arial', sans-serif;
+}
+
+.service_wrapper .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.service_wrapper .service_block {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Ensures the cards stretch equally */
+}
+
+.service_wrapper .service_block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service_icon {
+  font-size: 40px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.service_block:hover .service_icon {
+  color: #ff5722;
+}
+
+.service_block h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.service_block p {
+  font-size: 16px;
+  color: #666;
+}
+
+.service_wrapper .col-lg-3 {
+  margin-bottom: 30px;
+  flex: 1; /* Ensures each card takes equal space */
+}
+
+@media (max-width: 991px) {
+  .service_wrapper .col-lg-3 {
+    width: 48%; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 767px) {
+  .service_wrapper .col-lg-3 {
+    width: 100%; /* Full width for mobile */
+  }
+}
+
+/* General Styling */
+#Portfolio .portfolio-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+}
+
+.portfolio-card {
+  padding:35px ;
+  position: relative;
+  width: 100%;
+  max-width: 300px; /* Card width */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Default shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff; /* Ensure card has white background */
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.portfolio-img-container {
+  width: 100%;
+  height: 200px; /* Height of the image area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.portfolio-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure the image is fully contained without cropping */
+  object-position: center; /* Centers the image */
+}
+
+/* Overlay Styling */
+.item-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 5px;
+  display: none; /* Hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-card:hover .item-overlay {
+  display: block;
+}
+
+.item-info {
+  text-align: center;
+  color: white;
+}
+
+.project-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Filters Styling */
+#filters {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#filters ul {
+  list-style: none;
+  padding: 0;
+}
+
+#filters ul li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+#filters a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+#filters a:hover,
+#filters a.active {
+  color: #007bff;
+}
+
+
+    section.review-slider {
+      
+      margin: 50px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      padding: 30px 0;
+    }
+
+    .slides-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .review-group {
+      display: flex;
+      flex: 0 0 100%;
+      justify-content: space-around;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      flex: 0 0 30%;
+      background: #fff;
+      padding: 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 6px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .dot.active {
+      background-color: #333;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .card {
+        flex: 0 0 45%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        flex: 0 0 90%;
+      }
+
+      .review-group {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+</style>
+</head>
+<body>
+<!--Header_section-->
+<header id="header_wrapper">
+  <div class="container">
+    <div class="header_box">
+      <div class="logo">
+        <a href="#"><img src="img/logo.png" alt="logo" class="header-logo"></a>
+      </div>
+      <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+          <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> 
+            <span class="sr-only">Toggle navigation</span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+          </button>
+        </div>
+        <div id="main-nav" class="collapse navbar-collapse navStyle">
+          <ul class="nav navbar-nav" id="mainNav">
+            <li class="active"><a href="#hero_section" class="scroll-link">Home</a></li>
+            <li><a href="#aboutUs" class="scroll-link">About Us</a></li>
+            <li><a href="#service" class="scroll-link">Services</a></li>
+            <li><a href="#Portfolio" class="scroll-link">Portfolio</a></li>
+ 
+            <li><a href="#contact" class="scroll-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<!--Header_section-->
+
+
+<!--Hero_Section-->
+<section id="hero_section" class="top_cont_outer" style="background: linear-gradient(to right, #0000ff, #ff0000);">
+  <div class="hero_wrapper">
+    <div class="container">
+      <div class="hero_section">
+        <div class="row">
+          <div class="col-lg-5 col-sm-7">
+            <div class="top_left_cont zoomIn wow animated"> 
+              <h2>We create <strong>interactive</strong> ed-tech applications and educational games</h2>
+              <p>At Enhancerworx, we specialize in developing cutting-edge interactive educational technology solutions and engaging educational games. Our aim is to make learning fun, immersive, and impactful for students and educators worldwide.</p>
+              <a href="#service" class="read_more2">Learn More</a>
+            </div>
+          </div>
+          <div class="col-lg-7 col-sm-5">
+            <img src="img/main_device_image.png" class="zoomIn wow animated" alt="Enhancerworx Ed-Tech Solutions" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Hero_Section-->
+
+<section id="aboutUs"><!--About Us-->
+  <div class="inner_wrapper">
+    <div class="container">
+      <h2>About Enhancerworx</h2>
+      <div class="inner_section">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+            <img src="img/about-img.jpg" class="img-circle delay-03s animated wow zoomIn" alt="Enhancerworx">
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
+            <div class="delay-01s animated fadeInDown wow animated">
+              <h3>Transforming Education with Interactive Ed-Tech and Educational Games</h3><br/> 
+              <p>Enhancerworx is a leading software development company dedicated to creating interactive educational technology applications and engaging educational games. We believe that learning should be an exciting, interactive experience that motivates students to explore, discover, and achieve their fullest potential.</p><br/>
+              <p>Our applications are designed to integrate fun with learning, combining the power of interactive software with the joy of educational games. Whether it's mastering complex concepts through immersive simulations or enhancing skills with gamified assessments, our products are crafted to make education more engaging and effective.</p>
+            </div>
+            <div class="work_bottom">
+              <span>Curious to learn more about our innovative solutions?</span>
+              <a href="#contact" class="contact_btn">Contact Us</a>
+            </div>       
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</section>
+<!--Aboutus--> 
+
+<!-- Service Section -->
+<section id="service">
+  <div class="container">
+    <h2 class="section-title">Our Services</h2>
+    <div class="service_wrapper">
+      <div class="row">
+        <!-- Android App Development -->
+        <div class="col-lg-3 col-md-6">
+          <div class="service_block">
+            <div class="service_icon animated wow zoomIn">
+              <span><i class="fa fa-android"></i></span>
+            </div>
+            <h3 class="animated fadeInUp wow">Android App Development</h3>
+            <p class="animated fadeInDown wow">We build robust and scalable Android apps that deliver a seamless experience for your users.</p>
+          </div>
+        </div>
+        <!-- iOS App Development -->
+        <div class="col-lg-3 col-md-6">
+          <div class="service_block">
+            <div class="service_icon animated wow zoomIn">
+              <span><i class="fa fa-apple"></i></span>
+            </div>
+            <h3 class="animated fadeInUp wow">iOS App Development</h3>
+            <p class="animated fadeInDown wow">Crafting high-quality iOS applications that integrate well with Apple's ecosystem for optimal performance.</p>
+          </div>
+        </div>
+        <!-- Web App Development -->
+        <div class="col-lg-3 col-md-6">
+          <div class="service_block">
+            <div class="service_icon animated wow zoomIn">
+              <span><i class="fa fa-code"></i></span>
+            </div>
+            <h3 class="animated fadeInUp wow">Web App Development</h3>
+            <p class="animated fadeInDown wow">We create dynamic and responsive web applications with the latest web technologies and frameworks.</p>
+          </div>
+        </div>
+        <!-- Progressive Web Apps -->
+        <div class="col-lg-3 col-md-6">
+          <div class="service_block">
+            <div class="service_icon animated wow zoomIn">
+              <span><i class="fa fa-mobile"></i></span>
+            </div>
+            <h3 class="animated fadeInUp wow">Progressive Web Apps</h3>
+            <p class="animated fadeInDown wow">Providing fast, reliable, and installable web apps that offer an app-like experience across devices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End of Service Section -->
+<!-- Portfolio Section -->
+<section id="Portfolio" class="content">
+  <!-- Container -->
+  <div class="container portfolio_title">
+    <!-- Title -->
+    <div class="section-title">
+      <h2>Portfolio</h2>
+    </div>
+    <!--/Title -->
+  </div>
+  <!-- Container -->
+
+  <div class="portfolio-top"></div>
+
+  <!-- Portfolio Filters -->
+  <div class="portfolio">
+    <div id="filters" class="filters-container">
+      <ul class="clearfix">
+      
+        <li><a href="#" data-filter=".educational-apps" class="active">
+          <h5>Educational Apps</h5>
+        </a></li>
+        <li><a href="#" data-filter=".utility-apps">
+          <h5>Utility Apps</h5>
+        </a></li>
+        <li><a href="#" data-filter=".educational-games">
+          <h5>Educational Games</h5>
+        </a></li>
+      </ul>
+    </div>
+    <!--/Portfolio Filters -->
+
+    <!-- Portfolio Wrapper -->
+    <div class="portfolio-wrapper" id="portfolio_wrapper">
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-games">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/snake.png" alt="Snake Word Puzzle Game Screenshot">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Snake Word Puzzle Game</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-games">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/flags.png" alt="Learn World Flags">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Learn World Flags</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item utility-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/art.png" alt="Art Grid">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Art Grid</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item utility-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/qoutes.png" alt="My Quotes: Read, Write & Share">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">My Quotes: Read, Write & Share</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/india.jpg" alt="Learn India Map (Offline)">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Learn India Map (Offline)</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/history.png" alt="Ancient Indian History">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Ancient Indian History</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/biology.png" alt="Learn Biology Diagrams">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Learn Biology Diagrams</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/const.png" alt="Learn Indian Constitution">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Learn Indian Constitution</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/world.png" alt="Learn World Maps (Offline)">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Learn World Maps (Offline)</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item -->
+      <div class="portfolio-item educational-apps">
+        <div class="portfolio-card">
+          <div class="portfolio-img-container">
+            <img src="img/water.png" alt="Learn World Water Bodies">
+          </div>
+          <div class="item-overlay">
+            <div class="item-info">
+              <h4 class="project-name">Learn World Water Bodies</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+    <!--/Portfolio Wrapper -->
+  </div>
+  <!--/Portfolio Filters -->
+
+  <div class="portfolio_btm"></div>
+
+  <div id="project_container">
+    <div class="clear"></div>
+    <div id="project_data"></div>
+  </div>
+</section>
+<!--/Portfolio -->
+
+ 
+
+<section class="review-slider">
+  
+    <h2 class="section-title">Reviews</h2>
+  <div class="slides-wrapper">
+    <div class="slides" id="slides">
+      <div class="review-group">
+        <div class="card">
+          <h3>Aman Sharma</h3>
+          <p>“Learn India Map (offline)---- Very attractive app design with audio feedback. Perfect example how CAI/CBT can be used to enhance learning effortlessly. Please keep adding more number of topics! Kudos to the app developers.”</p>
+        </div>
+        <div class="card">
+          <h3>Ganesh Kumar</h3>
+          <p>“Learn India Map (offline)---- Excellent application with all necessary details. Enough to guide while studying indian geography. 5 stars to this app.”</p>
+        </div>
+        <div class="card">
+          <h3>Adeena Ameen</h3>
+          <p>“Learn India Map (offline)---- Okay so this is spectacular!! Really amazing hats off, guys pls make and world map version too 🙏”</p>
+        </div>
+      </div>
+      <div class="review-group">
+        <div class="card">
+          <h3>Anupama Sharma</h3>
+          <p>“Learn India Map (offline)---- Baccho k liye mast app hai. Easy to understand.”</p>
+        </div>
+        <div class="card">
+          <h3>Virendra Saran</h3>
+          <p>“Learn Biology Diagrams ---- I love this app Please add more questions in diagram quiz section”</p>
+        </div>
+        <div class="card">
+          <h3>Pasupureeddy Mahendra</h3>
+          <p>“Learn World Map (offline)----- Exceptional experience, very good app for easy learning”</p>
+        </div>
+      
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="dots" id="dots">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+  </div>
+</section>
+<!--Footer-->
+<footer class="footer_wrapper" id="contact">
+  <div class="container">
+    <section class="page_section contact" id="contact">
+      <div class="contact_section">
+        <h2>Get in Touch</h2>
+        <div class="row">
+          <div class="col-lg-4 wow fadeInLeft">
+            <div class="contact_info">
+              <h4>Enhancerworx</h4>
+              <p>Your go-to platform for innovative solutions.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 wow fadeInLeft">
+            <div class="contact_info">
+              <h4>Email Us</h4>
+              <p><a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="col-lg-4 wow fadeInLeft">
+            <!-- Empty for now, can add more info if needed -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="container">
+    <div class="footer_bottom">
+      <span>Copyright © 2025, <a href="http://www.enhancerworx.in" target="_blank">Enhancerworx</a>.</span>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
+<script type="text/javascript" src="js/jquery.nav.js"></script> 
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.js"></script>
+<script type="text/javascript" src="js/wow.js"></script> 
+<script type="text/javascript" src="js/custom.js"></script>
+<script>
+  function scrollReviews(direction) {
+  const container = document.querySelector('.reviews-container');
+  const cardWidth = document.querySelector('.review-card').offsetWidth;
+  container.scrollBy({
+    left: direction * (cardWidth + 20),  // 20px is the gap between cards
+    behavior: 'smooth'
+  });
+}
+
+</script>
+
+<script>
+  const slides = document.getElementById('slides');
+  const dots = document.querySelectorAll('.dot');
+  let currentIndex = 0;
+
+  function goToSlide(index) {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+    currentIndex = index;
+  }
+
+  // Optional: auto-play every 8 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % dots.length;
+    goToSlide(currentIndex);
+  }, 8000);
+</script>
+
+
+</body>
+</html>
