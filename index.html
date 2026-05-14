@@ -1,806 +1,587 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1">
-<title>Enhancerworx</title>
-<link rel="icon" href="favicon.png" type="image/png">
-<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/css/style.css" rel="stylesheet" type="text/css"> 
-<link href="/css/font-awesome.css" rel="stylesheet" type="text/css"> 
-<link href="/css/animate.css" rel="stylesheet" type="text/css">
- 
-<!--[if lt IE 9]>
-    <script src="js/respond-1.1.0.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/html5element.js"></script>
-<![endif]-->
- 
-<!-- Add this CSS to align the logo and nav in a single row -->
-<style>
-  /* Ensure logo and navbar are in the same row */
-  .header_box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  /* Logo size adjustment */
-  .header-logo {
-    max-width: 150px;  /* Set max width for the logo */
-    height: auto;  /* Maintain aspect ratio */
-  }
-
-  /* Optional: Adjust navbar to make it look better on smaller screens */
-  .navbar {
-    margin: 0;  /* Remove any margin to keep everything aligned */
-  }
-
-  /* Ensure the navbar links are horizontally aligned */
-  .navbar-nav {
-    display: flex;
-    list-style: none;
-    margin: 0;
-  }
-
-  .navbar-nav li {
-    margin-right: 20px; /* Space between menu items */
-  }
-
-  /* Adjust the navbar toggle for mobile responsiveness */
-  #nav-toggle {
-    display: none;
-  }
-
-  /* Make navbar responsive for mobile */
-  @media (max-width: 768px) {
-    .navbar-nav {
-      flex-direction: column;  /* Stack items vertically */
-      text-align: center;
-    }
-
-    #nav-toggle {
-      display: block;  /* Show the toggle button on small screens */
-    }
-  }
- /* Service Section Styles */
-#service {
-  background-color: #f9f9f9;
-  padding: 80px 0;
-}
-
-#service h2.section-title {
-  text-align: center;
-  font-size: 36px;
-  color: #333;
-  margin-bottom: 40px;
-  font-family: 'Arial', sans-serif;
-}
-
-.service_wrapper .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.service_wrapper .service_block {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 30px;
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%; /* Ensures the cards stretch equally */
-}
-
-.service_wrapper .service_block:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.service_icon {
-  font-size: 40px;
-  color: #4CAF50;
-  margin-bottom: 20px;
-  transition: color 0.3s ease;
-}
-
-.service_block:hover .service_icon {
-  color: #ff5722;
-}
-
-.service_block h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.service_block p {
-  font-size: 16px;
-  color: #666;
-}
-
-.service_wrapper .col-lg-3 {
-  margin-bottom: 30px;
-  flex: 1; /* Ensures each card takes equal space */
-}
-
-@media (max-width: 991px) {
-  .service_wrapper .col-lg-3 {
-    width: 48%; /* Adjust for smaller screens */
-  }
-}
-
-@media (max-width: 767px) {
-  .service_wrapper .col-lg-3 {
-    width: 100%; /* Full width for mobile */
-  }
-}
-
-/* General Styling */
-#Portfolio .portfolio-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: space-around;
-}
-
-.portfolio-card {
-  padding:35px ;
-  position: relative;
-  width: 100%;
-  max-width: 300px; /* Card width */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Default shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fff; /* Ensure card has white background */
-}
-
-.portfolio-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-.portfolio-img-container {
-  width: 100%;
-  height: 200px; /* Height of the image area */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.portfolio-img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ensure the image is fully contained without cropping */
-  object-position: center; /* Centers the image */
-}
-
-/* Overlay Styling */
-.item-overlay {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px;
-  border-radius: 5px;
-  display: none; /* Hidden by default */
-  transition: opacity 0.3s ease;
-}
-
-.portfolio-card:hover .item-overlay {
-  display: block;
-}
-
-.item-info {
-  text-align: center;
-  color: white;
-}
-
-.project-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
-}
-
-/* Filters Styling */
-#filters {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-#filters ul {
-  list-style: none;
-  padding: 0;
-}
-
-#filters ul li {
-  display: inline-block;
-  margin-right: 15px;
-}
-
-#filters a {
-  text-decoration: none;
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-#filters a:hover,
-#filters a.active {
-  color: #007bff;
-}
-
-
-    section.review-slider {
-      
-      margin: 50px auto;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      overflow: hidden;
-      padding: 30px 0;
-    }
-
-    .slides-wrapper {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .review-group {
-      display: flex;
-      flex: 0 0 100%;
-      justify-content: space-around;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    .card {
-      flex: 0 0 30%;
-      background: #fff;
-      padding: 20px;
-      margin: 0 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: #333;
-    }
-
-    .card p {
-      color: #666;
-      font-size: 15px;
-      line-height: 1.4;
-    }
-
-    .dots {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .dot {
-      height: 12px;
-      width: 12px;
-      margin: 0 6px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .dot.active {
-      background-color: #333;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-      .card {
-        flex: 0 0 45%;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        flex: 0 0 90%;
-      }
-
-      .review-group {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhancerworx — App Development Studio</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!--Header_section-->
-<header id="header_wrapper">
+
+<!-- ======= CURSOR ======= -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- ======= NAV ======= -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <span class="logo-mark">EW</span>
+      <span class="logo-text">Enhancerworx</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+      <li><a href="#reviews" class="nav-link">Reviews</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get Started</a>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <ul>
+      <li><a href="#home" class="mob-link">Home</a></li>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#services" class="mob-link">Services</a></li>
+      <li><a href="#portfolio" class="mob-link">Portfolio</a></li>
+      <li><a href="#reviews" class="mob-link">Reviews</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span>Available for projects · 2025</span>
+    </div>
+    <h1 class="hero-title">
+      We build apps<br>
+      <span class="hero-title-accent">people love</span>
+    </h1>
+    <p class="hero-sub">
+      Website, webapp, Android & iOS development studio crafting beautiful, 
+      high-performance digital products that make an impact.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">View Our Work</a>
+      <a href="#contact" class="btn-ghost">Let's Talk <span class="arrow-icon">→</span></a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Apps Launched</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">50K+</span>
+        <span class="stat-label">Active Users</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">5★</span>
+        <span class="stat-label">Avg. Rating</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-device">
+    <div class="device-frame">
+      <img src="img/main_device_image.png" alt="App on device" class="device-img">
+    </div>
+    <div class="device-glow"></div>
+  </div>
+  <a href="#about" class="hero-scroll" aria-label="Scroll down">
+    <div class="scroll-icon"><div class="scroll-dot"></div></div>
+    <span>Scroll</span>
+  </a>
+</section>
+
+<!-- ======= TICKER ======= -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Android Development</span><span class="sep">✦</span>
+    <span>iOS Development</span><span class="sep">✦</span>
+    <span>Web Applications</span><span class="sep">✦</span>
+    <span>Progressive Web Apps</span><span class="sep">✦</span>
+    <span>EdTech Solutions</span><span class="sep">✦</span>
+    <span>Educational Games</span><span class="sep">✦</span>
+    <span>Android Development</span><span class="sep">✦</span>
+    <span>iOS Development</span><span class="sep">✦</span>
+    <span>Web Applications</span><span class="sep">✦</span>
+    <span>Progressive Web Apps</span><span class="sep">✦</span>
+    <span>EdTech Solutions</span><span class="sep">✦</span>
+    <span>Educational Games</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- ======= ABOUT ======= -->
+<section class="about" id="about">
   <div class="container">
-    <div class="header_box">
-      <div class="logo">
-        <a href="#"><img src="img/logo.png" alt="logo" class="header-logo"></a>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="img/about-img.jpg" alt="About Enhancerworx" class="about-img">
+        <div class="about-img-badge">
+          <div class="badge-icon"><i class="fa fa-rocket"></i></div>
+          <div>
+            <strong>Since 2018</strong>
+            <p>Building digital products</p>
+          </div>
+        </div>
+        <div class="about-img-float">
+          <i class="fa fa-check-circle"></i>
+          <span>Quality Guaranteed</span>
+        </div>
       </div>
-      <nav class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-header">
-          <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> 
-            <span class="sr-only">Toggle navigation</span> 
-            <span class="icon-bar"></span> 
-            <span class="icon-bar"></span> 
-            <span class="icon-bar"></span> 
-          </button>
-        </div>
-        <div id="main-nav" class="collapse navbar-collapse navStyle">
-          <ul class="nav navbar-nav" id="mainNav">
-            <li class="active"><a href="#hero_section" class="scroll-link">Home</a></li>
-            <li><a href="#aboutUs" class="scroll-link">About Us</a></li>
-            <li><a href="#service" class="scroll-link">Services</a></li>
-            <li><a href="#Portfolio" class="scroll-link">Portfolio</a></li>
- 
-            <li><a href="#contact" class="scroll-link">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </div>
-</header>
-<!--Header_section-->
-
-
-<!--Hero_Section-->
-<section id="hero_section" class="top_cont_outer" style="background: linear-gradient(to right, #0000ff, #ff0000);">
-  <div class="hero_wrapper">
-    <div class="container">
-      <div class="hero_section">
-        <div class="row">
-          <div class="col-lg-5 col-sm-7">
-            <div class="top_left_cont zoomIn wow animated"> 
-              <h2>We creates <strong>interactive</strong> ed-tech applications and educational games</h2>
-              <p>At Enhancerworx, we specialize in developing cutting-edge interactive educational technology solutions and engaging educational games. Our aim is to make learning fun, immersive, and impactful for students and educators worldwide.</p>
-              <a href="#service" class="read_more2">Learn More</a>
+      <div class="about-content">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">Transforming ideas into <em>exceptional</em> digital products</h2>
+        <p class="about-lead">Enhancerworx is a full-service app development studio specializing in creating beautiful, high-performance applications for web, Android, and iOS platforms.</p>
+        <p class="about-body">We believe great software should be delightful to use. From the first wireframe to the final launch, we obsess over every detail — performance, design, usability — to deliver products that users love and businesses rely on.</p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><i class="fa fa-paint-brush"></i></div>
+            <div>
+              <strong>Design-First</strong>
+              <p>Beautiful interfaces that feel intuitive</p>
             </div>
           </div>
-          <div class="col-lg-7 col-sm-5">
-            <img src="img/main_device_image.png" class="zoomIn wow animated" alt="Enhancerworx Ed-Tech Solutions" />
+          <div class="pillar">
+            <div class="pillar-icon"><i class="fa fa-bolt"></i></div>
+            <div>
+              <strong>Performance</strong>
+              <p>Fast, smooth, and reliable apps</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><i class="fa fa-shield"></i></div>
+            <div>
+              <strong>Quality</strong>
+              <p>Thoroughly tested and production-ready</p>
+            </div>
           </div>
         </div>
+        <a href="#contact" class="btn-primary">Work With Us</a>
       </div>
     </div>
   </div>
 </section>
-<!--Hero_Section-->
 
-<section id="aboutUs"><!--About Us-->
-  <div class="inner_wrapper">
-    <div class="container">
-      <h2>About Enhancerworx</h2>
-      <div class="inner_section">
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
-            <img src="img/about-img.jpg" class="img-circle delay-03s animated wow zoomIn" alt="Enhancerworx">
-          </div>
-          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
-            <div class="delay-01s animated fadeInDown wow animated">
-              <h3>Transforming Education with Interactive Ed-Tech and Educational Games</h3><br/> 
-              <p>Enhancerworx is a leading software development company dedicated to creating interactive educational technology applications and engaging educational games. We believe that learning should be an exciting, interactive experience that motivates students to explore, discover, and achieve their fullest potential.</p><br/>
-              <p>Our applications are designed to integrate fun with learning, combining the power of interactive software with the joy of educational games. Whether it's mastering complex concepts through immersive simulations or enhancing skills with gamified assessments, our products are crafted to make education more engaging and effective.</p>
-            </div>
-            <div class="work_bottom">
-              <span>Curious to learn more about our innovative solutions?</span>
-              <a href="#contact" class="contact_btn">Contact Us</a>
-            </div>       
-          </div>
-        </div>
-      </div>
-    </div> 
+<!-- ======= SERVICES ======= -->
+<section class="services" id="services">
+  <div class="services-bg">
+    <div class="services-orb"></div>
   </div>
-</section>
-<!--Aboutus--> 
-
-<!-- Service Section -->
-<section id="service">
   <div class="container">
-    <h2 class="section-title">Our Services</h2>
-    <div class="service_wrapper">
-      <div class="row">
-        <!-- Android App Development -->
-        <div class="col-lg-3 col-md-6">
-          <div class="service_block">
-            <div class="service_icon animated wow zoomIn">
-              <span><i class="fa fa-android"></i></span>
-            </div>
-            <h3 class="animated fadeInUp wow">Android App Development</h3>
-            <p class="animated fadeInDown wow">We build robust and scalable Android apps that deliver a seamless experience for your users.</p>
-          </div>
+    <div class="section-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Full-spectrum<br>development services</h2>
+      <p class="section-sub">From concept to deployment, we handle every layer of your digital product.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-index="01">
+        <div class="service-icon-wrap">
+          <i class="fa fa-android"></i>
         </div>
-        <!-- iOS App Development -->
-        <div class="col-lg-3 col-md-6">
-          <div class="service_block">
-            <div class="service_icon animated wow zoomIn">
-              <span><i class="fa fa-apple"></i></span>
-            </div>
-            <h3 class="animated fadeInUp wow">iOS App Development</h3>
-            <p class="animated fadeInDown wow">Crafting high-quality iOS applications that integrate well with Apple's ecosystem for optimal performance.</p>
-          </div>
+        <h3>Android Development</h3>
+        <p>Robust, scalable Android apps built with modern architecture patterns delivering seamless native experiences.</p>
+        <div class="service-tags">
+          <span>Kotlin</span><span>Java</span><span>Jetpack</span>
         </div>
-        <!-- Web App Development -->
-        <div class="col-lg-3 col-md-6">
-          <div class="service_block">
-            <div class="service_icon animated wow zoomIn">
-              <span><i class="fa fa-code"></i></span>
-            </div>
-            <h3 class="animated fadeInUp wow">Web App Development</h3>
-            <p class="animated fadeInDown wow">We create dynamic and responsive web applications with the latest web technologies and frameworks.</p>
-          </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" data-index="02">
+        <div class="service-icon-wrap">
+          <i class="fa fa-apple"></i>
         </div>
-        <!-- Progressive Web Apps -->
-        <div class="col-lg-3 col-md-6">
-          <div class="service_block">
-            <div class="service_icon animated wow zoomIn">
-              <span><i class="fa fa-mobile"></i></span>
-            </div>
-            <h3 class="animated fadeInUp wow">Progressive Web Apps</h3>
-            <p class="animated fadeInDown wow">Providing fast, reliable, and installable web apps that offer an app-like experience across devices.</p>
-          </div>
+        <h3>iOS Development</h3>
+        <p>High-quality iOS applications deeply integrated with Apple's ecosystem for optimal performance and feel.</p>
+        <div class="service-tags">
+          <span>Swift</span><span>SwiftUI</span><span>UIKit</span>
         </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" data-index="03">
+        <div class="service-icon-wrap">
+          <i class="fa fa-globe"></i>
+        </div>
+        <h3>Web Applications</h3>
+        <p>Dynamic, responsive web apps built with modern frameworks, optimized for speed and scalability.</p>
+        <div class="service-tags">
+          <span>React</span><span>Node.js</span><span>Vue</span>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" data-index="04">
+        <div class="service-icon-wrap">
+          <i class="fa fa-mobile"></i>
+        </div>
+        <h3>Progressive Web Apps</h3>
+        <p>Fast, reliable, installable web apps that deliver app-like experiences across all devices and platforms.</p>
+        <div class="service-tags">
+          <span>PWA</span><span>Offline</span><span>Push</span>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" data-index="05">
+        <div class="service-icon-wrap">
+          <i class="fa fa-graduation-cap"></i>
+        </div>
+        <h3>EdTech Solutions</h3>
+        <p>Interactive educational technology apps that make learning engaging, immersive and deeply effective.</p>
+        <div class="service-tags">
+          <span>Interactive</span><span>Gamified</span><span>Offline</span>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" data-index="06">
+        <div class="service-icon-wrap">
+          <i class="fa fa-gamepad"></i>
+        </div>
+        <h3>Educational Games</h3>
+        <p>Engaging learning games that combine entertainment with education, making complex concepts accessible and fun.</p>
+        <div class="service-tags">
+          <span>Game Design</span><span>Learning</span><span>Fun</span>
+        </div>
+        <div class="service-arrow">→</div>
       </div>
     </div>
   </div>
 </section>
-<!-- End of Service Section -->
-<!-- Portfolio Section -->
-<section id="Portfolio" class="content">
-  <!-- Container -->
-  <div class="container portfolio_title">
-    <!-- Title -->
-    <div class="section-title">
-      <h2>Portfolio</h2>
+
+<!-- ======= PORTFOLIO ======= -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Our Work</div>
+      <h2 class="section-title">Apps we've built<br>& shipped</h2>
+      <p class="section-sub">A selection of our published applications on the Google Play Store.</p>
     </div>
-    <!--/Title -->
-  </div>
-  <!-- Container -->
-
-  <div class="portfolio-top"></div>
-
-  <!-- Portfolio Filters -->
-  <div class="portfolio">
-    <div id="filters" class="filters-container">
-      <ul class="clearfix">
-      
-        <li><a href="#" data-filter=".educational-apps" class="active">
-          <h5>Educational Apps</h5>
-        </a></li>
-        <li><a href="#" data-filter=".utility-apps">
-          <h5>Utility Apps</h5>
-        </a></li>
-        <li><a href="#" data-filter=".educational-games">
-          <h5>Educational Games</h5>
-        </a></li>
-      </ul>
+    <div class="portfolio-filters" id="portFilters">
+      <button class="pf-btn active" data-filter="all">All</button>
+      <button class="pf-btn" data-filter="educational-apps">Educational Apps</button>
+      <button class="pf-btn" data-filter="educational-games">Educational Games</button>
+      <button class="pf-btn" data-filter="utility-apps">Utility Apps</button>
     </div>
-    <!--/Portfolio Filters -->
+    <div class="portfolio-grid" id="portfolioGrid">
 
-    <!-- Portfolio Wrapper -->
-    <div class="portfolio-wrapper" id="portfolio_wrapper">
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-games">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.snakewordpuzzles&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/snake.png" alt="Snake Word Puzzle Game Screenshot">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Snake Word Puzzle Game</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.snakewordpuzzles" class="port-item educational-games" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/snake.png" alt="Snake Word Puzzle Game" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
-
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-games">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.flags&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/flags.png" alt="Learn World Flags">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Learn World Flags</h4>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-
-      <!-- Portfolio Item -->
-      <div class="portfolio-item utility-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.artgrid&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/art.png" alt="Art Grid">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Art Grid</h4>
-            </div>
-          </div>
+        <div class="port-info">
+          <div class="port-cat">Educational Game</div>
+          <h4>Snake Word Puzzle Game</h4>
         </div>
       </a>
-      </div>
 
-      <!-- Portfolio Item -->
-      <div class="portfolio-item utility-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.bookqoutes&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/qoutes.png" alt="My Quotes: Read, Write & Share">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">My Quotes: Read, Write & Share</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.flags" class="port-item educational-games" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/flags.png" alt="Learn World Flags" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
+        <div class="port-info">
+          <div class="port-cat">Educational Game</div>
+          <h4>Learn World Flags</h4>
+        </div>
+      </a>
 
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.indiamap&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/india.jpg" alt="Learn India Map (Offline)">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Learn India Map (Offline)</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.indiamap" class="port-item educational-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/india.jpg" alt="Learn India Map" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
+        <div class="port-info">
+          <div class="port-cat">Educational App</div>
+          <h4>Learn India Map (Offline)</h4>
+        </div>
+      </a>
 
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.ancientindianhistory&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/history.png" alt="Ancient Indian History">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Ancient Indian History</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.ancientindianhistory" class="port-item educational-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/history.png" alt="Ancient Indian History" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
+        <div class="port-info">
+          <div class="port-cat">Educational App</div>
+          <h4>Ancient Indian History</h4>
+        </div>
+      </a>
 
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.biologydiagrams&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/biology.png" alt="Learn Biology Diagrams">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Learn Biology Diagrams</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.biologydiagrams" class="port-item educational-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/biology.png" alt="Learn Biology Diagrams" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
+        <div class="port-info">
+          <div class="port-cat">Educational App</div>
+          <h4>Learn Biology Diagrams</h4>
+        </div>
+      </a>
 
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.newindianconstitution&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/const.png" alt="Learn Indian Constitution">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Learn Indian Constitution</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.newindianconstitution" class="port-item educational-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/const.png" alt="Learn Indian Constitution" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
+        <div class="port-info">
+          <div class="port-cat">Educational App</div>
+          <h4>Learn Indian Constitution</h4>
+        </div>
+      </a>
 
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.worldmap&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/world.png" alt="Learn World Maps (Offline)">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Learn World Maps (Offline)</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.worldmap" class="port-item educational-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/world.png" alt="Learn World Maps" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
+        <div class="port-info">
+          <div class="port-cat">Educational App</div>
+          <h4>Learn World Maps (Offline)</h4>
+        </div>
+      </a>
 
-      <!-- Portfolio Item -->
-      <div class="portfolio-item educational-apps">
-        <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.worldwaterbodies&pcampaignid=web_share" class="portfolio-card">
-        <div class="portfolio-card">
-          <div class="portfolio-img-container">
-            <img src="img/water.png" alt="Learn World Water Bodies">
-          </div>
-          <div class="item-overlay">
-            <div class="item-info">
-              <h4 class="project-name">Learn World Water Bodies</h4>
-            </div>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.worldwaterbodies" class="port-item educational-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/water.png" alt="Learn World Water Bodies" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
           </div>
         </div>
-        </a>
-      </div>
+        <div class="port-info">
+          <div class="port-cat">Educational App</div>
+          <h4>Learn World Water Bodies</h4>
+        </div>
+      </a>
 
-      
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.artgrid" class="port-item utility-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/art.png" alt="Art Grid" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Utility App</div>
+          <h4>Art Grid</h4>
+        </div>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.bookqoutes" class="port-item utility-apps" target="_blank" rel="noopener">
+        <div class="port-img-wrap">
+          <img src="img/qoutes.png" alt="My Quotes" loading="lazy">
+          <div class="port-overlay">
+            <span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Utility App</div>
+          <h4>My Quotes: Read, Write & Share</h4>
+        </div>
+      </a>
 
     </div>
-    <!--/Portfolio Wrapper -->
-  </div>
-  <!--/Portfolio Filters -->
-
-  <div class="portfolio_btm"></div>
-
-  <div id="project_container">
-    <div class="clear"></div>
-    <div id="project_data"></div>
   </div>
 </section>
-<!--/Portfolio -->
 
- 
-
-<section class="review-slider">
-  
-    <h2 class="section-title">Reviews</h2>
-  <div class="slides-wrapper">
-    <div class="slides" id="slides">
-      <div class="review-group">
-        <div class="card">
-          <h3>Aman Sharma</h3>
-          <p>“Learn India Map (offline)---- Very attractive app design with audio feedback. Perfect example how CAI/CBT can be used to enhance learning effortlessly. Please keep adding more number of topics! Kudos to the app developers.”</p>
+<!-- ======= REVIEWS ======= -->
+<section class="reviews" id="reviews">
+  <div class="reviews-bg">
+    <div class="reviews-orb"></div>
+  </div>
+  <div class="container">
+    <div class="section-header light">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="section-title">What our users say</h2>
+      <p class="section-sub">Real feedback from real users across our apps.</p>
+    </div>
+    <div class="reviews-track-wrap">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Very attractive app design with audio feedback. Perfect example how CAI/CBT can be used to enhance learning effortlessly. Please keep adding more topics!"</p>
+          <div class="review-author">
+            <div class="author-avatar">AS</div>
+            <div>
+              <strong>Aman Sharma</strong>
+              <span>Learn India Map</span>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3>Ganesh Kumar</h3>
-          <p>“Learn India Map (offline)---- Excellent application with all necessary details. Enough to guide while studying indian geography. 5 stars to this app.”</p>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Excellent application with all necessary details. Enough to guide while studying Indian geography. 5 stars to this app."</p>
+          <div class="review-author">
+            <div class="author-avatar">GK</div>
+            <div>
+              <strong>Ganesh Kumar</strong>
+              <span>Learn India Map</span>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3>Adeena Ameen</h3>
-          <p>“Learn India Map (offline)--- Okay so this is spectacular!! Really amazing hats off, guys pls make and world map version too 🙏”</p>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"This is spectacular!! Really amazing — hats off, guys! Please make a world map version too!"</p>
+          <div class="review-author">
+            <div class="author-avatar">AA</div>
+            <div>
+              <strong>Adeena Ameen</strong>
+              <span>Learn India Map</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Baccho ke liye mast app hai. Easy to understand. My kids love using it for their studies!"</p>
+          <div class="review-author">
+            <div class="author-avatar">AS</div>
+            <div>
+              <strong>Anupama Sharma</strong>
+              <span>Learn India Map</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"I love this app. Please add more questions in the diagram quiz section. Extremely helpful for biology students."</p>
+          <div class="review-author">
+            <div class="author-avatar">VS</div>
+            <div>
+              <strong>Virendra Saran</strong>
+              <span>Learn Biology Diagrams</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Exceptional experience, very good app for easy learning. Covers all the major world maps in a simple and intuitive way."</p>
+          <div class="review-author">
+            <div class="author-avatar">PM</div>
+            <div>
+              <strong>Pasupureeddy Mahendra</strong>
+              <span>Learn World Maps</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="review-group">
-        <div class="card">
-          <h3>Anupama Sharma</h3>
-          <p>“Learn India Map (offline)---- Baccho k liye mast app hai. Easy to understand.”</p>
+    </div>
+    <div class="reviews-nav">
+      <button class="rv-btn" id="rvPrev" aria-label="Previous">←</button>
+      <div class="rv-dots" id="rvDots"></div>
+      <button class="rv-btn" id="rvNext" aria-label="Next">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACT / FOOTER ======= -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="section-title">Have a project<br>in mind? <em>Let's talk.</em></h2>
+        <p>We'd love to hear about your idea. Tell us about your project and we'll get back to you within 24 hours.</p>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="ci-icon"><i class="fa fa-envelope"></i></div>
+            <div>
+              <span>Email us</span>
+              <a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ci-icon"><i class="fa fa-globe"></i></div>
+            <div>
+              <span>Website</span>
+              <a href="http://www.enhancerworx.in" target="_blank">www.enhancerworx.in</a>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3>Virendra Saran</h3>
-          <p>“Learn Biology Diagrams ---- I love this app Please add more questions in diagram quiz section”</p>
+        <div class="contact-social">
+          <a href="#" aria-label="Play Store" class="social-btn"><i class="fa fa-android"></i></a>
+          <a href="#" aria-label="App Store" class="social-btn"><i class="fa fa-apple"></i></a>
         </div>
-        <div class="card">
-          <h3>Pasupureeddy Mahendra</h3>
-          <p>“Learn World Map (offline)----- Exceptional experience, very good app for easy learning”</p>
-        </div>
-      
-        
+      </div>
+      <div class="contact-right">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Android App Development</option>
+              <option>iOS App Development</option>
+              <option>Web Application</option>
+              <option>Progressive Web App</option>
+              <option>EdTech Solution</option>
+              <option>Educational Game</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width">
+            Send Message <span>→</span>
+          </button>
+        </form>
       </div>
     </div>
   </div>
-
-  <div class="dots" id="dots">
-    <span class="dot active" onclick="goToSlide(0)"></span>
-    <span class="dot" onclick="goToSlide(1)"></span>
-  </div>
 </section>
-<!-- Footer -->
-<footer class="footer_wrapper" id="contact">
+
+<!-- ======= FOOTER BAR ======= -->
+<footer class="footer">
   <div class="container">
-    <section class="page_section contact" id="contact">
-      <div class="contact_section">
-        <h2>Get in Touch</h2>
-        <div class="row">
-          <div class="col-lg-4 wow fadeInLeft">
-            <div class="contact_info">
-              <h4>Enhancerworx</h4>
-              <p>Your go-to platform for innovative solutions.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 wow fadeInLeft">
-            <div class="contact_info">
-              <h4>Email Us</h4>
-              <p><a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></p>
-            </div>
-          </div>
-          <div class="col-lg-4 wow fadeInLeft">
-            <!-- Empty for now, can add more info if needed -->
-          </div>
-        </div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark small">EW</span>
+        <span class="logo-text">Enhancerworx</span>
       </div>
-    </section>
-  </div>
-  <div class="container">
-    <div class="footer_bottom">
-      <span>Copyright © 2025, <a href="http://www.enhancerworx.in" target="_blank">Enhancerworx</a>.</span>
-      
-      <!-- Add Privacy Policy and Terms of Service Links -->
-      <div class="footer_links">
-        <ul>
-          <li><a href="privacyPolicy.html" target="_blank">Privacy Policy</a></li>
-          <li><a href="termsOfService.html" target="_blank">Terms of Service</a></li>
-        </ul>
+      <p class="footer-copy">© 2025 Enhancerworx. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacyPolicy.html">Privacy Policy</a>
+        <a href="termsOfService.html">Terms of Service</a>
       </div>
     </div>
   </div>
 </footer>
 
+<!-- Back to top -->
+<a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
 
-<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/jquery-scrolltofixed.js"></script>
-<script type="text/javascript" src="/js/jquery.nav.js"></script> 
-<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="/js/jquery.isotope.js"></script>
-<script type="text/javascript" src="/js/wow.js"></script> 
-<script type="text/javascript" src="/js/custom.js"></script>
-<script>
-  function scrollReviews(direction) {
-  const container = document.querySelector('.reviews-container');
-  const cardWidth = document.querySelector('.review-card').offsetWidth;
-  container.scrollBy({
-    left: direction * (cardWidth + 20),  // 20px is the gap between cards
-    behavior: 'smooth'
-  });
-}
-
-</script>
-
-<script>
-  const slides = document.getElementById('slides');
-  const dots = document.querySelectorAll('.dot');
-  let currentIndex = 0;
-
-  function goToSlide(index) {
-    slides.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
-    currentIndex = index;
-  }
-
-  // Optional: auto-play every 8 seconds
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % dots.length;
-    goToSlide(currentIndex);
-  }, 8000);
-</script>
-
-
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
