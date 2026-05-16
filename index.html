@@ -4,28 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enhancerworx — EdTech & App Development Studio</title>
-  <meta name="description" content="Enhancerworx is a leading EdTech and app development company crafting powerful learning apps, IT training platforms, and digital education solutions for web, Android & iOS.">
+  <meta name="description" content="Enhancerworx crafts powerful EdTech apps, IT training platforms, and digital education solutions for Android, iOS & Web.">
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-loader" id="pageLoader"><div class="pl-inner"><div class="pl-logo">EW</div><div class="pl-bar"><div class="pl-fill"></div></div></div></div>
 
-<!-- ======= CURSOR ======= -->
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-
-<!-- ======= NAV ======= -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#home" class="nav-logo">
-      <span class="logo-mark">EW</span>
-      <span class="logo-text">Enhancerworx</span>
-    </a>
-    <ul class="nav-links" id="navLinks">
+    <a href="#home" class="nav-logo"><span class="logo-mark">EW</span><span class="logo-text">Enhancerworx</span></a>
+    <ul class="nav-links">
       <li><a href="#home" class="nav-link active">Home</a></li>
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#services" class="nav-link">Services</a></li>
@@ -35,32 +30,13 @@
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <!-- Theme Toggle -->
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="theme-icon theme-icon-dark">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </span>
-        <span class="theme-icon theme-icon-light">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-        </span>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       </button>
-      <a href="#contact" class="nav-cta">Get Started</a>
+      <a href="#contact" class="nav-cta">Get Started ↗</a>
     </div>
-    <button class="nav-burger" id="navBurger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-burger" id="navBurger"><span></span><span></span><span></span></button>
   </div>
   <div class="nav-mobile" id="navMobile">
     <ul>
@@ -72,723 +48,347 @@
       <li><a href="#reviews" class="mob-link">Reviews</a></li>
       <li><a href="#contact" class="mob-link">Contact</a></li>
     </ul>
-    <div class="mob-theme-row">
-      <span>Switch Theme</span>
-      <button class="theme-toggle-mob" id="themeToggleMob" aria-label="Toggle theme">
-        <span class="theme-icon-mob">🌙</span>
-      </button>
+    <div class="mob-actions">
+      <button class="mob-theme-btn" id="themeToggleMob"><span class="mob-theme-icon">🌙</span> Dark Mode</button>
+      <a href="#contact" class="btn-primary mob-cta">Get Started ↗</a>
     </div>
   </div>
 </nav>
 
-<!-- ======= HERO ======= -->
+<!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg">
-    <div class="hero-grid"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-ambient">
+    <div class="ha-orb ha-1"></div><div class="ha-orb ha-2"></div><div class="ha-orb ha-3"></div>
+    <div class="ha-grid"></div><div class="ha-noise"></div>
   </div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      <span>EdTech &amp; IT Learning Platform · 2025</span>
-    </div>
-    <h1 class="hero-title">
-      Learn. Build.<br>
-      <span class="hero-title-accent">Grow Smarter.</span>
-    </h1>
-    <p class="hero-sub">
-      Enhancerworx creates world-class educational apps and IT training platforms — helping learners master technology, one skill at a time.
-    </p>
-    <div class="hero-actions">
-      <a href="#it-training" class="btn-primary">Explore IT Training</a>
-      <a href="#contact" class="btn-ghost">Build With Us <span class="arrow-icon">→</span></a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">15+</span>
-        <span class="stat-label">Apps Launched</span>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><span class="ey-dot"></span>EdTech &amp; IT Learning Platform <span class="ey-year">2025</span></div>
+      <h1 class="hero-title">
+        <span class="ht-row">Learn.</span>
+        <span class="ht-row">Build.</span>
+        <span class="ht-row ht-accent">Grow Smarter.</span>
+      </h1>
+      <p class="hero-sub">We craft world-class educational apps &amp; IT training platforms — helping learners master technology, <em>one skill at a time.</em></p>
+      <div class="hero-btns">
+        <a href="#it-training" class="btn-primary">Explore IT Training</a>
+        <a href="#portfolio" class="btn-outline">View Our Apps →</a>
       </div>
-      <div class="stat-div"></div>
-      <div class="stat">
-        <span class="stat-num">100K+</span>
-        <span class="stat-label">Learners</span>
-      </div>
-      <div class="stat-div"></div>
-      <div class="stat">
-        <span class="stat-num">5★</span>
-        <span class="stat-label">Avg. Rating</span>
+      <div class="hero-stats">
+        <div class="hst"><span class="hst-n" data-target="15">0</span><span class="hst-s">+</span><span class="hst-l">Apps Launched</span></div>
+        <div class="hst-div"></div>
+        <div class="hst"><span class="hst-n" data-target="100">0</span><span class="hst-s">K+</span><span class="hst-l">Learners</span></div>
+        <div class="hst-div"></div>
+        <div class="hst"><span class="hst-n" data-target="5">0</span><span class="hst-s">★</span><span class="hst-l">Avg Rating</span></div>
       </div>
     </div>
-  </div>
-  <div class="hero-device">
-    <div class="device-frame">
-      <img src="img/main_device_image.png" alt="EdTech App on device" class="device-img">
+    <div class="hero-right">
+      <div class="slider-wrap">
+        <div class="slider-viewport">
+          <div class="slider-track" id="heroSlider">
+
+            <!-- Slide 1: Python -->
+            <div class="slide active">
+              <div class="phone-mockup">
+                <div class="phone-shell">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen s-python">
+                    <div class="ps-bar"><div class="ps-dots"><i></i><i></i><i></i></div><span>Learn Python</span></div>
+                    <div class="ps-hero-block py-block">
+                      <div class="pyicon"><svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.034v-2.867s-.109-3.403 3.35-3.403h5.77s3.24.052 3.24-3.131V3.175S18.316 0 11.914 0zm-3.2 1.83a1.043 1.043 0 1 1 0 2.087 1.044 1.044 0 0 1 0-2.087z"/><path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963h-2.034v2.867s.109 3.403-3.35 3.403h-5.77S6.2 12.286 6.2 15.469v5.356S5.684 24 12.086 24zm3.2-1.83a1.043 1.043 0 1 1 0-2.087 1.044 1.044 0 0 1 0 2.087z"/></svg></div>
+                      <span>Python Mastery</span>
+                    </div>
+                    <div class="ps-code"><div class="cl"><span class="kw">def</span> <span class="fn">hello</span>():</div><div class="cl ind"><span class="str">"Learn Python"</span></div><div class="cl"><span class="fn">hello</span>()</div></div>
+                    <div class="ps-prog"><span>Progress</span><div class="pg-bar"><div class="pg-fill" style="width:72%"></div></div><span>72%</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-label"><i class="fa fa-code"></i> IT Training Apps</div>
+            </div>
+
+            <!-- Slide 2: India Map -->
+            <div class="slide">
+              <div class="phone-mockup">
+                <div class="phone-shell">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen s-map">
+                    <div class="ps-bar"><div class="ps-dots"><i></i><i></i><i></i></div><span>India Map</span></div>
+                    <div class="ps-map-area">
+                      <svg viewBox="0 0 200 230" width="120" fill="none">
+                        <path d="M100 18C62 23,28 52,24 82C18 118,40 138,52 165C64 192,72 202,100 222C128 202,136 192,148 165C160 138,182 118,176 82C172 52,138 23,100 18Z" fill="rgba(99,200,140,0.2)" stroke="rgba(99,200,140,0.7)" stroke-width="1.5"/>
+                        <circle cx="100" cy="108" r="5" fill="#63c88c"/>
+                        <circle cx="72" cy="88" r="3" fill="#5b5ef4" opacity="0.9"/>
+                        <circle cx="132" cy="128" r="3" fill="#f97316" opacity="0.9"/>
+                        <circle cx="82" cy="162" r="3" fill="#f472b6" opacity="0.9"/>
+                        <line x1="100" y1="108" x2="72" y2="88" stroke="rgba(99,200,140,0.4)" stroke-width="0.8"/>
+                        <line x1="100" y1="108" x2="132" y2="128" stroke="rgba(99,200,140,0.4)" stroke-width="0.8"/>
+                      </svg>
+                      <div class="map-chips-row"><span>States</span><span>Capitals</span><span>Quiz</span></div>
+                    </div>
+                    <div class="ps-quiz"><div class="quiz-q">Maharashtra Capital?</div><div class="quiz-opts"><div class="qo correct">Mumbai ✓</div><div class="qo">Pune</div></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-label"><i class="fa fa-map-marker"></i> Educational Apps</div>
+            </div>
+
+            <!-- Slide 3: React -->
+            <div class="slide">
+              <div class="phone-mockup">
+                <div class="phone-shell">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen s-react">
+                    <div class="ps-bar"><div class="ps-dots"><i></i><i></i><i></i></div><span>Learn React</span></div>
+                    <div class="ps-atom-area">
+                      <div class="atom-wrap"><div class="atom-core"></div><div class="atom-ring r1"></div><div class="atom-ring r2"></div><div class="atom-ring r3"></div></div>
+                    </div>
+                    <div class="ps-modules">
+                      <div class="mod done"><i class="fa fa-check-circle"></i> Components</div>
+                      <div class="mod done"><i class="fa fa-check-circle"></i> Hooks</div>
+                      <div class="mod active"><i class="fa fa-play-circle"></i> State Mgmt</div>
+                      <div class="mod"><i class="fa fa-circle-o"></i> React Router</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-label"><i class="fa fa-globe"></i> Web Training</div>
+            </div>
+
+            <!-- Slide 4: Game -->
+            <div class="slide">
+              <div class="phone-mockup">
+                <div class="phone-shell">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen s-game">
+                    <div class="ps-bar"><div class="ps-dots"><i></i><i></i><i></i></div><span>Word Puzzle</span></div>
+                    <div class="ps-score">Score: <strong>1,250</strong></div>
+                    <div class="ps-grid">
+                      <div class="gc lit">E</div><div class="gc lit">D</div><div class="gc lit">U</div><div class="gc">T</div>
+                      <div class="gc">E</div><div class="gc lit">C</div><div class="gc">A</div><div class="gc">P</div>
+                      <div class="gc">P</div><div class="gc lit">H</div><div class="gc">L</div><div class="gc">A</div>
+                      <div class="gc">L</div><div class="gc lit">E</div><div class="gc">R</div><div class="gc">N</div>
+                    </div>
+                    <div class="ps-found">EDTECH <span>found! +50pts</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-label"><i class="fa fa-gamepad"></i> Educational Games</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-nav">
+          <button class="sl-prev" id="slPrev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <div class="sl-dots" id="slDots">
+            <button class="sl-dot active" data-i="0"></button>
+            <button class="sl-dot" data-i="1"></button>
+            <button class="sl-dot" data-i="2"></button>
+            <button class="sl-dot" data-i="3"></button>
+          </div>
+          <button class="sl-next" id="slNext"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+
+        <div class="trust-pill tp-1"><i class="fa fa-star"></i><div><strong>4.8/5</strong><span>Play Store</span></div></div>
+        <div class="trust-pill tp-2"><i class="fa fa-download"></i><div><strong>100K+</strong><span>Downloads</span></div></div>
+      </div>
     </div>
-    <div class="device-glow"></div>
   </div>
-  <a href="#about" class="hero-scroll" aria-label="Scroll down">
-    <div class="scroll-icon"><div class="scroll-dot"></div></div>
-    <span>Scroll</span>
-  </a>
+  <a href="#about" class="scroll-hint"><div class="sh-wheel"><div class="sh-dot"></div></div></a>
 </section>
 
-<!-- ======= TICKER ======= -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span>EdTech Solutions</span><span class="sep">✦</span>
-    <span>IT Training Apps</span><span class="sep">✦</span>
-    <span>Android Development</span><span class="sep">✦</span>
-    <span>iOS Development</span><span class="sep">✦</span>
-    <span>Learn Python</span><span class="sep">✦</span>
-    <span>Learn Docker</span><span class="sep">✦</span>
-    <span>Learn React</span><span class="sep">✦</span>
-    <span>Learn Angular</span><span class="sep">✦</span>
-    <span>Web Applications</span><span class="sep">✦</span>
-    <span>Educational Games</span><span class="sep">✦</span>
-    <span>EdTech Solutions</span><span class="sep">✦</span>
-    <span>IT Training Apps</span><span class="sep">✦</span>
-    <span>Android Development</span><span class="sep">✦</span>
-    <span>iOS Development</span><span class="sep">✦</span>
-    <span>Learn Python</span><span class="sep">✦</span>
-    <span>Learn Docker</span><span class="sep">✦</span>
-    <span>Learn React</span><span class="sep">✦</span>
-    <span>Learn Angular</span><span class="sep">✦</span>
-    <span>Web Applications</span><span class="sep">✦</span>
-    <span>Educational Games</span><span class="sep">✦</span>
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-inner">
+    <span>EdTech Solutions</span><span class="ms">◆</span><span>IT Training Apps</span><span class="ms">◆</span><span>Android Development</span><span class="ms">◆</span><span>iOS Development</span><span class="ms">◆</span><span>Learn Python</span><span class="ms">◆</span><span>Learn Docker</span><span class="ms">◆</span><span>Learn React</span><span class="ms">◆</span><span>Learn Angular</span><span class="ms">◆</span><span>Learn Vue.js</span><span class="ms">◆</span><span>Learn .NET</span><span class="ms">◆</span><span>Educational Games</span><span class="ms">◆</span>
+    <span>EdTech Solutions</span><span class="ms">◆</span><span>IT Training Apps</span><span class="ms">◆</span><span>Android Development</span><span class="ms">◆</span><span>iOS Development</span><span class="ms">◆</span><span>Learn Python</span><span class="ms">◆</span><span>Learn Docker</span><span class="ms">◆</span><span>Learn React</span><span class="ms">◆</span><span>Learn Angular</span><span class="ms">◆</span><span>Learn Vue.js</span><span class="ms">◆</span><span>Learn .NET</span><span class="ms">◆</span><span>Educational Games</span><span class="ms">◆</span>
   </div>
 </div>
 
-<!-- ======= ABOUT ======= -->
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img-wrap">
-        <img src="img/about-img.jpg" alt="About Enhancerworx" class="about-img">
-        <div class="about-img-badge">
-          <div class="badge-icon"><i class="fa fa-graduation-cap"></i></div>
-          <div>
-            <strong>Since 2018</strong>
-            <p>Empowering learners worldwide</p>
-          </div>
+      <div class="about-visual">
+        <div class="av-main-card">
+          <img src="img/about-img.jpg" alt="Enhancerworx Studio" class="av-img" onerror="this.style.display='none'">
+          <div class="av-placeholder"><i class="fa fa-graduation-cap"></i><span>Enhancerworx Studio</span></div>
         </div>
-        <div class="about-img-float">
-          <i class="fa fa-check-circle"></i>
-          <span>EdTech Certified</span>
-        </div>
+        <div class="av-pill p1"><div class="avp-icon"><i class="fa fa-graduation-cap"></i></div><div><strong>Since 2018</strong><span>EdTech Innovation</span></div></div>
+        <div class="av-pill p2"><div class="avp-icon g"><i class="fa fa-check"></i></div><div><strong>EdTech Certified</strong><span>Quality Assured</span></div></div>
+        <div class="av-pill p3"><div class="avp-icon o"><i class="fa fa-users"></i></div><div><strong>100K+ Learners</strong><span>Worldwide</span></div></div>
       </div>
       <div class="about-content">
-        <div class="section-tag">About Us</div>
+        <div class="section-eyebrow">About Us</div>
         <h2 class="section-title">Pioneering <em>EdTech</em> &amp; digital learning experiences</h2>
-        <p class="about-lead">Enhancerworx is a specialized EdTech &amp; app development studio building cutting-edge educational technology, IT training platforms, and interactive learning applications.</p>
-        <p class="about-body">We believe learning should be intuitive, engaging, and accessible. From interactive quizzes to full-fledged coding bootcamp apps — we design digital education products that users genuinely enjoy using and that produce real outcomes.</p>
-        <div class="about-pillars">
-          <div class="pillar">
-            <div class="pillar-icon"><i class="fa fa-lightbulb-o"></i></div>
-            <div>
-              <strong>Learning-First Design</strong>
-              <p>Every UI decision is grounded in pedagogy and learner psychology</p>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><i class="fa fa-bolt"></i></div>
-            <div>
-              <strong>Offline-Ready</strong>
-              <p>Learn without internet — all apps support offline access</p>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><i class="fa fa-trophy"></i></div>
-            <div>
-              <strong>Gamified Outcomes</strong>
-              <p>Progress tracking, badges, quizzes to keep learners motivated</p>
-            </div>
-          </div>
+        <p class="about-lead">A specialized EdTech &amp; app development studio building cutting-edge educational technology, IT training platforms, and interactive learning applications.</p>
+        <p class="about-body">Learning should be intuitive, engaging, and accessible. From interactive quizzes to full-fledged coding bootcamp apps — we design digital education products that produce real outcomes.</p>
+        <div class="pillars">
+          <div class="pillar"><div class="pl-icon"><i class="fa fa-lightbulb-o"></i></div><div><strong>Learning-First Design</strong><p>Every UI decision is grounded in pedagogy and learner psychology</p></div></div>
+          <div class="pillar"><div class="pl-icon"><i class="fa fa-bolt"></i></div><div><strong>Offline-Ready Apps</strong><p>All apps support offline access — learn without internet</p></div></div>
+          <div class="pillar"><div class="pl-icon"><i class="fa fa-trophy"></i></div><div><strong>Gamified Outcomes</strong><p>Badges, quizzes &amp; progress tracking to motivate learners</p></div></div>
+          <div class="pillar"><div class="pl-icon"><i class="fa fa-mobile"></i></div><div><strong>Cross-Platform</strong><p>Android, iOS &amp; Web — reach learners everywhere</p></div></div>
         </div>
-        <a href="#contact" class="btn-primary">Work With Us</a>
+        <a href="#contact" class="btn-primary">Work With Us ↗</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======= SERVICES ======= -->
+<!-- SERVICES -->
 <section class="services" id="services">
-  <div class="services-bg">
-    <div class="services-orb"></div>
-  </div>
+  <div class="svc-bg-blob"></div>
   <div class="container">
-    <div class="section-header">
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-title">Full-spectrum EdTech<br>&amp; development services</h2>
-      <p class="section-sub">From concept to classroom, we handle every layer of your educational digital product.</p>
+    <div class="section-hdr center">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Full-spectrum EdTech &amp; development services</h2>
+      <p class="section-sub">From concept to classroom — every layer of your educational digital product.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card" data-index="01">
-        <div class="service-icon-wrap"><i class="fa fa-graduation-cap"></i></div>
-        <h3>EdTech App Development</h3>
-        <p>End-to-end educational technology apps — LMS platforms, interactive courses, quizzes, flashcards, and adaptive learning systems.</p>
-        <div class="service-tags"><span>LMS</span><span>Adaptive</span><span>Offline</span></div>
-        <div class="service-arrow">→</div>
-      </div>
-      <div class="service-card" data-index="02">
-        <div class="service-icon-wrap"><i class="fa fa-code"></i></div>
-        <h3>IT Training Platforms</h3>
-        <p>Feature-rich coding and IT training apps with syntax highlighting, code sandboxes, progress tracking, and certificates.</p>
-        <div class="service-tags"><span>Code Editor</span><span>Sandbox</span><span>Certs</span></div>
-        <div class="service-arrow">→</div>
-      </div>
-      <div class="service-card" data-index="03">
-        <div class="service-icon-wrap"><i class="fa fa-android"></i></div>
-        <h3>Android Development</h3>
-        <p>Robust, scalable Android apps built with modern architecture — optimized for learners on low-end devices too.</p>
-        <div class="service-tags"><span>Kotlin</span><span>Java</span><span>Jetpack</span></div>
-        <div class="service-arrow">→</div>
-      </div>
-      <div class="service-card" data-index="04">
-        <div class="service-icon-wrap"><i class="fa fa-apple"></i></div>
-        <h3>iOS Development</h3>
-        <p>High-quality iOS learning apps deeply integrated with Apple's ecosystem for the best on-device educational experience.</p>
-        <div class="service-tags"><span>Swift</span><span>SwiftUI</span><span>UIKit</span></div>
-        <div class="service-arrow">→</div>
-      </div>
-      <div class="service-card" data-index="05">
-        <div class="service-icon-wrap"><i class="fa fa-globe"></i></div>
-        <h3>Web Learning Apps</h3>
-        <p>Dynamic, responsive web-based learning platforms and e-learning portals with rich media, assessments, and dashboards.</p>
-        <div class="service-tags"><span>React</span><span>Node.js</span><span>Vue</span></div>
-        <div class="service-arrow">→</div>
-      </div>
-      <div class="service-card" data-index="06">
-        <div class="service-icon-wrap"><i class="fa fa-gamepad"></i></div>
-        <h3>Educational Games</h3>
-        <p>Engaging gamified learning experiences that make complex concepts accessible — from word puzzles to geography challenges.</p>
-        <div class="service-tags"><span>Game Design</span><span>Gamified</span><span>Fun</span></div>
-        <div class="service-arrow">→</div>
-      </div>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="sc-num">01</div><div class="sc-icon"><i class="fa fa-graduation-cap"></i></div><h3>EdTech App Development</h3><p>LMS platforms, interactive courses, quizzes, flashcards, and adaptive learning systems — end to end.</p><div class="sc-tags"><span>LMS</span><span>Adaptive</span><span>Offline</span></div></div>
+      <div class="svc-card"><div class="sc-num">02</div><div class="sc-icon"><i class="fa fa-code"></i></div><h3>IT Training Platforms</h3><p>Coding apps with syntax highlighting, sandboxes, progress tracking, and certification features.</p><div class="sc-tags"><span>Code Editor</span><span>Sandbox</span><span>Certs</span></div></div>
+      <div class="svc-card"><div class="sc-num">03</div><div class="sc-icon"><i class="fa fa-android"></i></div><h3>Android Development</h3><p>Scalable Android apps built with modern Kotlin architecture — optimized for all devices.</p><div class="sc-tags"><span>Kotlin</span><span>Java</span><span>Jetpack</span></div></div>
+      <div class="svc-card"><div class="sc-num">04</div><div class="sc-icon"><i class="fa fa-apple"></i></div><h3>iOS Development</h3><p>High-quality iOS learning apps deeply integrated with Apple's ecosystem.</p><div class="sc-tags"><span>Swift</span><span>SwiftUI</span><span>UIKit</span></div></div>
+      <div class="svc-card"><div class="sc-num">05</div><div class="sc-icon"><i class="fa fa-globe"></i></div><h3>Web Learning Apps</h3><p>Responsive web-based learning portals with rich media, assessments, and dashboards.</p><div class="sc-tags"><span>React</span><span>Node.js</span><span>Vue</span></div></div>
+      <div class="svc-card"><div class="sc-num">06</div><div class="sc-icon"><i class="fa fa-gamepad"></i></div><h3>Educational Games</h3><p>Gamified learning experiences — from word puzzles to geography challenges.</p><div class="sc-tags"><span>Game Design</span><span>Gamified</span><span>Fun</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ======= IT TRAINING APPS ======= -->
+<!-- IT TRAINING -->
 <section class="it-training" id="it-training">
-  <div class="it-bg">
-    <div class="it-orb it-orb-1"></div>
-    <div class="it-orb it-orb-2"></div>
-  </div>
+  <div class="it-bg"><div class="it-orb o1"></div><div class="it-orb o2"></div></div>
   <div class="container">
-    <div class="section-header">
-      <div class="section-tag">IT Training Apps</div>
-      <h2 class="section-title">Master modern tech<br><em>one skill at a time</em></h2>
-      <p class="section-sub">Our IT Training suite covers the most in-demand programming languages and frameworks — built for beginners to advanced learners.</p>
+    <div class="section-hdr center">
+      <div class="section-eyebrow">IT Training Apps</div>
+      <h2 class="section-title">Master modern tech <em>one skill at a time</em></h2>
+      <p class="section-sub">In-demand programming languages &amp; frameworks — from beginners to advanced learners.</p>
     </div>
     <div class="it-grid">
+      <div class="it-card" data-tech="python"><div class="itc-top"><div class="it-icon py-c"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.034v-2.867s-.109-3.403 3.35-3.403h5.77s3.24.052 3.24-3.131V3.175S18.316 0 11.914 0zm-3.2 1.83a1.043 1.043 0 1 1 0 2.087 1.044 1.044 0 0 1 0-2.087z"/><path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963h-2.034v2.867s.109 3.403-3.35 3.403h-5.77S6.2 12.286 6.2 15.469v5.356S5.684 24 12.086 24zm3.2-1.83a1.043 1.043 0 1 1 0-2.087 1.044 1.044 0 0 1 0 2.087z"/></svg></div><span class="it-badge b-beg">Beginner → Advanced</span></div><h3>Learn Python</h3><p>Data science, automation, web backends and beyond — with hands-on exercises and real projects.</p><ul class="it-feats"><li><i class="fa fa-check-circle"></i> Syntax &amp; OOP</li><li><i class="fa fa-check-circle"></i> Data Structures</li><li><i class="fa fa-check-circle"></i> Projects &amp; Quizzes</li></ul><a href="mailto:enhancerworx@gmail.com?subject=IT Training App - Learn Python&body=Hi, I am interested in the Learn Python app." class="it-btn">Enquire Now <i class="fa fa-envelope-o"></i></a><div class="itc-glow"></div></div>
 
-      <!-- Learn Python -->
-      <div class="it-card" data-tech="python">
-        <div class="it-card-header">
-          <div class="it-icon python-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.034v-2.867s-.109-3.403 3.35-3.403h5.77s3.24.052 3.24-3.131V3.175S18.316 0 11.914 0zm-3.2 1.83a1.043 1.043 0 1 1 0 2.087 1.044 1.044 0 0 1 0-2.087z"/>
-              <path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963h-2.034v2.867s.109 3.403-3.35 3.403h-5.77S6.2 12.286 6.2 15.469v5.356S5.684 24 12.086 24zm3.2-1.83a1.043 1.043 0 1 1 0-2.087 1.044 1.044 0 0 1 0 2.087z"/>
-            </svg>
-          </div>
-          <div class="it-meta">
-            <span class="it-level beginner">Beginner → Advanced</span>
-          </div>
-        </div>
-        <h3>Learn Python</h3>
-        <p>From basics to data science, automation, web backends and beyond. Python fundamentals with hands-on exercises.</p>
-        <div class="it-features">
-          <span><i class="fa fa-check"></i> Syntax &amp; OOP</span>
-          <span><i class="fa fa-check"></i> Data Structures</span>
-          <span><i class="fa fa-check"></i> Projects &amp; Quizzes</span>
-        </div>
-        <a href="mailto:enhancerworx@gmail.com?subject=IT Training App Enquiry - Learn Python&body=Hi, I'm interested in the Learn Python app. Please share details." class="it-cta">
-          Enquire Now <i class="fa fa-envelope"></i>
-        </a>
-      </div>
+      <div class="it-card" data-tech="docker"><div class="itc-top"><div class="it-icon dk-c"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></svg></div><span class="it-badge b-int">Beginner → Pro</span></div><h3>Learn Docker</h3><p>Containerization from zero to deployment — images, containers, compose &amp; CI/CD pipelines.</p><ul class="it-feats"><li><i class="fa fa-check-circle"></i> Containers &amp; Images</li><li><i class="fa fa-check-circle"></i> Docker Compose</li><li><i class="fa fa-check-circle"></i> Deployment Flows</li></ul><a href="mailto:enhancerworx@gmail.com?subject=IT Training App - Learn Docker&body=Hi, I am interested in the Learn Docker app." class="it-btn">Enquire Now <i class="fa fa-envelope-o"></i></a><div class="itc-glow"></div></div>
 
-      <!-- Learn Docker -->
-      <div class="it-card" data-tech="docker">
-        <div class="it-card-header">
-          <div class="it-icon docker-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/>
-            </svg>
-          </div>
-          <div class="it-meta">
-            <span class="it-level intermediate">Beginner → Pro</span>
-          </div>
-        </div>
-        <h3>Learn Docker</h3>
-        <p>Master containerization from zero to deployment. Understand images, containers, compose, and CI/CD pipelines.</p>
-        <div class="it-features">
-          <span><i class="fa fa-check"></i> Containers &amp; Images</span>
-          <span><i class="fa fa-check"></i> Docker Compose</span>
-          <span><i class="fa fa-check"></i> Deployment Flows</span>
-        </div>
-        <a href="mailto:enhancerworx@gmail.com?subject=IT Training App Enquiry - Learn Docker&body=Hi, I'm interested in the Learn Docker app. Please share details." class="it-cta">
-          Enquire Now <i class="fa fa-envelope"></i>
-        </a>
-      </div>
+      <div class="it-card" data-tech="react"><div class="itc-top"><div class="it-icon re-c"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38a2.167 2.167 0 0 0-1.096-.278z"/></svg></div><span class="it-badge b-int">Intermediate</span></div><h3>Learn React</h3><p>Modern UIs with React — components, hooks, state management, routing &amp; real API integration.</p><ul class="it-feats"><li><i class="fa fa-check-circle"></i> Components &amp; Hooks</li><li><i class="fa fa-check-circle"></i> State Management</li><li><i class="fa fa-check-circle"></i> Real Projects</li></ul><a href="mailto:enhancerworx@gmail.com?subject=IT Training App - Learn React&body=Hi, I am interested in the Learn React app." class="it-btn">Enquire Now <i class="fa fa-envelope-o"></i></a><div class="itc-glow"></div></div>
 
-      <!-- Learn React -->
-      <div class="it-card" data-tech="react">
-        <div class="it-card-header">
-          <div class="it-icon react-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38a2.167 2.167 0 0 0-1.096-.278zm-.044 1.572c.148 0 .277.04.388.1 1.002.58 1.34 2.929.88 5.938a12.83 12.83 0 0 0-2.146-.405 12.816 12.816 0 0 0-1.388-1.754c.72-.688 1.47-1.307 2.176-1.783.29-.19.61-.28.93-.28l.16.184zm-9.212.184c.316 0 .63.09.923.284.71.478 1.459 1.097 2.18 1.785a12.743 12.743 0 0 0-1.387 1.754 12.72 12.72 0 0 0-2.147.4c-.453-2.994-.11-5.323.875-5.917.108-.062.238-.1.386-.1zm4.598 3.54c.318.226.64.469.956.73a12.728 12.728 0 0 1-.956.73 12.576 12.576 0 0 1-.958-.73c.314-.261.64-.504.958-.73zm-7.9 3.087a12.43 12.43 0 0 1 2.083-.406c.16.386.34.77.54 1.148a12.513 12.513 0 0 0-.548 1.148 12.47 12.47 0 0 1-2.083-.406c-.804-.25-1.49-.55-2.004-.877-.24-.153-.45-.31-.622-.47.17-.16.38-.318.62-.47.515-.328 1.2-.63 2.014-.767zm14.924 0c.812.237 1.498.539 2.012.867.24.152.452.31.621.47-.17.16-.38.317-.62.47-.515.327-1.2.627-2.014.776a12.584 12.584 0 0 1-2.083.406 12.428 12.428 0 0 0-.548-1.148c.2-.38.38-.763.54-1.148a12.39 12.39 0 0 1 2.092-.693zm-6.55 3.587c.316.26.64.503.955.73a12.697 12.697 0 0 1-.955.727 12.677 12.677 0 0 1-.957-.727c.316-.227.64-.47.957-.73zm-4.65 2.38a12.716 12.716 0 0 1 2.147-.4c.38.608.81 1.198 1.387 1.754-.72.688-1.47 1.308-2.177 1.785a3.44 3.44 0 0 1-.922.283c-.316 0-.629-.09-.92-.284-1.003-.58-1.34-2.928-.88-5.938.08.034.16.066.244.1a12.843 12.843 0 0 0 1.12.7zm9.18.4c.724.1 1.44.243 2.147.4.19-.034.378-.066.566-.1.453 2.994.11 5.323-.877 5.917-.107.062-.237.1-.384.1-.318 0-.63-.09-.924-.284-.71-.477-1.46-1.097-2.178-1.785.575-.556 1.007-1.146 1.388-1.754l.263.005zm-4.598.74c.318.226.64.468.956.73a12.728 12.728 0 0 1-.956.73 12.576 12.576 0 0 1-.958-.73c.314-.262.64-.504.958-.73z"/>
-            </svg>
-          </div>
-          <div class="it-meta">
-            <span class="it-level intermediate">Intermediate</span>
-          </div>
-        </div>
-        <h3>Learn React</h3>
-        <p>Build modern UIs with React. Components, hooks, state management, routing, and integration with real APIs.</p>
-        <div class="it-features">
-          <span><i class="fa fa-check"></i> Components &amp; Hooks</span>
-          <span><i class="fa fa-check"></i> State Management</span>
-          <span><i class="fa fa-check"></i> Real Projects</span>
-        </div>
-        <a href="mailto:enhancerworx@gmail.com?subject=IT Training App Enquiry - Learn React&body=Hi, I'm interested in the Learn React app. Please share details." class="it-cta">
-          Enquire Now <i class="fa fa-envelope"></i>
-        </a>
-      </div>
+      <div class="it-card" data-tech="angular"><div class="itc-top"><div class="it-icon ng-c"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M9.931 12.645h4.138l-2.07-4.908m0-7.737L.68 3.982l1.726 14.771L12 24l9.294-5.247 1.726-14.771-9.32-3.982z"/></svg></div><span class="it-badge b-adv">Advanced</span></div><h3>Learn Angular</h3><p>Enterprise-scale SPAs with Angular — TypeScript, RxJS, dependency injection &amp; advanced patterns.</p><ul class="it-feats"><li><i class="fa fa-check-circle"></i> TypeScript Basics</li><li><i class="fa fa-check-circle"></i> RxJS &amp; Observables</li><li><i class="fa fa-check-circle"></i> Enterprise Patterns</li></ul><a href="mailto:enhancerworx@gmail.com?subject=IT Training App - Learn Angular&body=Hi, I am interested in the Learn Angular app." class="it-btn">Enquire Now <i class="fa fa-envelope-o"></i></a><div class="itc-glow"></div></div>
 
-      <!-- Learn Angular -->
-      <div class="it-card" data-tech="angular">
-        <div class="it-card-header">
-          <div class="it-icon angular-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <path d="M9.931 12.645h4.138l-2.07-4.908m0-7.737L.68 3.982l1.726 14.771L12 24l9.294-5.247 1.726-14.771-9.32-3.982zm7.345 15.893l-4.208-4.208a.952.952 0 0 1-.232.028H8.845a.95.95 0 0 1-.233-.028l-4.208 4.208a.95.95 0 0 1-1.344 0 .951.951 0 0 1 0-1.344l4.208-4.208a.952.952 0 0 1 .028-.232V9.637a.95.95 0 0 1 .028-.233L3.116 5.196a.95.95 0 0 1 1.344-1.344L8.668 8.06a.952.952 0 0 1 .177.028h6.31a.95.95 0 0 1 .177-.028l4.208-4.208a.95.95 0 0 1 1.344 1.344l-4.208 4.208a.95.95 0 0 1 .028.233v7.728a.95.95 0 0 1 .028.232l4.208 4.208a.951.951 0 0 1 0 1.344.95.95 0 0 1-1.344 0z"/>
-            </svg>
-          </div>
-          <div class="it-meta">
-            <span class="it-level advanced">Advanced</span>
-          </div>
-        </div>
-        <h3>Learn Angular</h3>
-        <p>Deep-dive into Angular's powerful framework for building enterprise-scale SPAs with TypeScript and RxJS.</p>
-        <div class="it-features">
-          <span><i class="fa fa-check"></i> TypeScript Basics</span>
-          <span><i class="fa fa-check"></i> RxJS &amp; Observables</span>
-          <span><i class="fa fa-check"></i> Enterprise Patterns</span>
-        </div>
-        <a href="mailto:enhancerworx@gmail.com?subject=IT Training App Enquiry - Learn Angular&body=Hi, I'm interested in the Learn Angular app. Please share details." class="it-cta">
-          Enquire Now <i class="fa fa-envelope"></i>
-        </a>
-      </div>
+      <div class="it-card" data-tech="dotnet"><div class="itc-top"><div class="it-icon dn-c"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396zm-6.708 0H8.882L5.467 9.887c-.19-.295-.316-.49-.38-.583h-.048c.03.28.046.796.046 1.547v5.484H3.72V7.53h1.614l3.303 6.322c.245.47.4.783.465.938h.033c-.04-.36-.06-.898-.06-1.617V7.53h1.365zM2.568 15.635c0 .268-.1.5-.296.693a.952.952 0 01-.7.29.956.956 0 01-.697-.29.946.946 0 01-.292-.693c0-.272.097-.507.292-.704A.946.946 0 011.572 14c.276 0 .51.098.7.295.195.197.296.432.296.704z"/></svg></div><span class="it-badge b-int">Intermediate → Pro</span></div><h3>Learn .NET</h3><p>Backend APIs, desktop apps &amp; enterprise software with Microsoft's .NET ecosystem and C#.</p><ul class="it-feats"><li><i class="fa fa-check-circle"></i> C# Fundamentals</li><li><i class="fa fa-check-circle"></i> ASP.NET Core</li><li><i class="fa fa-check-circle"></i> REST APIs</li></ul><a href="mailto:enhancerworx@gmail.com?subject=IT Training App - Learn .NET&body=Hi, I am interested in the Learn .NET app." class="it-btn">Enquire Now <i class="fa fa-envelope-o"></i></a><div class="itc-glow"></div></div>
 
-      <!-- Learn .NET -->
-      <div class="it-card" data-tech="dotnet">
-        <div class="it-card-header">
-          <div class="it-icon dotnet-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <path d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396zm-6.708 0H8.882L5.467 9.887c-.19-.295-.316-.49-.38-.583h-.048c.03.28.046.796.046 1.547v5.484H3.72V7.53h1.614l3.303 6.322c.245.47.4.783.465.938h.033c-.04-.36-.06-.898-.06-1.617V7.53h1.365zM2.568 15.635c0 .268-.1.5-.296.693a.952.952 0 01-.7.29.956.956 0 01-.697-.29.946.946 0 01-.292-.693c0-.272.097-.507.292-.704A.946.946 0 011.572 14c.276 0 .51.098.7.295.195.197.296.432.296.704z"/>
-            </svg>
-          </div>
-          <div class="it-meta">
-            <span class="it-level intermediate">Intermediate → Pro</span>
-          </div>
-        </div>
-        <h3>Learn .NET</h3>
-        <p>Build powerful backend APIs, desktop apps, and enterprise software with Microsoft's .NET ecosystem and C#.</p>
-        <div class="it-features">
-          <span><i class="fa fa-check"></i> C# Fundamentals</span>
-          <span><i class="fa fa-check"></i> ASP.NET Core</span>
-          <span><i class="fa fa-check"></i> REST APIs</span>
-        </div>
-        <a href="mailto:enhancerworx@gmail.com?subject=IT Training App Enquiry - Learn .NET&body=Hi, I'm interested in the Learn .NET app. Please share details." class="it-cta">
-          Enquire Now <i class="fa fa-envelope"></i>
-        </a>
-      </div>
-
-      <!-- Learn Vue.js -->
-      <div class="it-card" data-tech="vue">
-        <div class="it-card-header">
-          <div class="it-icon vue-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"/>
-            </svg>
-          </div>
-          <div class="it-meta">
-            <span class="it-level beginner">Beginner Friendly</span>
-          </div>
-        </div>
-        <h3>Learn Vue.js</h3>
-        <p>Get started with Vue's progressive framework. Build reactive UIs, SPAs, and integrate with RESTful APIs effortlessly.</p>
-        <div class="it-features">
-          <span><i class="fa fa-check"></i> Vue 3 Composition</span>
-          <span><i class="fa fa-check"></i> Vuex / Pinia</span>
-          <span><i class="fa fa-check"></i> Vue Router</span>
-        </div>
-        <a href="mailto:enhancerworx@gmail.com?subject=IT Training App Enquiry - Learn Vue.js&body=Hi, I'm interested in the Learn Vue.js app. Please share details." class="it-cta">
-          Enquire Now <i class="fa fa-envelope"></i>
-        </a>
-      </div>
-
-    </div><!-- /it-grid -->
+      <div class="it-card" data-tech="vue"><div class="itc-top"><div class="it-icon vu-c"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"/></svg></div><span class="it-badge b-beg">Beginner Friendly</span></div><h3>Learn Vue.js</h3><p>Vue's progressive framework — reactive UIs, SPAs, Composition API &amp; RESTful API integration.</p><ul class="it-feats"><li><i class="fa fa-check-circle"></i> Vue 3 Composition</li><li><i class="fa fa-check-circle"></i> Vuex / Pinia</li><li><i class="fa fa-check-circle"></i> Vue Router</li></ul><a href="mailto:enhancerworx@gmail.com?subject=IT Training App - Learn Vue.js&body=Hi, I am interested in the Learn Vue.js app." class="it-btn">Enquire Now <i class="fa fa-envelope-o"></i></a><div class="itc-glow"></div></div>
+    </div>
 
     <div class="it-cta-bar">
-      <div class="it-cta-content">
-        <i class="fa fa-envelope-o"></i>
-        <div>
-          <strong>Want a custom IT training app for your team or institution?</strong>
-          <p>We build white-labelled learning platforms tailored to your curriculum and brand.</p>
-        </div>
-      </div>
-      <a href="mailto:enhancerworx@gmail.com?subject=Custom IT Training App Requirement&body=Hi, I would like to discuss a custom IT training app. Here are my requirements:" class="btn-primary">
-        Mail Us Your Requirement <span>→</span>
-      </a>
+      <div class="itcb-left"><div class="itcb-icon"><i class="fa fa-envelope-o"></i></div><div><strong>Need a custom IT training app for your team or institution?</strong><p>White-label learning platforms tailored to your curriculum and brand.</p></div></div>
+      <a href="mailto:enhancerworx@gmail.com?subject=Custom IT Training App Requirement&body=Hi, I would like to discuss a custom IT training app." class="btn-primary">Mail Your Requirement ↗</a>
     </div>
-
   </div>
 </section>
 
-<!-- ======= PORTFOLIO ======= -->
+<!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
   <div class="container">
-    <div class="section-header">
-      <div class="section-tag">Our Apps</div>
-      <h2 class="section-title">Apps we've built<br>&amp; shipped</h2>
-      <p class="section-sub">A selection of our published educational applications on the Google Play Store.</p>
+    <div class="section-hdr center">
+      <div class="section-eyebrow">Our Apps</div>
+      <h2 class="section-title">Apps we've built &amp; shipped</h2>
+      <p class="section-sub">Published educational applications on the Google Play Store.</p>
     </div>
-    <div class="portfolio-filters" id="portFilters">
+    <div class="pf-filters" id="pfFilters">
       <button class="pf-btn active" data-filter="all">All</button>
       <button class="pf-btn" data-filter="it-training">IT Training</button>
-      <button class="pf-btn" data-filter="educational-apps">Educational Apps</button>
-      <button class="pf-btn" data-filter="educational-games">Educational Games</button>
-      <button class="pf-btn" data-filter="utility-apps">Utility Apps</button>
+      <button class="pf-btn" data-filter="educational-apps">Educational</button>
+      <button class="pf-btn" data-filter="educational-games">Games</button>
+      <button class="pf-btn" data-filter="utility-apps">Utility</button>
     </div>
-    <div class="portfolio-grid" id="portfolioGrid">
+    <div class="pf-grid" id="pfGrid">
+      <div class="pf-card it-training it-ph" data-app="Learn Python"><div class="pfc-img py-bg"><div class="pfc-icon py-c"><svg viewBox="0 0 24 24" width="44" height="44" fill="currentColor"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.034v-2.867s-.109-3.403 3.35-3.403h5.77s3.24.052 3.24-3.131V3.175S18.316 0 11.914 0zm-3.2 1.83a1.043 1.043 0 1 1 0 2.087 1.044 1.044 0 0 1 0-2.087z"/><path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963h-2.034v2.867s.109 3.403-3.35 3.403h-5.77S6.2 12.286 6.2 15.469v5.356S5.684 24 12.086 24zm3.2-1.83a1.043 1.043 0 1 1 0-2.087 1.044 1.044 0 0 1 0 2.087z"/></svg></div><div class="pfc-hover"><i class="fa fa-envelope"></i> Request App</div></div><div class="pfc-info"><span class="pfc-cat">IT Training</span><h4>Learn Python</h4></div></div>
 
-      <!-- IT Training placeholder cards (with enquiry link) -->
-      <div class="port-item it-training port-it-placeholder">
-        <div class="port-img-wrap port-it-bg">
-          <div class="port-it-icon python-icon">
-            <svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor">
-              <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.034v-2.867s-.109-3.403 3.35-3.403h5.77s3.24.052 3.24-3.131V3.175S18.316 0 11.914 0zm-3.2 1.83a1.043 1.043 0 1 1 0 2.087 1.044 1.044 0 0 1 0-2.087z"/><path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963h-2.034v2.867s.109 3.403-3.35 3.403h-5.77S6.2 12.286 6.2 15.469v5.356S5.684 24 12.086 24zm3.2-1.83a1.043 1.043 0 1 1 0-2.087 1.044 1.044 0 0 1 0 2.087z"/>
-            </svg>
-          </div>
-          <div class="port-overlay">
-            <span class="port-view"><i class="fa fa-envelope"></i> Request App</span>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">IT Training</div>
-          <h4>Learn Python</h4>
-        </div>
-      </div>
+      <div class="pf-card it-training it-ph" data-app="Learn Docker"><div class="pfc-img dk-bg"><div class="pfc-icon dk-c"><svg viewBox="0 0 24 24" width="44" height="44" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></svg></div><div class="pfc-hover"><i class="fa fa-envelope"></i> Request App</div></div><div class="pfc-info"><span class="pfc-cat">IT Training</span><h4>Learn Docker</h4></div></div>
 
-      <div class="port-item it-training port-it-placeholder">
-        <div class="port-img-wrap port-it-bg docker-bg">
-          <div class="port-it-icon docker-icon">
-            <svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor">
-              <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/>
-            </svg>
-          </div>
-          <div class="port-overlay">
-            <span class="port-view"><i class="fa fa-envelope"></i> Request App</span>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">IT Training</div>
-          <h4>Learn Docker</h4>
-        </div>
-      </div>
+      <div class="pf-card it-training it-ph" data-app="Learn React"><div class="pfc-img re-bg"><div class="pfc-icon re-c"><svg viewBox="0 0 24 24" width="44" height="44" fill="currentColor"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38a2.167 2.167 0 0 0-1.096-.278z"/></svg></div><div class="pfc-hover"><i class="fa fa-envelope"></i> Request App</div></div><div class="pfc-info"><span class="pfc-cat">IT Training</span><h4>Learn React</h4></div></div>
 
-      <div class="port-item it-training port-it-placeholder">
-        <div class="port-img-wrap port-it-bg react-bg">
-          <div class="port-it-icon react-icon">
-            <svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor">
-              <path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38a2.167 2.167 0 0 0-1.096-.278zm-.044 1.572c.148 0 .277.04.388.1 1.002.58 1.34 2.929.88 5.938a12.83 12.83 0 0 0-2.146-.405 12.816 12.816 0 0 0-1.388-1.754c.72-.688 1.47-1.307 2.176-1.783.29-.19.61-.28.93-.28l.16.184zm-9.212.184c.316 0 .63.09.923.284.71.478 1.459 1.097 2.18 1.785a12.743 12.743 0 0 0-1.387 1.754 12.72 12.72 0 0 0-2.147.4c-.453-2.994-.11-5.323.875-5.917.108-.062.238-.1.386-.1zm4.598 3.54c.318.226.64.469.956.73a12.728 12.728 0 0 1-.956.73 12.576 12.576 0 0 1-.958-.73c.314-.261.64-.504.958-.73z"/>
-            </svg>
-          </div>
-          <div class="port-overlay">
-            <span class="port-view"><i class="fa fa-envelope"></i> Request App</span>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">IT Training</div>
-          <h4>Learn React</h4>
-        </div>
-      </div>
+      <div class="pf-card it-training it-ph" data-app="Learn Vue.js"><div class="pfc-img vu-bg"><div class="pfc-icon vu-c"><svg viewBox="0 0 24 24" width="44" height="44" fill="currentColor"><path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"/></svg></div><div class="pfc-hover"><i class="fa fa-envelope"></i> Request App</div></div><div class="pfc-info"><span class="pfc-cat">IT Training</span><h4>Learn Vue.js</h4></div></div>
 
-      <div class="port-item it-training port-it-placeholder">
-        <div class="port-img-wrap port-it-bg vue-bg">
-          <div class="port-it-icon vue-icon">
-            <svg viewBox="0 0 24 24" width="56" height="56" fill="currentColor">
-              <path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"/>
-            </svg>
-          </div>
-          <div class="port-overlay">
-            <span class="port-view"><i class="fa fa-envelope"></i> Request App</span>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">IT Training</div>
-          <h4>Learn Vue.js</h4>
-        </div>
-      </div>
-
-      <!-- Existing apps -->
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.snakewordpuzzles" class="port-item educational-games" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/snake.png" alt="Snake Word Puzzle Game" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Educational Game</div>
-          <h4>Snake Word Puzzle Game</h4>
-        </div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.flags" class="port-item educational-games" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/flags.png" alt="Learn World Flags" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Educational Game</div>
-          <h4>Learn World Flags</h4>
-        </div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.indiamap" class="port-item educational-apps" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/india.jpg" alt="Learn India Map" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Educational App</div>
-          <h4>Learn India Map (Offline)</h4>
-        </div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.ancientindianhistory" class="port-item educational-apps" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/history.png" alt="Ancient Indian History" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Educational App</div>
-          <h4>Ancient Indian History</h4>
-        </div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.biologydiagrams" class="port-item educational-apps" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/biology.png" alt="Learn Biology Diagrams" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Educational App</div>
-          <h4>Learn Biology Diagrams</h4>
-        </div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.newindianconstitution" class="port-item educational-apps" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/const.png" alt="Learn Indian Constitution" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Educational App</div>
-          <h4>Learn Indian Constitution</h4>
-        </div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.artgrid" class="port-item utility-apps" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/art.png" alt="Art Grid" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Utility App</div>
-          <h4>Art Grid</h4>
-        </div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.bookqoutes" class="port-item utility-apps" target="_blank" rel="noopener">
-        <div class="port-img-wrap">
-          <img src="img/qoutes.png" alt="My Quotes" loading="lazy">
-          <div class="port-overlay"><span class="port-view"><i class="fa fa-external-link"></i> View on Play Store</span></div>
-        </div>
-        <div class="port-info">
-          <div class="port-cat">Utility App</div>
-          <h4>My Quotes: Read, Write &amp; Share</h4>
-        </div>
-      </a>
-
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.snakewordpuzzles" class="pf-card educational-games" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/snake.png" alt="Snake Word Puzzle" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Educational Game</span><h4>Snake Word Puzzle</h4></div></a>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.flags" class="pf-card educational-games" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/flags.png" alt="Learn World Flags" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Educational Game</span><h4>Learn World Flags</h4></div></a>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.indiamap" class="pf-card educational-apps" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/india.jpg" alt="Learn India Map" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn India Map (Offline)</h4></div></a>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.ancientindianhistory" class="pf-card educational-apps" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/history.png" alt="Ancient Indian History" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Ancient Indian History</h4></div></a>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.biologydiagrams" class="pf-card educational-apps" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/biology.png" alt="Biology Diagrams" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn Biology Diagrams</h4></div></a>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.newindianconstitution" class="pf-card educational-apps" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/const.png" alt="Indian Constitution" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn Indian Constitution</h4></div></a>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.artgrid" class="pf-card utility-apps" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/art.png" alt="Art Grid" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Utility App</span><h4>Art Grid</h4></div></a>
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.bookqoutes" class="pf-card utility-apps" target="_blank" rel="noopener"><div class="pfc-img"><img src="img/qoutes.png" alt="My Quotes" loading="lazy"><div class="pfc-hover"><i class="fa fa-external-link"></i> Play Store</div></div><div class="pfc-info"><span class="pfc-cat">Utility App</span><h4>My Quotes: Read, Write &amp; Share</h4></div></a>
     </div>
   </div>
 </section>
 
-<!-- ======= REVIEWS ======= -->
+<!-- REVIEWS -->
 <section class="reviews" id="reviews">
-  <div class="reviews-bg">
-    <div class="reviews-orb"></div>
-  </div>
+  <div class="rv-blob"></div>
   <div class="container">
-    <div class="section-header light">
-      <div class="section-tag">Testimonials</div>
+    <div class="section-hdr center">
+      <div class="section-eyebrow">Testimonials</div>
       <h2 class="section-title">What our learners say</h2>
       <p class="section-sub">Real feedback from real users across our apps.</p>
     </div>
-    <div class="reviews-track-wrap">
-      <div class="reviews-track" id="reviewsTrack">
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p>"Very attractive app design with audio feedback. Perfect example how CAI/CBT can be used to enhance learning effortlessly. Please keep adding more topics!"</p>
-          <div class="review-author">
-            <div class="author-avatar">AS</div>
-            <div><strong>Aman Sharma</strong><span>Learn India Map</span></div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p>"Excellent application with all necessary details. Enough to guide while studying Indian geography. 5 stars to this app."</p>
-          <div class="review-author">
-            <div class="author-avatar">GK</div>
-            <div><strong>Ganesh Kumar</strong><span>Learn India Map</span></div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p>"This is spectacular!! Really amazing — hats off, guys! Please make a world map version too!"</p>
-          <div class="review-author">
-            <div class="author-avatar">AA</div>
-            <div><strong>Adeena Ameen</strong><span>Learn India Map</span></div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p>"Baccho ke liye mast app hai. Easy to understand. My kids love using it for their studies!"</p>
-          <div class="review-author">
-            <div class="author-avatar">AS</div>
-            <div><strong>Anupama Sharma</strong><span>Learn India Map</span></div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p>"I love this app. Please add more questions in the diagram quiz section. Extremely helpful for biology students."</p>
-          <div class="review-author">
-            <div class="author-avatar">VS</div>
-            <div><strong>Virendra Saran</strong><span>Learn Biology Diagrams</span></div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p>"Exceptional experience, very good app for easy learning. Covers all the major world maps in a simple and intuitive way."</p>
-          <div class="review-author">
-            <div class="author-avatar">PM</div>
-            <div><strong>Pasupureeddy Mahendra</strong><span>Learn World Maps</span></div>
-          </div>
-        </div>
+    <div class="rv-slider">
+      <div class="rv-track" id="rvTrack">
+        <div class="rv-card"><div class="rv-stars">★★★★★</div><p>"Very attractive app design with audio feedback. Perfect example how CAI/CBT can be used to enhance learning effortlessly. Please keep adding more topics!"</p><div class="rv-author"><div class="rv-av">AS</div><div><strong>Aman Sharma</strong><span>Learn India Map</span></div></div></div>
+        <div class="rv-card"><div class="rv-stars">★★★★★</div><p>"Excellent application with all necessary details. Enough to guide while studying Indian geography. 5 stars to this app."</p><div class="rv-author"><div class="rv-av">GK</div><div><strong>Ganesh Kumar</strong><span>Learn India Map</span></div></div></div>
+        <div class="rv-card"><div class="rv-stars">★★★★★</div><p>"This is spectacular!! Really amazing — hats off, guys! Please make a world map version too!"</p><div class="rv-author"><div class="rv-av">AA</div><div><strong>Adeena Ameen</strong><span>Learn India Map</span></div></div></div>
+        <div class="rv-card"><div class="rv-stars">★★★★★</div><p>"Baccho ke liye mast app hai. Easy to understand. My kids love using it for their studies!"</p><div class="rv-author"><div class="rv-av">AN</div><div><strong>Anupama Sharma</strong><span>Learn India Map</span></div></div></div>
+        <div class="rv-card"><div class="rv-stars">★★★★★</div><p>"I love this app. Please add more questions in the diagram quiz section. Extremely helpful for biology students."</p><div class="rv-author"><div class="rv-av">VS</div><div><strong>Virendra Saran</strong><span>Learn Biology Diagrams</span></div></div></div>
+        <div class="rv-card"><div class="rv-stars">★★★★★</div><p>"Exceptional experience, very good app for easy learning. Covers all the major world maps in a simple and intuitive way."</p><div class="rv-author"><div class="rv-av">PM</div><div><strong>Pasupureeddy Mahendra</strong><span>Learn World Maps</span></div></div></div>
       </div>
-    </div>
-    <div class="reviews-nav">
-      <button class="rv-btn" id="rvPrev" aria-label="Previous">←</button>
-      <div class="rv-dots" id="rvDots"></div>
-      <button class="rv-btn" id="rvNext" aria-label="Next">→</button>
+      <div class="rv-controls"><button class="rv-btn" id="rvPrev">←</button><div class="rv-dots" id="rvDots"></div><button class="rv-btn" id="rvNext">→</button></div>
     </div>
   </div>
 </section>
 
-<!-- ======= CONTACT ======= -->
+<!-- CONTACT -->
 <section class="contact" id="contact">
+  <div class="ct-bg-shape"></div>
   <div class="container">
-    <div class="contact-grid">
-      <div class="contact-left">
-        <div class="section-tag">Get In Touch</div>
-        <h2 class="section-title">Have an EdTech<br>idea? <em>Let's build it.</em></h2>
-        <p>We'd love to hear your idea. Whether it's an IT training platform, educational app, or interactive learning game — describe your project and we'll get back within 24 hours.</p>
-        <div class="contact-info-list">
-          <div class="contact-info-item">
-            <div class="ci-icon"><i class="fa fa-envelope"></i></div>
-            <div>
-              <span>Email us</span>
-              <a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a>
-            </div>
-          </div>
-          <div class="contact-info-item">
-            <div class="ci-icon"><i class="fa fa-globe"></i></div>
-            <div>
-              <span>Website</span>
-              <a href="http://www.enhancerworx.in" target="_blank">www.enhancerworx.in</a>
-            </div>
-          </div>
+    <div class="ct-grid">
+      <div class="ct-left">
+        <div class="section-eyebrow">Get In Touch</div>
+        <h2 class="section-title">Have an EdTech idea? <em>Let's build it.</em></h2>
+        <p>Whether it's an IT training platform, educational app, or interactive learning game — describe your project and we'll get back within 24 hours.</p>
+        <div class="ct-info">
+          <div class="ct-info-item"><div class="cti-icon"><i class="fa fa-envelope"></i></div><div><label>Email</label><a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></div></div>
+          <div class="ct-info-item"><div class="cti-icon"><i class="fa fa-globe"></i></div><div><label>Website</label><a href="http://www.enhancerworx.in" target="_blank">www.enhancerworx.in</a></div></div>
         </div>
-        <div class="contact-social">
-          <a href="#" aria-label="Play Store" class="social-btn"><i class="fa fa-android"></i></a>
-          <a href="#" aria-label="App Store" class="social-btn"><i class="fa fa-apple"></i></a>
-          <a href="mailto:enhancerworx@gmail.com" aria-label="Email" class="social-btn"><i class="fa fa-envelope"></i></a>
+        <div class="ct-social">
+          <a href="#" class="cts-btn"><i class="fa fa-android"></i></a>
+          <a href="#" class="cts-btn"><i class="fa fa-apple"></i></a>
+          <a href="mailto:enhancerworx@gmail.com" class="cts-btn"><i class="fa fa-envelope"></i></a>
         </div>
       </div>
-      <div class="contact-right">
-        <form class="contact-form" id="contactForm" action="mailto:enhancerworx@gmail.com" method="GET">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">Your Name</label>
-              <input type="text" id="fname" name="name" placeholder="John Doe" required>
-            </div>
-            <div class="form-group">
-              <label for="femail">Email Address</label>
-              <input type="email" id="femail" name="email" placeholder="john@example.com" required>
-            </div>
+      <div class="ct-right">
+        <form class="ct-form" id="contactForm">
+          <div class="ctf-row">
+            <div class="ctf-group"><label for="fname">Your Name</label><input type="text" id="fname" placeholder="John Doe" required></div>
+            <div class="ctf-group"><label for="femail">Email Address</label><input type="email" id="femail" placeholder="john@example.com" required></div>
           </div>
-          <div class="form-group">
-            <label for="ftype">Project Type</label>
-            <select id="ftype" name="subject">
-              <option value="">Select a service...</option>
-              <option>EdTech App Development</option>
-              <option>IT Training Platform</option>
-              <option>Android App Development</option>
-              <option>iOS App Development</option>
-              <option>Web Learning Application</option>
-              <option>Educational Game</option>
-              <option>Progressive Web App</option>
-              <option>Custom Learning Solution</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="fmsg">Message</label>
-            <textarea id="fmsg" name="body" rows="5" placeholder="Tell us about your project, requirements, and timeline..."></textarea>
-          </div>
-          <button type="submit" class="btn-primary full-width">
-            Send Message <span>→</span>
-          </button>
-          <p class="form-note">All enquiries are replied within 24 hours at <a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></p>
+          <div class="ctf-group"><label for="ftype">Project Type</label><select id="ftype"><option value="">Select a service...</option><option>EdTech App Development</option><option>IT Training Platform</option><option>Android App Development</option><option>iOS App Development</option><option>Web Learning Application</option><option>Educational Game</option><option>Progressive Web App</option><option>Custom Learning Solution</option><option>Other</option></select></div>
+          <div class="ctf-group"><label for="fmsg">Message</label><textarea id="fmsg" rows="5" placeholder="Tell us about your project, requirements, and timeline..."></textarea></div>
+          <button type="submit" class="btn-primary full">Send Message ↗</button>
+          <p class="ctf-note">Replied within 24 hours · <a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></p>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======= FOOTER ======= -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="logo-mark small">EW</span>
-        <span class="logo-text">Enhancerworx</span>
-      </div>
-      <p class="footer-copy">© 2025 Enhancerworx. All rights reserved. | EdTech &amp; App Development Studio</p>
-      <div class="footer-links">
-        <a href="privacyPolicy.html">Privacy Policy</a>
-        <a href="termsOfService.html">Terms of Service</a>
-        <a href="mailto:enhancerworx@gmail.com">Contact</a>
-      </div>
+      <div class="ft-brand"><span class="logo-mark sm">EW</span><span class="logo-text">Enhancerworx</span></div>
+      <p class="ft-copy">© 2025 Enhancerworx. All rights reserved. · EdTech &amp; App Development Studio</p>
+      <div class="ft-links"><a href="privacyPolicy.html">Privacy Policy</a><a href="termsOfService.html">Terms</a><a href="mailto:enhancerworx@gmail.com">Contact</a></div>
     </div>
   </div>
 </footer>
 
-<!-- Back to top -->
-<a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
-
+<a href="#home" class="back-top" id="backTop"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></a>
 <script src="js/main.js"></script>
 </body>
 </html>
