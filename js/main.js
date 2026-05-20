@@ -1,307 +1,433 @@
-/* =========================================================
-   ENHANCERWORX — main.js
-   EdTech Studio · All interactive features
-   ========================================================= */
+/* ═══════════════════════════════════════════════════
+   ENHANCERWORX  ·  main.js
+   All interactive features — matches index.html exactly
+   ═══════════════════════════════════════════════════ */
 
 'use strict';
 
-/* =========================================================
-   1. THEME TOGGLE (Dark / Light)
-   ========================================================= */
-(function initTheme() {
-  const root       = document.documentElement;
-  const btn        = document.getElementById('themeToggle');
-  const btnMob     = document.getElementById('themeToggleMob');
-  const mobIcon    = document.querySelector('.theme-icon-mob');
-  const STORAGE_KEY = 'ew-theme';
+/* ────────────────────────────────────────────────────
+   1. PAGE LOADER
+   ──────────────────────────────────────────────────── */
+(function () {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
 
-  // Determine initial theme: saved → system preference → dark
-  const saved      = localStorage.getItem(STORAGE_KEY);
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initial    = saved || (prefersDark ? 'dark' : 'light');
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      loader.classList.add('done');
+      setTimeout(function () { loader.style.display = 'none'; }, 550);
+    }, 900);
+  });
+})();
 
-  applyTheme(initial);
 
-  function applyTheme(theme) {
+/* ────────────────────────────────────────────────────
+   2. THEME TOGGLE  (dark ↔ light)
+   IDs: themeBtn, themeBtnMob
+   ──────────────────────────────────────────────────── */
+(function () {
+  var KEY   = 'ew-theme';
+  var root  = document.documentElement;
+  var btn   = document.getElementById('themeBtn');
+  var btnM  = document.getElementById('themeBtnMob');
+  var mobLbl = document.querySelector('.tmob-label');
+  var mobIco = document.querySelector('.tmob-icon');
+
+  /* pick saved → system → dark */
+  var saved   = localStorage.getItem(KEY);
+  var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  apply(saved || (sysDark ? 'dark' : 'light'));
+
+  function apply(theme) {
     root.setAttribute('data-theme', theme);
-    localStorage.setItem(STORAGE_KEY, theme);
-    if (mobIcon) mobIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    localStorage.setItem(KEY, theme);
+    if (mobIco)  mobIco.textContent  = theme === 'dark' ? '🌙' : '☀️';
+    if (mobLbl)  mobLbl.textContent  = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
   }
 
   function toggle() {
-    const current = root.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   }
 
-  if (btn)    btn.addEventListener('click', toggle);
-  if (btnMob) btnMob.addEventListener('click', toggle);
+  if (btn)  btn.addEventListener('click', toggle);
+  if (btnM) btnM.addEventListener('click', toggle);
 })();
 
 
-/* =========================================================
-   2. CUSTOM CURSOR
-   ========================================================= */
-(function initCursor() {
-  const dot  = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
+/* ────────────────────────────────────────────────────
+   3. CUSTOM CURSOR
+   IDs: cDot, cRing
+   ──────────────────────────────────────────────────── */
+(function () {
+  var dot  = document.getElementById('cDot');
+  var ring = document.getElementById('cRing');
   if (!dot || !ring) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
 
-  let mx = -100, my = -100;
-  let rx = -100, ry = -100;
-  let rafId;
+  var mx = -100, my = -100, rx = -100, ry = -100;
 
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-  function animate() {
-    // Dot follows exactly
-    dot.style.transform  = `translate(${mx}px, ${my}px)`;
-    // Ring lags
-    rx += (mx - rx) * 0.15;
-    ry += (my - ry) * 0.15;
-    ring.style.transform = `translate(${rx}px, ${ry}px)`;
-    rafId = requestAnimationFrame(animate);
-  }
-  animate();
-
-  document.addEventListener('mouseleave', () => {
-    dot.style.opacity  = '0';
-    ring.style.opacity = '0';
+  document.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
   });
-  document.addEventListener('mouseenter', () => {
-    dot.style.opacity  = '1';
-    ring.style.opacity = '1';
+
+  (function loop() {
+    dot.style.transform  = 'translate(' + mx + 'px,' + my + 'px)';
+    rx += (mx - rx) * 0.14;
+    ry += (my - ry) * 0.14;
+    ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+    requestAnimationFrame(loop);
+  })();
+
+  document.addEventListener('mouseleave', function () {
+    dot.style.opacity = ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', function () {
+    dot.style.opacity = ring.style.opacity = '1';
   });
 })();
 
 
-/* =========================================================
-   3. NAV — scroll style + active link + burger
-   ========================================================= */
-(function initNav() {
-  const nav        = document.getElementById('nav');
-  const burger     = document.getElementById('navBurger');
-  const mobileMenu = document.getElementById('navMobile');
-  const navLinks   = document.querySelectorAll('.nav-link');
-  const mobLinks   = document.querySelectorAll('.mob-link');
+/* ────────────────────────────────────────────────────
+   4. NAV — scroll shrink + active link + burger
+   IDs: nav, navMenu, burger, navDrawer
+   Classes: .nm-link, .dm-link
+   ──────────────────────────────────────────────────── */
+(function () {
+  var nav    = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('navDrawer');
+  var links  = document.querySelectorAll('.nm-link');
+  var dmLinks = document.querySelectorAll('.dm-link');
 
-  // Scroll → add .scrolled
-  window.addEventListener('scroll', () => {
+  /* scroll → add .scrolled */
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  function onScroll() {
+    if (!nav) return;
     nav.classList.toggle('scrolled', window.scrollY > 40);
-    updateActiveLink();
-  }, { passive: true });
+    setActiveLink();
+  }
 
-  // Burger toggle
-  if (burger && mobileMenu) {
-    burger.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
+  /* burger open / close */
+  if (burger && drawer) {
+    burger.addEventListener('click', function () {
+      var open = drawer.classList.toggle('open');
       burger.setAttribute('aria-expanded', open);
-      // Animate burger bars
-      const spans = burger.querySelectorAll('span');
+      var spans = burger.querySelectorAll('span');
       if (open) {
         spans[0].style.transform = 'translateY(7px) rotate(45deg)';
         spans[1].style.opacity   = '0';
         spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
       } else {
-        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        spans.forEach(function (s) { s.style.transform = ''; s.style.opacity = ''; });
       }
     });
   }
 
-  // Close mobile menu on link click
-  mobLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      const spans = burger.querySelectorAll('span');
-      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  /* close drawer on mobile link click */
+  dmLinks.forEach(function (a) {
+    a.addEventListener('click', function () {
+      drawer && drawer.classList.remove('open');
+      if (burger) {
+        var spans = burger.querySelectorAll('span');
+        spans.forEach(function (s) { s.style.transform = ''; s.style.opacity = ''; });
+      }
     });
   });
 
-  // Active link on scroll
-  const sections = document.querySelectorAll('section[id]');
-  function updateActiveLink() {
-    const scrollY = window.scrollY + 120;
-    sections.forEach(sec => {
+  /* active nav link based on scroll position */
+  function setActiveLink() {
+    var sections = document.querySelectorAll('section[id]');
+    var scrollY  = window.scrollY + 110;
+    sections.forEach(function (sec) {
       if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
-        const id = sec.getAttribute('id');
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        var id = sec.getAttribute('id');
+        links.forEach(function (l) {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
       }
     });
   }
-  updateActiveLink();
 })();
 
 
-/* =========================================================
-   4. BACK TO TOP
-   ========================================================= */
-(function initBackTop() {
-  const btn = document.getElementById('backTop');
+/* ────────────────────────────────────────────────────
+   5. SMOOTH SCROLL (offset for fixed nav)
+   ──────────────────────────────────────────────────── */
+(function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      var navH = (document.getElementById('nav') || {}).offsetHeight || 70;
+      var top  = target.getBoundingClientRect().top + window.scrollY - navH - 10;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
+
+
+/* ────────────────────────────────────────────────────
+   6. BACK TO TOP
+   ID: btt
+   ──────────────────────────────────────────────────── */
+(function () {
+  var btn = document.getElementById('btt');
   if (!btn) return;
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
+  window.addEventListener('scroll', function () {
+    btn.classList.toggle('show', window.scrollY > 420);
   }, { passive: true });
 })();
 
 
-/* =========================================================
-   5. SCROLL REVEAL
-   ========================================================= */
-(function initReveal() {
-  // Add .reveal to key elements
-  const targets = [
-    '.service-card', '.it-card', '.port-item',
-    '.review-card', '.pillar', '.about-content',
-    '.about-img-wrap', '.contact-left', '.contact-right',
-    '.section-header', '.it-cta-bar', '.hero-badge',
-    '.hero-stats', '.contact-info-item'
-  ];
+/* ────────────────────────────────────────────────────
+   7. HERO IMAGE SLIDER
+   IDs: slideTrack, scPrev, scNext, scDots (buttons inside)
+   Extra: slideLabelIcon, slideLabelText (from data attrs on .slide)
+   ──────────────────────────────────────────────────── */
+(function () {
+  var track     = document.getElementById('slideTrack');
+  var prevBtn   = document.getElementById('scPrev');
+  var nextBtn   = document.getElementById('scNext');
+  var dotsWrap  = document.getElementById('scDots');
+  var labelIcon = document.getElementById('slideLabelIcon');
+  var labelText = document.getElementById('slideLabelText');
+  if (!track) return;
 
-  targets.forEach(sel => {
-    document.querySelectorAll(sel).forEach((el, i) => {
-      el.classList.add('reveal');
-      el.style.transitionDelay = `${i * 60}ms`;
+  var slides  = track.querySelectorAll('.slide');
+  var total   = slides.length;
+  var current = 0;
+  var timer;
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+
+    /* update dots */
+    if (dotsWrap) {
+      dotsWrap.querySelectorAll('.sc-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    /* update label */
+    var slide = slides[current];
+    if (labelText) labelText.textContent = slide.getAttribute('data-label') || '';
+    if (labelIcon) {
+      var ic = slide.getAttribute('data-icon') || 'fa-code';
+      labelIcon.className = 'fa ' + ic + ' slide-label-icon';
+    }
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(next, 4500);
+  }
+
+  /* dot buttons */
+  if (dotsWrap) {
+    dotsWrap.querySelectorAll('.sc-dot').forEach(function (d) {
+      d.addEventListener('click', function () {
+        var idx = parseInt(this.getAttribute('data-idx'), 10);
+        goTo(idx);
+        startAuto();
+      });
     });
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function () { prev(); startAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { next(); startAuto(); });
+
+  /* touch swipe */
+  var tx = 0;
+  track.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   function (e) {
+    var diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { diff > 0 ? next() : prev(); startAuto(); }
   });
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  goTo(0);
+  startAuto();
 })();
 
 
-/* =========================================================
-   6. PORTFOLIO FILTER
-   ========================================================= */
-(function initPortfolioFilter() {
-  const filterBtns = document.querySelectorAll('.pf-btn');
-  const items      = document.querySelectorAll('.port-item');
-  if (!filterBtns.length) return;
+/* ────────────────────────────────────────────────────
+   8. COUNTER ANIMATION
+   Class: .hc-num  Attr: data-target
+   ──────────────────────────────────────────────────── */
+(function () {
+  var counters = document.querySelectorAll('.hc-num');
+  if (!counters.length) return;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Update active button
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el     = entry.target;
+      var target = parseFloat(el.getAttribute('data-target')) || 0;
+      var dur    = 1600;
+      var start  = performance.now();
 
-      const filter = btn.getAttribute('data-filter');
+      (function tick(now) {
+        var p   = Math.min((now - start) / dur, 1);
+        var ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * ease);
+        if (p < 1) requestAnimationFrame(tick);
+      })(start);
 
-      items.forEach(item => {
-        const show = filter === 'all' || item.classList.contains(filter);
-        item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(function (el) { io.observe(el); });
+})();
+
+
+/* ────────────────────────────────────────────────────
+   9. PORTFOLIO FILTER
+   ID: pfFilters, pfGrid
+   Classes: .pf-btn, .pf-card, .it-placeholder
+   ──────────────────────────────────────────────────── */
+(function () {
+  var filtersWrap = document.getElementById('pfFilters');
+  var grid        = document.getElementById('pfGrid');
+  if (!filtersWrap || !grid) return;
+
+  var btns  = filtersWrap.querySelectorAll('.pf-btn');
+  var cards = grid.querySelectorAll('.pf-card');
+
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      var filter = this.getAttribute('data-filter');
+
+      cards.forEach(function (card) {
+        var show = filter === 'all' || card.classList.contains(filter);
+        card.style.transition = 'opacity .3s, transform .3s';
         if (show) {
-          item.style.display   = 'block';
-          requestAnimationFrame(() => {
-            item.style.opacity   = '1';
-            item.style.transform = 'scale(1)';
+          card.style.display  = '';
+          requestAnimationFrame(function () {
+            card.style.opacity   = '1';
+            card.style.transform = '';
           });
         } else {
-          item.style.opacity   = '0';
-          item.style.transform = 'scale(0.95)';
-          setTimeout(() => { item.style.display = 'none'; }, 300);
+          card.style.opacity   = '0';
+          card.style.transform = 'scale(0.94)';
+          setTimeout(function () {
+            if (!card.classList.contains(filter) && filter !== 'all') {
+              card.style.display = 'none';
+            }
+          }, 300);
         }
       });
     });
   });
 
-  // Wire IT Training placeholder cards to mailto
-  document.querySelectorAll('.port-it-placeholder').forEach(card => {
-    card.addEventListener('click', () => {
-      const appName = card.querySelector('h4')?.textContent || 'IT Training App';
-      window.location.href = `mailto:enhancerworx@gmail.com?subject=App Enquiry - ${encodeURIComponent(appName)}&body=Hi, I'm interested in the ${encodeURIComponent(appName)} app. Please share details.`;
+  /* IT Training placeholder → mailto */
+  grid.querySelectorAll('.it-placeholder').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var app = this.getAttribute('data-app') || 'IT Training App';
+      window.location.href =
+        'mailto:enhancerworx@gmail.com'
+        + '?subject=' + encodeURIComponent('Enquiry - ' + app)
+        + '&body='    + encodeURIComponent('Hi, I am interested in the ' + app + ' app. Please share details.');
     });
   });
 })();
 
 
-/* =========================================================
-   7. REVIEWS SLIDER
-   ========================================================= */
-(function initReviews() {
-  const track  = document.getElementById('reviewsTrack');
-  const dotsWrap = document.getElementById('rvDots');
-  const prevBtn  = document.getElementById('rvPrev');
-  const nextBtn  = document.getElementById('rvNext');
+/* ────────────────────────────────────────────────────
+   10. REVIEWS SLIDER
+   IDs: rvTrack, rvPrev, rvNext, rvDots
+   ──────────────────────────────────────────────────── */
+(function () {
+  var track  = document.getElementById('rvTrack');
+  var dotsEl = document.getElementById('rvDots');
+  var prev   = document.getElementById('rvPrev');
+  var next   = document.getElementById('rvNext');
   if (!track) return;
 
-  const cards      = track.querySelectorAll('.review-card');
-  const total      = cards.length;
-  let current      = 0;
-  let perView      = getPerView();
-  let maxIndex     = Math.max(0, total - perView);
-  let autoTimer;
+  var cards   = track.querySelectorAll('.rv-card');
+  var total   = cards.length;
+  var current = 0;
+  var perView = getPerView();
+  var maxIdx  = Math.max(0, total - perView);
+  var timer;
 
-  // Build dots
+  /* build dots */
   function buildDots() {
-    if (!dotsWrap) return;
-    dotsWrap.innerHTML = '';
-    const count = maxIndex + 1;
-    for (let i = 0; i < count; i++) {
-      const d = document.createElement('div');
+    if (!dotsEl) return;
+    dotsEl.innerHTML = '';
+    for (var i = 0; i <= maxIdx; i++) {
+      var d = document.createElement('button');
       d.className = 'rv-dot' + (i === current ? ' active' : '');
-      d.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(d);
+      d.setAttribute('aria-label', 'Go to review ' + (i + 1));
+      (function (idx) {
+        d.addEventListener('click', function () { goTo(idx); startAuto(); });
+      })(i);
+      dotsEl.appendChild(d);
     }
   }
 
   function updateDots() {
-    if (!dotsWrap) return;
-    dotsWrap.querySelectorAll('.rv-dot').forEach((d, i) =>
-      d.classList.toggle('active', i === current)
-    );
+    if (!dotsEl) return;
+    dotsEl.querySelectorAll('.rv-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
   }
 
   function getPerView() {
-    if (window.innerWidth < 600)  return 1;
-    if (window.innerWidth < 900)  return 2;
+    var w = window.innerWidth;
+    if (w < 540)  return 1;
+    if (w < 860)  return 2;
     return 3;
   }
 
-  function getCardWidth() {
-    const card = cards[0];
-    if (!card) return 0;
-    const style = getComputedStyle(card);
-    const gap = parseFloat(getComputedStyle(track).gap) || 24;
-    return card.offsetWidth + gap;
+  function cardWidth() {
+    var c   = cards[0];
+    if (!c) return 0;
+    var gap = parseFloat(getComputedStyle(track).gap) || 20;
+    return c.offsetWidth + gap;
   }
 
-  function goTo(index) {
-    current = Math.max(0, Math.min(index, maxIndex));
-    track.style.transform = `translateX(-${current * getCardWidth()}px)`;
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, maxIdx));
+    track.style.transform = 'translateX(-' + (current * cardWidth()) + 'px)';
     updateDots();
   }
 
-  function next() { goTo(current >= maxIndex ? 0 : current + 1); }
-  function prev() { goTo(current <= 0 ? maxIndex : current - 1); }
+  function goNext() { goTo(current >= maxIdx ? 0 : current + 1); }
+  function goPrev() { goTo(current <= 0 ? maxIdx : current - 1); }
 
   function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(next, 5000);
+    clearInterval(timer);
+    timer = setInterval(goNext, 5000);
   }
-  function stopAuto() { clearInterval(autoTimer); }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
+  if (prev) prev.addEventListener('click', function () { goPrev(); startAuto(); });
+  if (next) next.addEventListener('click', function () { goNext(); startAuto(); });
 
-  // Touch/swipe
-  let touchStartX = 0;
-  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) { diff > 0 ? next() : prev(); stopAuto(); startAuto(); }
+  /* touch swipe */
+  var tx = 0;
+  track.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   function (e) {
+    var diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { diff > 0 ? goNext() : goPrev(); startAuto(); }
   });
 
-  // Recalculate on resize
-  window.addEventListener('resize', () => {
-    perView  = getPerView();
-    maxIndex = Math.max(0, total - perView);
-    current  = Math.min(current, maxIndex);
+  /* recalculate on resize */
+  window.addEventListener('resize', function () {
+    perView = getPerView();
+    maxIdx  = Math.max(0, total - perView);
+    current = Math.min(current, maxIdx);
     buildDots();
     goTo(current);
   }, { passive: true });
@@ -312,210 +438,142 @@
 })();
 
 
-/* =========================================================
-   8. CONTACT FORM — mailto handler
-   ========================================================= */
-(function initContactForm() {
-  const form = document.getElementById('contactForm');
+/* ────────────────────────────────────────────────────
+   11. CONTACT FORM → mailto
+   ID: contactForm
+   Field IDs: fname, femail, ftype, fmsg
+   ──────────────────────────────────────────────────── */
+(function () {
+  var form = document.getElementById('contactForm');
   if (!form) return;
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const name    = (form.querySelector('#fname')?.value  || '').trim();
-    const email   = (form.querySelector('#femail')?.value || '').trim();
-    const type    = (form.querySelector('#ftype')?.value  || '').trim();
-    const message = (form.querySelector('#fmsg')?.value   || '').trim();
+    var name  = (document.getElementById('fname')  || {}).value || '';
+    var email = (document.getElementById('femail') || {}).value || '';
+    var type  = (document.getElementById('ftype')  || {}).value || '';
+    var msg   = (document.getElementById('fmsg')   || {}).value || '';
 
-    if (!name || !email) {
-      showToast('Please fill in your name and email.', 'error');
-      return;
-    }
-    if (!isValidEmail(email)) {
-      showToast('Please enter a valid email address.', 'error');
-      return;
-    }
+    name  = name.trim();
+    email = email.trim();
 
-    const subject = type
-      ? `[Enhancerworx Enquiry] ${type} — ${name}`
-      : `[Enhancerworx Enquiry] ${name}`;
+    if (!name) { showToast('Please enter your name.', 'error'); return; }
+    if (!email || !isEmail(email)) { showToast('Please enter a valid email.', 'error'); return; }
 
-    const body =
-      `Hi Enhancerworx,\n\n` +
-      `My name is ${name}.\n` +
-      `Email: ${email}\n` +
-      (type    ? `Project Type: ${type}\n` : '') +
-      (message ? `\nMessage:\n${message}\n` : '') +
-      `\nLooking forward to hearing from you!`;
+    var subject = type
+      ? '[Enhancerworx] ' + type + ' — ' + name
+      : '[Enhancerworx Enquiry] ' + name;
 
-    const mailto = `mailto:enhancerworx@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    var body =
+      'Hi Enhancerworx,\n\n' +
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      (type ? 'Project Type: ' + type + '\n' : '') +
+      (msg  ? '\nMessage:\n' + msg + '\n' : '') +
+      '\nLooking forward to hearing from you!';
+
+    window.location.href =
+      'mailto:enhancerworx@gmail.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body='    + encodeURIComponent(body);
+
     showToast('Opening your mail client… 📧', 'success');
   });
 
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
+  function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 })();
 
 
-/* =========================================================
-   9. TOAST NOTIFICATION
-   ========================================================= */
-function showToast(message, type = 'success') {
-  // Remove existing
-  document.querySelectorAll('.ew-toast').forEach(t => t.remove());
+/* ────────────────────────────────────────────────────
+   12. TOAST NOTIFICATION
+   ──────────────────────────────────────────────────── */
+function showToast(msg, type) {
+  document.querySelectorAll('.ew-toast').forEach(function (t) { t.remove(); });
 
-  const toast = document.createElement('div');
-  toast.className = 'ew-toast';
-  toast.textContent = message;
+  var t = document.createElement('div');
+  t.className = 'ew-toast';
+  t.textContent = msg;
+  t.style.background = (type === 'error') ? '#ef4444' : '#5b5ef4';
+  document.body.appendChild(t);
 
-  Object.assign(toast.style, {
-    position:      'fixed',
-    bottom:        '32px',
-    left:          '50%',
-    transform:     'translateX(-50%) translateY(20px)',
-    background:    type === 'success' ? '#5b5ef4' : '#ef4444',
-    color:         '#fff',
-    padding:       '14px 28px',
-    borderRadius:  '50px',
-    fontSize:      '14px',
-    fontWeight:    '500',
-    fontFamily:    "'DM Sans', sans-serif",
-    boxShadow:     '0 8px 30px rgba(0,0,0,0.25)',
-    zIndex:        '99999',
-    opacity:       '0',
-    transition:    'opacity 0.3s ease, transform 0.3s ease',
-    pointerEvents: 'none',
-    whiteSpace:    'nowrap',
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { t.classList.add('show'); });
   });
 
-  document.body.appendChild(toast);
-  requestAnimationFrame(() => {
-    toast.style.opacity   = '1';
-    toast.style.transform = 'translateX(-50%) translateY(0)';
-  });
-  setTimeout(() => {
-    toast.style.opacity   = '0';
-    toast.style.transform = 'translateX(-50%) translateY(20px)';
-    setTimeout(() => toast.remove(), 350);
+  setTimeout(function () {
+    t.classList.remove('show');
+    setTimeout(function () { t.remove(); }, 350);
   }, 3500);
 }
 
 
-/* =========================================================
-   10. SMOOTH ANCHOR SCROLL (offset for fixed nav)
-   ========================================================= */
-(function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#') return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      const navH   = document.getElementById('nav')?.offsetHeight || 70;
-      const top    = target.getBoundingClientRect().top + window.scrollY - navH - 12;
-      window.scrollTo({ top, behavior: 'smooth' });
+/* ────────────────────────────────────────────────────
+   13. SCROLL REVEAL
+   Targets key sections with .reveal class + IntersectionObserver
+   ──────────────────────────────────────────────────── */
+(function () {
+  var selectors = [
+    '.svc-card', '.it-card', '.pf-card',
+    '.rv-card',  '.pillar',  '.pillar-icon',
+    '.av-pill',  '.ct-info-row', '.it-cta-strip',
+    '.sec-header', '.about-visual', '.about-content',
+    '.ct-left', '.ct-right'
+  ];
+
+  var els = [];
+  selectors.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, i) {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i * 55) + 'ms';
+        els.push(el);
+      }
     });
   });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  els.forEach(function (el) { io.observe(el); });
 })();
 
 
-/* =========================================================
-   11. IT TRAINING CARD — Tilt effect on hover (desktop)
-   ========================================================= */
-(function initTilt() {
-  if (window.matchMedia('(pointer: coarse)').matches) return; // skip touch
+/* ────────────────────────────────────────────────────
+   14. CARD TILT (desktop only, IT cards + service cards)
+   ──────────────────────────────────────────────────── */
+(function () {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  document.querySelectorAll('.it-card, .service-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
-      const rotX = ((y - cy) / cy) * -6;
-      const rotY = ((x - cx) / cx) *  6;
-      card.style.transform = `translateY(-5px) perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  document.querySelectorAll('.it-card, .svc-card').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var r   = card.getBoundingClientRect();
+      var x   = e.clientX - r.left;
+      var y   = e.clientY - r.top;
+      var rx  = ((y - r.height / 2) / r.height) * -6;
+      var ry  = ((x - r.width  / 2) / r.width)  *  6;
+      card.style.transform = 'translateY(-5px) perspective(700px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
     });
-    card.addEventListener('mouseleave', () => {
+    card.addEventListener('mouseleave', function () {
       card.style.transform = '';
     });
   });
 })();
 
 
-/* =========================================================
-   12. HERO STATS — Animated number counter
-   ========================================================= */
-(function initCounters() {
-  const stats = document.querySelectorAll('.stat-num');
-  if (!stats.length) return;
-
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el  = entry.target;
-      const raw = el.textContent.trim();
-      // Extract numeric part and suffix
-      const match = raw.match(/^([\d.]+)(.*)$/);
-      if (!match) return;
-      const target = parseFloat(match[1]);
-      const suffix = match[2];
-      const isInt  = Number.isInteger(target);
-      const duration = 1600;
-      const start    = performance.now();
-
-      function tick(now) {
-        const elapsed  = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease     = 1 - Math.pow(1 - progress, 3);
-        const val      = target * ease;
-        el.textContent = (isInt ? Math.round(val) : val.toFixed(1)) + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-      io.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-
-  stats.forEach(el => io.observe(el));
-})();
-
-
-/* =========================================================
-   13. PORTFOLIO ITEM — Image lazy load fallback
-   ========================================================= */
-(function initImageFallback() {
-  document.querySelectorAll('.port-img-wrap img').forEach(img => {
+/* ────────────────────────────────────────────────────
+   15. PORTFOLIO IMAGE FALLBACK
+   ──────────────────────────────────────────────────── */
+(function () {
+  document.querySelectorAll('.pfc-img img').forEach(function (img) {
     img.addEventListener('error', function () {
       this.style.display = 'none';
-      const parent = this.closest('.port-img-wrap');
-      if (parent && !parent.querySelector('.img-placeholder')) {
-        const ph = document.createElement('div');
-        ph.className = 'img-placeholder';
-        Object.assign(ph.style, {
-          width: '100%', height: '100%',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: '40px', color: 'var(--text-3)',
-          position: 'absolute', inset: '0',
-        });
-        ph.textContent = '📱';
-        parent.appendChild(ph);
-      }
     });
   });
-})();
-
-
-/* =========================================================
-   14. SECTION OBSERVER — add class for CSS transitions
-   ========================================================= */
-(function initSectionAnims() {
-  const sections = document.querySelectorAll('section');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => e.target.classList.toggle('in-view', e.isIntersecting));
-  }, { threshold: 0.08 });
-  sections.forEach(s => io.observe(s));
 })();
