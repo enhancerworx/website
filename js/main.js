@@ -9,7 +9,7 @@
    1. PAGE LOADER
    ──────────────────────────────────────────────────── */
 (function () {
-  const loader = document.getElementById('loader');
+  var loader = document.getElementById('loader');
   if (!loader) return;
 
   window.addEventListener('load', function () {
@@ -23,17 +23,15 @@
 
 /* ────────────────────────────────────────────────────
    2. THEME TOGGLE  (dark ↔ light)
-   IDs: themeBtn, themeBtnMob
    ──────────────────────────────────────────────────── */
 (function () {
-  var KEY   = 'ew-theme';
-  var root  = document.documentElement;
-  var btn   = document.getElementById('themeBtn');
-  var btnM  = document.getElementById('themeBtnMob');
+  var KEY    = 'ew-theme';
+  var root   = document.documentElement;
+  var btn    = document.getElementById('themeBtn');
+  var btnM   = document.getElementById('themeBtnMob');
   var mobLbl = document.querySelector('.tmob-label');
   var mobIco = document.querySelector('.tmob-icon');
 
-  /* pick saved → system → dark */
   var saved   = localStorage.getItem(KEY);
   var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   apply(saved || (sysDark ? 'dark' : 'light'));
@@ -41,8 +39,8 @@
   function apply(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem(KEY, theme);
-    if (mobIco)  mobIco.textContent  = theme === 'dark' ? '🌙' : '☀️';
-    if (mobLbl)  mobLbl.textContent  = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+    if (mobIco) mobIco.textContent = theme === 'dark' ? '🌙' : '☀️';
+    if (mobLbl) mobLbl.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
   }
 
   function toggle() {
@@ -56,7 +54,6 @@
 
 /* ────────────────────────────────────────────────────
    3. CUSTOM CURSOR
-   IDs: cDot, cRing
    ──────────────────────────────────────────────────── */
 (function () {
   var dot  = document.getElementById('cDot');
@@ -89,17 +86,14 @@
 
 /* ────────────────────────────────────────────────────
    4. NAV — scroll shrink + active link + burger
-   IDs: nav, navMenu, burger, navDrawer
-   Classes: .nm-link, .dm-link
    ──────────────────────────────────────────────────── */
 (function () {
-  var nav    = document.getElementById('nav');
-  var burger = document.getElementById('burger');
-  var drawer = document.getElementById('navDrawer');
-  var links  = document.querySelectorAll('.nm-link');
+  var nav     = document.getElementById('nav');
+  var burger  = document.getElementById('burger');
+  var drawer  = document.getElementById('navDrawer');
+  var links   = document.querySelectorAll('.nm-link');
   var dmLinks = document.querySelectorAll('.dm-link');
 
-  /* scroll → add .scrolled */
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -109,7 +103,6 @@
     setActiveLink();
   }
 
-  /* burger open / close */
   if (burger && drawer) {
     burger.addEventListener('click', function () {
       var open = drawer.classList.toggle('open');
@@ -125,7 +118,6 @@
     });
   }
 
-  /* close drawer on mobile link click */
   dmLinks.forEach(function (a) {
     a.addEventListener('click', function () {
       drawer && drawer.classList.remove('open');
@@ -136,7 +128,6 @@
     });
   });
 
-  /* active nav link based on scroll position */
   function setActiveLink() {
     var sections = document.querySelectorAll('section[id]');
     var scrollY  = window.scrollY + 110;
@@ -173,7 +164,6 @@
 
 /* ────────────────────────────────────────────────────
    6. BACK TO TOP
-   ID: btt
    ──────────────────────────────────────────────────── */
 (function () {
   var btn = document.getElementById('btt');
@@ -186,8 +176,7 @@
 
 /* ────────────────────────────────────────────────────
    7. HERO IMAGE SLIDER
-   IDs: slideTrack, scPrev, scNext, scDots (buttons inside)
-   Extra: slideLabelIcon, slideLabelText (from data attrs on .slide)
+   The .slider-viewport clips overflow; .slide-track slides inside it.
    ──────────────────────────────────────────────────── */
 (function () {
   var track     = document.getElementById('slideTrack');
@@ -207,14 +196,12 @@
     current = (idx + total) % total;
     track.style.transform = 'translateX(-' + (current * 100) + '%)';
 
-    /* update dots */
     if (dotsWrap) {
       dotsWrap.querySelectorAll('.sc-dot').forEach(function (d, i) {
         d.classList.toggle('active', i === current);
       });
     }
 
-    /* update label */
     var slide = slides[current];
     if (labelText) labelText.textContent = slide.getAttribute('data-label') || '';
     if (labelIcon) {
@@ -231,12 +218,10 @@
     timer = setInterval(next, 4500);
   }
 
-  /* dot buttons */
   if (dotsWrap) {
     dotsWrap.querySelectorAll('.sc-dot').forEach(function (d) {
       d.addEventListener('click', function () {
-        var idx = parseInt(this.getAttribute('data-idx'), 10);
-        goTo(idx);
+        goTo(parseInt(this.getAttribute('data-idx'), 10));
         startAuto();
       });
     });
@@ -260,7 +245,6 @@
 
 /* ────────────────────────────────────────────────────
    8. COUNTER ANIMATION
-   Class: .hc-num  Attr: data-target
    ──────────────────────────────────────────────────── */
 (function () {
   var counters = document.querySelectorAll('.hc-num');
@@ -275,7 +259,7 @@
       var start  = performance.now();
 
       (function tick(now) {
-        var p   = Math.min((now - start) / dur, 1);
+        var p    = Math.min((now - start) / dur, 1);
         var ease = 1 - Math.pow(1 - p, 3);
         el.textContent = Math.round(target * ease);
         if (p < 1) requestAnimationFrame(tick);
@@ -291,8 +275,6 @@
 
 /* ────────────────────────────────────────────────────
    9. PORTFOLIO FILTER
-   ID: pfFilters, pfGrid
-   Classes: .pf-btn, .pf-card, .it-placeholder
    ──────────────────────────────────────────────────── */
 (function () {
   var filtersWrap = document.getElementById('pfFilters');
@@ -313,7 +295,7 @@
         var show = filter === 'all' || card.classList.contains(filter);
         card.style.transition = 'opacity .3s, transform .3s';
         if (show) {
-          card.style.display  = '';
+          card.style.display = '';
           requestAnimationFrame(function () {
             card.style.opacity   = '1';
             card.style.transform = '';
@@ -330,23 +312,11 @@
       });
     });
   });
-
-  /* IT Training placeholder → mailto */
-  grid.querySelectorAll('.it-placeholder').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var app = this.getAttribute('data-app') || 'IT Training App';
-      window.location.href =
-        'mailto:enhancerworx@gmail.com'
-        + '?subject=' + encodeURIComponent('Enquiry - ' + app)
-        + '&body='    + encodeURIComponent('Hi, I am interested in the ' + app + ' app. Please share details.');
-    });
-  });
 })();
 
 
 /* ────────────────────────────────────────────────────
    10. REVIEWS SLIDER
-   IDs: rvTrack, rvPrev, rvNext, rvDots
    ──────────────────────────────────────────────────── */
 (function () {
   var track  = document.getElementById('rvTrack');
@@ -362,7 +332,6 @@
   var maxIdx  = Math.max(0, total - perView);
   var timer;
 
-  /* build dots */
   function buildDots() {
     if (!dotsEl) return;
     dotsEl.innerHTML = '';
@@ -386,13 +355,13 @@
 
   function getPerView() {
     var w = window.innerWidth;
-    if (w < 540)  return 1;
-    if (w < 860)  return 2;
+    if (w < 540) return 1;
+    if (w < 860) return 2;
     return 3;
   }
 
   function cardWidth() {
-    var c   = cards[0];
+    var c = cards[0];
     if (!c) return 0;
     var gap = parseFloat(getComputedStyle(track).gap) || 20;
     return c.offsetWidth + gap;
@@ -415,7 +384,6 @@
   if (prev) prev.addEventListener('click', function () { goPrev(); startAuto(); });
   if (next) next.addEventListener('click', function () { goNext(); startAuto(); });
 
-  /* touch swipe */
   var tx = 0;
   track.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend',   function (e) {
@@ -423,7 +391,6 @@
     if (Math.abs(diff) > 40) { diff > 0 ? goNext() : goPrev(); startAuto(); }
   });
 
-  /* recalculate on resize */
   window.addEventListener('resize', function () {
     perView = getPerView();
     maxIdx  = Math.max(0, total - perView);
@@ -440,8 +407,6 @@
 
 /* ────────────────────────────────────────────────────
    11. CONTACT FORM → mailto
-   ID: contactForm
-   Field IDs: fname, femail, ftype, fmsg
    ──────────────────────────────────────────────────── */
 (function () {
   var form = document.getElementById('contactForm');
@@ -458,7 +423,7 @@
     name  = name.trim();
     email = email.trim();
 
-    if (!name) { showToast('Please enter your name.', 'error'); return; }
+    if (!name)  { showToast('Please enter your name.', 'error'); return; }
     if (!email || !isEmail(email)) { showToast('Please enter a valid email.', 'error'); return; }
 
     var subject = type
@@ -510,13 +475,12 @@ function showToast(msg, type) {
 
 /* ────────────────────────────────────────────────────
    13. SCROLL REVEAL
-   Targets key sections with .reveal class + IntersectionObserver
    ──────────────────────────────────────────────────── */
 (function () {
   var selectors = [
-    '.svc-card', '.it-card', '.pf-card',
+    '.svc-card', '.pf-card',
     '.rv-card',  '.pillar',  '.pillar-icon',
-    '.av-pill',  '.ct-info-row', '.it-cta-strip',
+    '.av-pill',  '.ct-info-row', '.pf-cta-strip',
     '.sec-header', '.about-visual', '.about-content',
     '.ct-left', '.ct-right'
   ];
@@ -546,18 +510,18 @@ function showToast(msg, type) {
 
 
 /* ────────────────────────────────────────────────────
-   14. CARD TILT (desktop only, IT cards + service cards)
+   14. CARD TILT (desktop only, service cards)
    ──────────────────────────────────────────────────── */
 (function () {
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  document.querySelectorAll('.it-card, .svc-card').forEach(function (card) {
+  document.querySelectorAll('.svc-card').forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
-      var r   = card.getBoundingClientRect();
-      var x   = e.clientX - r.left;
-      var y   = e.clientY - r.top;
-      var rx  = ((y - r.height / 2) / r.height) * -6;
-      var ry  = ((x - r.width  / 2) / r.width)  *  6;
+      var r  = card.getBoundingClientRect();
+      var x  = e.clientX - r.left;
+      var y  = e.clientY - r.top;
+      var rx = ((y - r.height / 2) / r.height) * -6;
+      var ry = ((x - r.width  / 2) / r.width)  *  6;
       card.style.transform = 'translateY(-5px) perspective(700px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
     });
     card.addEventListener('mouseleave', function () {
