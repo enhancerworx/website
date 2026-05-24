@@ -34,7 +34,7 @@
   <div class="nav-wrap">
     <a href="#home" class="nav-brand">
       <span class="brand-mark" style="overflow:hidden;padding:0;">
-        <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
+        <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
       </span>
       <span class="brand-name">Enhancerworx</span>
     </a>
@@ -134,93 +134,94 @@
     <!-- Right slider -->
     <div class="hero-slider-wrap">
       <div class="slider-stage">
-        <div class="slider-viewport">
-          <div class="slide-track" id="slideTrack">
 
-            <!-- SLIDE 1 -->
-            <div class="slide" data-label="Educational Apps" data-icon="fa-graduation-cap">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage1.png" alt="App Screenshot 1" loading="lazy" />
-              </div>
-            </div>
+        <!-- Decorative glow ring behind card -->
+        <div class="slider-glow-ring"></div>
 
-            <!-- SLIDE 2 -->
-            <div class="slide" data-label="Learning Games" data-icon="fa-gamepad">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage2.png" alt="App Screenshot 2" loading="lazy" />
-              </div>
-            </div>
-
-            <!-- SLIDE 3 -->
-            <div class="slide" data-label="Science Apps" data-icon="fa-flask">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage3.png" alt="App Screenshot 3" loading="lazy" />
-              </div>
-            </div>
-
-            <!-- SLIDE 4 -->
-            <div class="slide" data-label="History Apps" data-icon="fa-book">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage4.png" alt="App Screenshot 4" loading="lazy" />
-              </div>
-            </div>
-
-            <!-- SLIDE 5 -->
-            <div class="slide" data-label="Geography Apps" data-icon="fa-map-marker">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage5.png" alt="App Screenshot 5" loading="lazy" />
-              </div>
-            </div>
-
-            <!-- SLIDE 6 -->
-            <div class="slide" data-label="IT Training Apps" data-icon="fa-code">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage6.png" alt="App Screenshot 6" loading="lazy" />
-              </div>
-            </div>
-
-            <!-- SLIDE 7 -->
-            <div class="slide" data-label="Word Puzzles" data-icon="fa-puzzle-piece">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage7.png" alt="App Screenshot 7" loading="lazy" />
-              </div>
-            </div>
-
-            <!-- SLIDE 8 -->
-            <div class="slide" data-label="Utility Apps" data-icon="fa-cog">
-              <div class="slide-img-wrap">
-                <img src="img/webnewimage8.png" alt="App Screenshot 8" loading="lazy" />
-              </div>
-            </div>
-
-          </div><!-- /slide-track -->
-        </div><!-- /slider-viewport -->
-
-        <!-- Slide label -->
-        <div class="slide-label-wrap">
-          <i class="fa fa-graduation-cap slide-label-icon" id="slideLabelIcon"></i>
-          <span class="slide-label-text" id="slideLabelText">Educational Apps</span>
-        </div>
-
-        <!-- Controls -->
-        <div class="slide-controls">
-          <button class="sc-arr" id="scPrev" aria-label="Previous slide">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <div class="sc-dots" id="scDots">
-            <button class="sc-dot active" data-idx="0"></button>
-            <button class="sc-dot" data-idx="1"></button>
-            <button class="sc-dot" data-idx="2"></button>
-            <button class="sc-dot" data-idx="3"></button>
-            <button class="sc-dot" data-idx="4"></button>
-            <button class="sc-dot" data-idx="5"></button>
-            <button class="sc-dot" data-idx="6"></button>
-            <button class="sc-dot" data-idx="7"></button>
+        <!-- Main slider card -->
+        <div class="slider-card">
+          <!-- Card top bar with dots + label -->
+          <div class="slider-card-bar">
+            <div class="slider-card-dots"><i></i><i></i><i></i></div>
+            <span class="slider-card-label" id="slideLabelText">Educational Apps</span>
+            <div class="slider-card-counter"><span id="slideCurrentNum">1</span><span class="scc-sep">/</span><span>8</span></div>
           </div>
-          <button class="sc-arr" id="scNext" aria-label="Next slide">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
+
+          <!-- Viewport clips the track -->
+          <div class="slider-viewport">
+            <div class="slide-track" id="slideTrack">
+
+              <div class="slide" data-label="Educational Apps" data-icon="fa-graduation-cap">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage1.png" alt="App Screenshot 1" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="slide" data-label="Learning Games" data-icon="fa-gamepad">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage2.png" alt="App Screenshot 2" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="slide" data-label="Science Apps" data-icon="fa-flask">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage3.png" alt="App Screenshot 3" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="slide" data-label="History Apps" data-icon="fa-book">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage4.png" alt="App Screenshot 4" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="slide" data-label="Geography Apps" data-icon="fa-map-marker">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage5.png" alt="App Screenshot 5" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="slide" data-label="IT Training Apps" data-icon="fa-code">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage6.png" alt="App Screenshot 6" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="slide" data-label="Word Puzzles" data-icon="fa-puzzle-piece">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage7.png" alt="App Screenshot 7" loading="lazy" />
+                </div>
+              </div>
+
+              <div class="slide" data-label="Utility Apps" data-icon="fa-cog">
+                <div class="slide-img-wrap">
+                  <img src="img/webnewimage8.png" alt="App Screenshot 8" loading="lazy" />
+                </div>
+              </div>
+
+            </div><!-- /slide-track -->
+          </div><!-- /slider-viewport -->
+
+          <!-- Card bottom controls -->
+          <div class="slider-card-footer">
+            <button class="sc-arr" id="scPrev" aria-label="Previous slide">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="sc-dots" id="scDots">
+              <button class="sc-dot active" data-idx="0"></button>
+              <button class="sc-dot" data-idx="1"></button>
+              <button class="sc-dot" data-idx="2"></button>
+              <button class="sc-dot" data-idx="3"></button>
+              <button class="sc-dot" data-idx="4"></button>
+              <button class="sc-dot" data-idx="5"></button>
+              <button class="sc-dot" data-idx="6"></button>
+              <button class="sc-dot" data-idx="7"></button>
+            </div>
+            <button class="sc-arr" id="scNext" aria-label="Next slide">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div><!-- /slider-card -->
 
         <!-- Trust pills -->
         <div class="trust-pill tp-a">
@@ -231,6 +232,7 @@
           <i class="fa fa-download"></i>
           <div><strong>100K+</strong><span>Downloads</span></div>
         </div>
+
       </div><!-- /slider-stage -->
     </div><!-- /hero-slider-wrap -->
   </div><!-- /hero-layout -->
@@ -622,11 +624,11 @@
     <div class="footer-inner">
       <div class="ft-brand">
         <span class="brand-mark sm" style="overflow:hidden;padding:0;">
-          <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
+          <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
         </span>
         <span class="brand-name">Enhancerworx</span>
       </div>
-      <p class="ft-copy">© 2025 Enhancerworx. All rights reserved. · EdTech App Development Studio</p>
+      <p class="ft-copy">© 2026 Enhancerworx. All rights reserved. · EdTech App Development Studio</p>
       <div class="ft-links">
         <a href="privacyPolicy.html">Privacy Policy</a>
         <a href="termsOfService.html">Terms</a>
