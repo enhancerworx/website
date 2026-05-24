@@ -884,7 +884,7 @@ button { font-family:var(--font); cursor:pointer; }
 .slider-card {
   position: relative;
   z-index: 1;
-  width: 280px;                          /* ~50% of old phone mockup width area */
+  width: 420px;                          /* ~50% of old phone mockup width area */
   background: var(--surf);
   border: 1px solid var(--border);
   border-radius: 22px;
@@ -965,7 +965,7 @@ button { font-family:var(--font); cursor:pointer; }
 .slider-viewport {
   overflow: hidden;
   width: 100%;
-  height: 220px;                         /* Fixed height — images contained inside */
+  height: 340px;                         /* Fixed height — images contained inside */
   background: var(--bg);
 }
 
@@ -1104,8 +1104,8 @@ button { font-family:var(--font); cursor:pointer; }
 
 /* Responsive: hide tp-b on mobile, adjust card width */
 @media (max-width: 960px) {
-  .slider-card { width: 260px; }
-  .slider-viewport { height: 200px; }
+  .slider-card { width: 389px; }
+  .slider-viewport { height: 300px; }
   .tp-a { top: 8px; left: 0; }
   .tp-b { display: none; }
 }
