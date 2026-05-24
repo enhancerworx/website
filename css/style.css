@@ -842,9 +842,7 @@ button { font-family:var(--font); cursor:pointer; }
    Paste at the bottom of style.css
    ════════════════════════════════════════════════════ */
 
-/* ── COMPACT BEAUTIFUL SLIDER ── */
-
-/* Constrain the right column so slider is ~50% of original */
+/* ── SLIDER WRAP ── */
 .hero-slider-wrap {
   display: flex;
   align-items: center;
@@ -855,184 +853,159 @@ button { font-family:var(--font); cursor:pointer; }
 
 .slider-stage {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  padding: 20px 28px 20px 20px;
 }
 
-/* Ambient glow ring behind the card */
+/* Soft ambient glow behind card */
 .slider-glow-ring {
   position: absolute;
-  inset: 0;
-  border-radius: 28px;
-  background: radial-gradient(ellipse 80% 70% at 50% 50%,
-    rgba(91, 94, 244, 0.18),
-    rgba(34, 211, 238, 0.08),
+  inset: -10px;
+  border-radius: 36px;
+  background: radial-gradient(ellipse 90% 80% at 50% 50%,
+    rgba(91,94,244,0.22) 0%,
+    rgba(34,211,238,0.10) 40%,
     transparent 70%);
-  filter: blur(20px);
+  filter: blur(28px);
   pointer-events: none;
   z-index: 0;
-  animation: glowPulse 4s ease-in-out infinite;
+  animation: glowPulse 5s ease-in-out infinite;
 }
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.04); }
+  0%,100% { opacity:.65; transform:scale(1); }
+  50%     { opacity:1;   transform:scale(1.05); }
 }
 
-/* The glass card wrapping everything */
+/* ── MAIN CARD ── */
 .slider-card {
   position: relative;
   z-index: 1;
-  width: 420px;                          /* ~50% of old phone mockup width area */
+  width: 320px;
   background: var(--surf);
   border: 1px solid var(--border);
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow:
-    0 2px 0px rgba(255,255,255,0.06) inset,
-    0 20px 60px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(91,94,244,0.12);
-  transition: box-shadow .4s, transform .4s;
+    0 1px 0 rgba(255,255,255,.07) inset,
+    0 24px 64px rgba(0,0,0,.5),
+    0 0 0 1px rgba(91,94,244,.14);
+  transition: transform .4s ease, box-shadow .4s ease;
 }
 .slider-card:hover {
+  transform: translateY(-4px);
   box-shadow:
-    0 2px 0px rgba(255,255,255,0.06) inset,
-    0 28px 80px rgba(0,0,0,0.55),
-    0 0 0 1px rgba(91,94,244,0.25),
-    0 0 40px rgba(91,94,244,0.12);
-  transform: translateY(-3px);
+    0 1px 0 rgba(255,255,255,.07) inset,
+    0 32px 80px rgba(0,0,0,.55),
+    0 0 0 1px rgba(91,94,244,.28),
+    0 0 48px rgba(91,94,244,.14);
 }
 [data-theme="light"] .slider-card {
   box-shadow:
-    0 1px 0 rgba(255,255,255,0.9) inset,
-    0 12px 40px rgba(79,70,229,0.12),
-    0 0 0 1px rgba(91,94,244,0.1);
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 12px 40px rgba(79,70,229,.13),
+    0 0 0 1px rgba(91,94,244,.12);
 }
 
-/* Top bar — macOS-style chrome */
+/* ── TOP BAR (dots only, no text) ── */
 .slider-card-bar {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
+  justify-content: space-between;
+  padding: 11px 14px 10px;
   background: var(--surf2);
   border-bottom: 1px solid var(--border);
 }
 .slider-card-dots {
   display: flex;
-  gap: 5px;
-  flex-shrink: 0;
+  gap: 6px;
 }
 .slider-card-dots i {
   display: block;
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
 }
 .slider-card-dots i:nth-child(1) { background: #ff5f57; }
 .slider-card-dots i:nth-child(2) { background: #febc2e; }
 .slider-card-dots i:nth-child(3) { background: #28c840; }
 
-.slider-card-label {
-  flex: 1;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--text2);
-  text-align: center;
-  font-family: var(--mono);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: 0.03em;
-}
+/* hide label / counter if still in DOM */
+.slider-card-label,
+.slider-card-counter { display: none; }
 
-.slider-card-counter {
-  font-size: 10.5px;
-  font-weight: 600;
-  color: var(--text3);
-  font-family: var(--mono);
-  display: flex;
-  align-items: center;
-  gap: 1px;
-  flex-shrink: 0;
-  min-width: 28px;
-  justify-content: flex-end;
-}
-.scc-sep { opacity: 0.4; margin: 0 1px; }
-
-/* Viewport — strict fixed height, clips slides */
+/* ── VIEWPORT ── */
 .slider-viewport {
   overflow: hidden;
   width: 100%;
-  height: 450px;                         /* Fixed height — images contained inside */
+  height: 300px;
   background: var(--bg);
+  position: relative;
 }
 
-/* Track slides horizontally */
+/* Subtle inner vignette */
+.slider-viewport::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%,
+    transparent 60%,
+    rgba(0,0,0,.18) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+[data-theme="light"] .slider-viewport::after {
+  background: radial-gradient(ellipse 100% 100% at 50% 50%,
+    transparent 60%,
+    rgba(0,0,0,.07) 100%);
+}
+
+/* ── TRACK & SLIDES ── */
 .slide-track {
   display: flex;
   height: 100%;
-  transition: transform .55s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
 }
-
-/* Each slide */
 .slide {
   flex: 0 0 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
 }
-
-/* Image container — always same size, image contained */
 .slide-img-wrap {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
   overflow: hidden;
 }
-
 .slide-img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: contain;         /* always contained, no crop */
+  object-fit: contain;
   object-position: center;
   display: block;
-  transition: transform .5s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s;
-  opacity: 0;
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
 }
-.slide-img-wrap img.loaded,
-.slide-img-wrap img[src] {
-  opacity: 1;
-}
-
-/* Subtle hover zoom */
 .slider-card:hover .slide-img-wrap img {
   transform: scale(1.04);
 }
 
-/* Bottom controls bar */
+/* ── BOTTOM CONTROLS ── */
 .slider-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 14px;
+  padding: 10px 16px;
   background: var(--surf2);
   border-top: 1px solid var(--border);
-  gap: 10px;
+  gap: 12px;
 }
 
-/* Arrow buttons — compact */
+/* Arrows */
 .sc-arr {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--surf);
   border: 1px solid var(--border);
@@ -1040,18 +1013,18 @@ button { font-family:var(--font); cursor:pointer; }
   align-items: center;
   justify-content: center;
   color: var(--text2);
-  transition: var(--trans);
-  flex-shrink: 0;
   cursor: pointer;
+  flex-shrink: 0;
+  transition: background .2s, border-color .2s, color .2s, transform .2s;
 }
 .sc-arr:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
-/* Dots — compact pill style */
+/* Pill dots */
 .sc-dots {
   display: flex;
   align-items: center;
@@ -1061,61 +1034,45 @@ button { font-family:var(--font); cursor:pointer; }
   flex-wrap: wrap;
 }
 .sc-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
   background: var(--border);
   border: none;
   cursor: pointer;
-  transition: background .3s, width .3s, border-radius .3s;
   padding: 0;
+  transition: width .3s ease, background .3s ease, border-radius .3s ease;
 }
 .sc-dot.active {
-  background: var(--accent);
-  width: 14px;
+  width: 18px;
   border-radius: 3px;
+  background: var(--accent);
 }
 .sc-dot:hover:not(.active) {
   background: var(--text3);
 }
 
-/* Trust pills — repositioned for smaller card */
+/* ── TRUST PILLS ── */
 .trust-pill {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   background: var(--surf);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 8px 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  border-radius: 12px;
+  padding: 9px 13px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.28);
   font-size: 12px;
   z-index: 10;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
-.trust-pill .fa { color: var(--accent2); font-size: 14px; flex-shrink: 0; }
-.trust-pill strong { display: block; font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.2; }
-.trust-pill span { font-size: 10px; color: var(--text2); }
-
-.tp-a { top: 4px; left: -8px; }
-.tp-b { bottom: 56px; right: -8px; }
-
-/* Responsive: hide tp-b on mobile, adjust card width */
-@media (max-width: 960px) {
-  .slider-card { width: 389px; }
-  .slider-viewport { height: 300px; }
-  .tp-a { top: 8px; left: 0; }
-  .tp-b { display: none; }
-}
-@media (max-width: 480px) {
-  .slider-card { width: 100%; max-width: 300px; }
-  .slider-viewport { height: 180px; }
-}
-
-/* Image load fade-in via JS — fallback: show when rendered */
-.slide-img-wrap img { opacity: 1; }
+.trust-pill .fa { color: var(--accent2); font-size: 15px; flex-shrink: 0; }
+.trust-pill strong { display: block; font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.2; }
+.trust-pill span   { font-size: 10px; color: var(--text2); }
+.tp-a { top: 0px;   left: -14px; }
+.tp-b { bottom: 62px; right: -14px; }
 
 /* ── LOGO CONTAINMENT ── */
 .brand-mark img,
@@ -1128,7 +1085,17 @@ button { font-family:var(--font); cursor:pointer; }
   border-radius: inherit;
 }
 
-/* ── IT Training category badge color ── */
-.pfc-cat--it {
-  color: #22d3ee;
+/* ── IT Training badge ── */
+.pfc-cat--it { color: #22d3ee; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .slider-card    { width: 290px; }
+  .slider-viewport { height: 260px; }
+  .tp-a { left: 0; top: 8px; }
+  .tp-b { display: none; }
+}
+@media (max-width: 480px) {
+  .slider-card    { width: 100%; max-width: 300px; }
+  .slider-viewport { height: 220px; }
 }
