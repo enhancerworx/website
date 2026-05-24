@@ -21,7 +21,9 @@
 <!-- LOADER -->
 <div class="loader" id="loader">
   <div class="loader-box">
-    <div class="loader-logo">EW</div>
+    <div class="loader-logo">
+      <img src="img/latestlogo.png" alt="Enhancerworx" style="width:100%;height:100%;object-fit:contain;border-radius:14px;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
+    </div>
     <div class="loader-track"><div class="loader-bar"></div></div>
     <span class="loader-text">Loading...</span>
   </div>
@@ -31,7 +33,9 @@
 <nav class="nav" id="nav">
   <div class="nav-wrap">
     <a href="#home" class="nav-brand">
-      <span class="brand-mark">EW</span>
+      <span class="brand-mark" style="overflow:hidden;padding:0;">
+        <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
+      </span>
       <span class="brand-name">Enhancerworx</span>
     </a>
 
@@ -133,135 +137,59 @@
         <div class="slider-viewport">
           <div class="slide-track" id="slideTrack">
 
-            <!-- SLIDE 1: India Map -->
-            <div class="slide" data-label="Educational Apps" data-icon="fa-map-marker">
-              <div class="phone">
-                <div class="phone-frame">
-                  <div class="phone-bar">
-                    <div class="phone-dots"><i></i><i></i><i></i></div>
-                    <span>India Map</span>
-                  </div>
-                  <div class="phone-body map-theme">
-                    <div class="map-visual">
-                      <svg viewBox="0 0 200 230" width="110">
-                        <path d="M100 18C62 23,28 52,24 82C18 118,40 138,52 165C64 192,72 202,100 222C128 202,136 192,148 165C160 138,182 118,176 82C172 52,138 23,100 18Z"
-                          fill="rgba(91,180,130,0.2)" stroke="rgba(91,180,130,0.7)" stroke-width="1.5"/>
-                        <circle cx="100" cy="108" r="5" fill="#5bb482"/>
-                        <circle cx="72"  cy="88"  r="3" fill="#5b5ef4"/>
-                        <circle cx="132" cy="128" r="3" fill="#f97316"/>
-                        <circle cx="82"  cy="162" r="3" fill="#f472b6"/>
-                      </svg>
-                    </div>
-                    <div class="map-chips">
-                      <span>28 States</span><span>Capitals</span><span>Quiz</span>
-                    </div>
-                    <div class="quiz-block">
-                      <p class="quiz-q">Maharashtra Capital?</p>
-                      <div class="quiz-opts">
-                        <div class="qopt correct">Mumbai ✓</div>
-                        <div class="qopt">Pune</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <!-- SLIDE 1 -->
+            <div class="slide" data-label="Educational Apps" data-icon="fa-graduation-cap">
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage1.png" alt="App Screenshot 1" loading="lazy" />
               </div>
             </div>
 
-            <!-- SLIDE 2: Word Game -->
-            <div class="slide" data-label="Educational Games" data-icon="fa-gamepad">
-              <div class="phone">
-                <div class="phone-frame">
-                  <div class="phone-bar">
-                    <div class="phone-dots"><i></i><i></i><i></i></div>
-                    <span>Word Puzzle</span>
-                  </div>
-                  <div class="phone-body game-theme">
-                    <div class="game-score">Score: <strong>1,250</strong></div>
-                    <div class="word-grid">
-                      <span class="wg-cell lit">E</span><span class="wg-cell lit">D</span><span class="wg-cell lit">U</span><span class="wg-cell">T</span>
-                      <span class="wg-cell">E</span><span class="wg-cell lit">C</span><span class="wg-cell">A</span><span class="wg-cell">P</span>
-                      <span class="wg-cell">P</span><span class="wg-cell lit">H</span><span class="wg-cell">L</span><span class="wg-cell">A</span>
-                      <span class="wg-cell">L</span><span class="wg-cell lit">E</span><span class="wg-cell">R</span><span class="wg-cell">N</span>
-                    </div>
-                    <div class="game-found">EDTECH <span>found! +50pts</span></div>
-                  </div>
-                </div>
+            <!-- SLIDE 2 -->
+            <div class="slide" data-label="Learning Games" data-icon="fa-gamepad">
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage2.png" alt="App Screenshot 2" loading="lazy" />
               </div>
             </div>
 
-            <!-- SLIDE 3: Biology -->
+            <!-- SLIDE 3 -->
             <div class="slide" data-label="Science Apps" data-icon="fa-flask">
-              <div class="phone">
-                <div class="phone-frame">
-                  <div class="phone-bar">
-                    <div class="phone-dots"><i></i><i></i><i></i></div>
-                    <span>Biology Diagrams</span>
-                  </div>
-                  <div class="phone-body bio-theme">
-                    <div class="bio-hero">
-                      <div class="bio-icon">
-                        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5">
-                          <ellipse cx="12" cy="12" rx="4" ry="7"/>
-                          <path d="M3 12h18M6.3 5.7C8 8 10 10 12 12s4 4 5.7 6.3M17.7 5.7C16 8 14 10 12 12S8 16 6.3 18.3"/>
-                        </svg>
-                      </div>
-                      <span class="bio-title">Cell Structure</span>
-                    </div>
-                    <div class="bio-list">
-                      <div class="bio-item done"><i class="fa fa-check-circle"></i> Cell Membrane</div>
-                      <div class="bio-item done"><i class="fa fa-check-circle"></i> Nucleus</div>
-                      <div class="bio-item active"><i class="fa fa-play-circle"></i> Mitochondria</div>
-                      <div class="bio-item"><i class="fa fa-circle-o"></i> Chloroplast</div>
-                    </div>
-                    <div class="prog-row">
-                      <span class="pr-label">Progress</span>
-                      <div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div>
-                      <span class="pr-pct">60%</span>
-                    </div>
-                  </div>
-                </div>
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage3.png" alt="App Screenshot 3" loading="lazy" />
               </div>
             </div>
 
-            <!-- SLIDE 4: History App -->
+            <!-- SLIDE 4 -->
             <div class="slide" data-label="History Apps" data-icon="fa-book">
-              <div class="phone">
-                <div class="phone-frame">
-                  <div class="phone-bar">
-                    <div class="phone-dots"><i></i><i></i><i></i></div>
-                    <span>Indian History</span>
-                  </div>
-                  <div class="phone-body hist-theme">
-                    <div class="hist-header">
-                      <div class="hist-era">Ancient India</div>
-                      <div class="hist-badge">Quiz Mode</div>
-                    </div>
-                    <div class="hist-timeline">
-                      <div class="ht-item active">
-                        <div class="ht-dot"></div>
-                        <div class="ht-content">
-                          <span class="ht-year">322 BCE</span>
-                          <span class="ht-label">Maurya Empire</span>
-                        </div>
-                      </div>
-                      <div class="ht-item">
-                        <div class="ht-dot"></div>
-                        <div class="ht-content">
-                          <span class="ht-year">320 CE</span>
-                          <span class="ht-label">Gupta Empire</span>
-                        </div>
-                      </div>
-                      <div class="ht-item">
-                        <div class="ht-dot"></div>
-                        <div class="ht-content">
-                          <span class="ht-year">1526 CE</span>
-                          <span class="ht-label">Mughal Empire</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="hist-score">Score: <strong>840 pts</strong></div>
-                  </div>
-                </div>
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage4.png" alt="App Screenshot 4" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- SLIDE 5 -->
+            <div class="slide" data-label="Geography Apps" data-icon="fa-map-marker">
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage5.png" alt="App Screenshot 5" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- SLIDE 6 -->
+            <div class="slide" data-label="IT Training Apps" data-icon="fa-code">
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage6.png" alt="App Screenshot 6" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- SLIDE 7 -->
+            <div class="slide" data-label="Word Puzzles" data-icon="fa-puzzle-piece">
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage7.png" alt="App Screenshot 7" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- SLIDE 8 -->
+            <div class="slide" data-label="Utility Apps" data-icon="fa-cog">
+              <div class="slide-img-wrap">
+                <img src="img/webnewimage8.png" alt="App Screenshot 8" loading="lazy" />
               </div>
             </div>
 
@@ -270,7 +198,7 @@
 
         <!-- Slide label -->
         <div class="slide-label-wrap">
-          <i class="fa fa-map-marker slide-label-icon" id="slideLabelIcon"></i>
+          <i class="fa fa-graduation-cap slide-label-icon" id="slideLabelIcon"></i>
           <span class="slide-label-text" id="slideLabelText">Educational Apps</span>
         </div>
 
@@ -284,6 +212,10 @@
             <button class="sc-dot" data-idx="1"></button>
             <button class="sc-dot" data-idx="2"></button>
             <button class="sc-dot" data-idx="3"></button>
+            <button class="sc-dot" data-idx="4"></button>
+            <button class="sc-dot" data-idx="5"></button>
+            <button class="sc-dot" data-idx="6"></button>
+            <button class="sc-dot" data-idx="7"></button>
           </div>
           <button class="sc-arr" id="scNext" aria-label="Next slide">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -320,6 +252,7 @@
     <span>History Apps</span><span class="msep">◆</span>
     <span>Constitution Apps</span><span class="msep">◆</span>
     <span>Word Puzzles</span><span class="msep">◆</span>
+    <span>IT Training Apps</span><span class="msep">◆</span>
     <span>Web Applications</span><span class="msep">◆</span>
     <span>LMS Platforms</span><span class="msep">◆</span>
     <span>Gamified Learning</span><span class="msep">◆</span>
@@ -333,6 +266,7 @@
     <span>History Apps</span><span class="msep">◆</span>
     <span>Constitution Apps</span><span class="msep">◆</span>
     <span>Word Puzzles</span><span class="msep">◆</span>
+    <span>IT Training Apps</span><span class="msep">◆</span>
     <span>Web Applications</span><span class="msep">◆</span>
     <span>LMS Platforms</span><span class="msep">◆</span>
     <span>Gamified Learning</span><span class="msep">◆</span>
@@ -445,6 +379,13 @@
       </div>
       <div class="svc-card">
         <div class="svc-num">06</div>
+        <div class="svc-icon"><i class="fa fa-code"></i></div>
+        <h3>IT Training Apps</h3>
+        <p>Developer skill-building apps for modern tech stacks — Python, Docker, .NET, Vue.js, Angular, React and more.</p>
+        <div class="svc-tags"><span>Python</span><span>React</span><span>Docker</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">07</div>
         <div class="svc-icon"><i class="fa fa-paint-brush"></i></div>
         <h3>Custom Learning Solutions</h3>
         <p>White-label EdTech platforms, branded learning portals, and curriculum-aligned apps tailored to your institution.</p>
@@ -467,42 +408,79 @@
       <button class="pf-btn active" data-filter="all">All</button>
       <button class="pf-btn" data-filter="edapp">Educational</button>
       <button class="pf-btn" data-filter="game">Games</button>
+      <button class="pf-btn" data-filter="ittraining">IT Training</button>
       <button class="pf-btn" data-filter="utility">Utility</button>
     </div>
 
     <div class="pf-grid" id="pfGrid">
 
+      <!-- Educational Games -->
       <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.snakewordpuzzles" class="pf-card game" target="_blank" rel="noopener">
         <div class="pfc-img"><img src="img/snake.png" alt="Snake Word Puzzle" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
         <div class="pfc-info"><span class="pfc-cat">Game</span><h4>Snake Word Puzzle</h4></div>
       </a>
+
       <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.flags" class="pf-card game" target="_blank" rel="noopener">
         <div class="pfc-img"><img src="img/flags.png" alt="Learn World Flags" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
         <div class="pfc-info"><span class="pfc-cat">Game</span><h4>Learn World Flags</h4></div>
       </a>
+
+      <!-- Educational Apps -->
       <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.indiamap" class="pf-card edapp" target="_blank" rel="noopener">
         <div class="pfc-img"><img src="img/india.jpg" alt="Learn India Map" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
         <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn India Map (Offline)</h4></div>
       </a>
+
       <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.ancientindianhistory" class="pf-card edapp" target="_blank" rel="noopener">
         <div class="pfc-img"><img src="img/history.png" alt="Ancient Indian History" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
         <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Ancient Indian History</h4></div>
       </a>
+
       <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.biologydiagrams" class="pf-card edapp" target="_blank" rel="noopener">
         <div class="pfc-img"><img src="img/biology.png" alt="Biology Diagrams" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
         <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn Biology Diagrams</h4></div>
       </a>
+
       <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.newindianconstitution" class="pf-card edapp" target="_blank" rel="noopener">
         <div class="pfc-img"><img src="img/const.png" alt="Indian Constitution" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
         <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn Indian Constitution</h4></div>
       </a>
+
+      <!-- IT Training Apps -->
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnpython" class="pf-card ittraining" target="_blank" rel="noopener">
+        <div class="pfc-img"><img src="img/logopython.png" alt="Learn Python" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
+        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Python</h4></div>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learndocker" class="pf-card ittraining" target="_blank" rel="noopener">
+        <div class="pfc-img"><img src="img/logodocker.png" alt="Learn Docker" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
+        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Docker</h4></div>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learndotnet" class="pf-card ittraining" target="_blank" rel="noopener">
+        <div class="pfc-img"><img src="img/logodotnet.png" alt="Learn .NET" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
+        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn .NET</h4></div>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnvuejs" class="pf-card ittraining" target="_blank" rel="noopener">
+        <div class="pfc-img"><img src="img/logovuejs.png" alt="Learn Vue.js" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
+        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Vue.js</h4></div>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnangular" class="pf-card ittraining" target="_blank" rel="noopener">
+        <div class="pfc-img"><img src="img/logoangular.png" alt="Learn Angular" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
+        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Angular</h4></div>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnreact" class="pf-card ittraining" target="_blank" rel="noopener">
+        <div class="pfc-img"><img src="img/logoreact.png" alt="Learn React" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
+        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn React</h4></div>
+      </a>
+
+      <!-- Utility -->
       <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.artgrid" class="pf-card utility" target="_blank" rel="noopener">
         <div class="pfc-img"><img src="img/art.png" alt="Art Grid" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
         <div class="pfc-info"><span class="pfc-cat">Utility</span><h4>Art Grid</h4></div>
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.bookqoutes" class="pf-card utility" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/qoutes.png" alt="My Quotes" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Utility</span><h4>My Quotes: Read, Write &amp; Share</h4></div>
       </a>
 
     </div><!-- /pf-grid -->
@@ -620,6 +598,7 @@
               <option>iOS App Development</option>
               <option>Web Learning Application</option>
               <option>Educational Game</option>
+              <option>IT Training App</option>
               <option>LMS / Learning Platform</option>
               <option>Custom Learning Solution</option>
               <option>Other</option>
@@ -642,7 +621,9 @@
   <div class="container">
     <div class="footer-inner">
       <div class="ft-brand">
-        <span class="brand-mark sm">EW</span>
+        <span class="brand-mark sm" style="overflow:hidden;padding:0;">
+          <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
+        </span>
         <span class="brand-name">Enhancerworx</span>
       </div>
       <p class="ft-copy">© 2025 Enhancerworx. All rights reserved. · EdTech App Development Studio</p>
