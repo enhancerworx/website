@@ -808,3 +808,32 @@ button { font-family:var(--font); cursor:pointer; }
   .footer-inner { flex-direction:column;text-align:center; }
   .ft-links { justify-content:center; }
 }
+/* ── SLIDER IMAGE SLIDES ── */
+.slide-img-wrap {
+  width: 100%;
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--surf2);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow), var(--glow);
+  aspect-ratio: 9/16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 420px;
+}
+.slide-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.slide:hover .slide-img-wrap img {
+  transform: scale(1.03);
+}
+
+/* ── IT Training category badge ── */
+.pfc-cat--it {
+  color: #22d3ee;
+}
