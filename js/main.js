@@ -103,7 +103,6 @@
   var bySlug = {};
   items.forEach(function (li) { bySlug[li.getAttribute('data-slug')] = li; });
   var lastFocus = null;
-  var WA = 'https://wa.me/918920795732';
 
   function fill(li) {
     var slug = li.getAttribute('data-slug');
@@ -126,7 +125,6 @@
     el('dlgPlay').href = li.getAttribute('data-url');
     var terms = el('dlgTerms');
     if (terms) terms.href = li.getAttribute('data-terms') || 'terms/';
-    el('dlgWa').href = WA + '?text=' + encodeURIComponent('Hi Enhancerworx, I have a question about ' + li.getAttribute('data-name') + '.');
     el('dlgNote').textContent = '';
     dlg.setAttribute('data-slug', slug);
   }
@@ -262,12 +260,6 @@
     a.href = mailtoLink(d);
     a.textContent = 'Click here to send it by email instead';
     wrap.appendChild(a);
-    wrap.appendChild(document.createTextNode(', or '));
-    var w = document.createElement('a');
-    w.href = 'https://wa.me/918920795732?text=' + encodeURIComponent('Hi Enhancerworx, I am ' + d.name + '. ' + (d.message || ''));
-    w.target = '_blank'; w.rel = 'noopener noreferrer';
-    w.textContent = 'message us on WhatsApp';
-    wrap.appendChild(w);
     wrap.appendChild(document.createTextNode('.'));
     return wrap;
   }
@@ -297,23 +289,6 @@
       })
       .catch(function () { setStatus(failMessage(d), 'err'); })
       .then(function () { btn.disabled = false; btn.textContent = 'Send message'; });
-  });
-})();
-
-/* WhatsApp quick-question form: opens WhatsApp with the message ready to send */
-(function () {
-  var form = document.getElementById('waForm');
-  if (!form) return;
-  var hint = document.getElementById('waHint');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var topic = form.elements.topic.value;
-    var msg = form.elements.msg.value.trim();
-    if (!msg) { hint.textContent = 'Write your question first, then continue.'; form.elements.msg.focus(); return; }
-    var text = 'Hi Enhancerworx. Topic: ' + topic + '\n' + msg;
-    var url = 'https://wa.me/918920795732?text=' + encodeURIComponent(text);
-    var w = window.open(url, '_blank', 'noopener');
-    hint.textContent = w ? 'WhatsApp opened in a new tab. Press send there to deliver your message.' : 'Your browser blocked the new tab. Allow pop-ups, or use the WhatsApp button above.';
   });
 })();
 

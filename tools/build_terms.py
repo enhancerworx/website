@@ -58,8 +58,8 @@ def page(title, desc, canonical, body, extra_head=''):
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <script src="/js/theme.js"></script>
-  <link rel="stylesheet" href="/css/style.css">{extra_head}
+  <script src="/js/theme.js?v=20261124b"></script>
+  <link rel="stylesheet" href="/css/style.css?v=20261124b">{extra_head}
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -93,7 +93,7 @@ def page(title, desc, canonical, body, extra_head=''):
       <p class="copy">&copy; <span id="year">2026</span> {esc(DEV['name'])}. All rights reserved.</p>
     </div>
   </footer>
-  <script src="/js/main.js" defer></script>
+  <script src="/js/main.js?v=20261124b" defer></script>
 </body>
 </html>
 '''
@@ -177,7 +177,6 @@ def sections_for(a):
       <div class="contact-card">
         <p><strong>{esc(DEV['name'])}</strong>, developer of {name}</p>
         <p><strong>Email:</strong> <a href="mailto:{DEV['email']}?subject={esc(quote(a['name'] + ' - Terms of Service'))}">{DEV['email']}</a></p>
-        <p><strong>Phone / WhatsApp:</strong> <a href="tel:{DEV['phone_link']}">{esc(DEV['phone'])}</a></p>
         <p><strong>Website:</strong> <a href="{SITE}/">{SITE.replace("https://", "")}</a></p>
         {addr}
       </div>'''))

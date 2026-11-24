@@ -739,3 +739,9 @@ body { -webkit-tap-highlight-color: transparent; overflow-x: clip; }
 .terms-body code { font-size: .9em; background: var(--paper-2); border: 1px solid var(--line); border-radius: 6px; padding: .05rem .35rem; overflow-wrap: anywhere; }
 .brand + .bar-actions { margin-left: auto; }
 @media (min-width: 821px) { .search input { width: 340px; } }
+/* No floating WhatsApp button: back-to-top takes its corner */
+.to-top { bottom: calc(1.1rem + env(safe-area-inset-bottom)); right: 1.1rem; width: 44px; height: 44px; }
+@media (max-width: 600px) {
+  .site-footer { padding-bottom: calc(2.4rem + env(safe-area-inset-bottom)); }
+  .dlg-actions .btn-line { grid-column: 1 / -1; }
+}

@@ -18,8 +18,8 @@ Every app has its own page at `https://www.enhancerworx.in/terms/<slug>.html`, w
 ## Contact form
 Sends through Formspree. Create a form at formspree.io, then replace `YOUR_FORM_ID` in `index.html` (search for it) with your form ID.
 
-## WhatsApp
-Number is +91 89207 95732 (wa.me/918920795732). To change it, search `918920795732` in `index.html` and `js/main.js`.
-
 ## Do not delete
 `CNAME`, `app-ads.txt` and `google7f809a8f1b46f7d8.html` (Search Console ownership).
+
+## After changing CSS or JS
+Browsers keep old copies of `css/style.css` and `js/*.js`. When you change them, bump the `?v=` number on their links (search for `?v=` in the HTML files and `tools/build_terms.py`, then run the build) so visitors get the new version immediately.
