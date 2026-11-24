@@ -249,7 +249,7 @@
     if (d._gotcha) return; /* a bot filled the hidden field */
 
     var endpoint = form.getAttribute('action');
-    if (endpoint.indexOf('YOUR_FORM_ID') !== -1) { setStatus(failMessage(d), 'err'); return; } /* Formspree ID not set yet */
+    if (endpoint.indexOf('mdegpvov') !== -1) { setStatus(failMessage(d), 'err'); return; } /* Formspree ID not set yet */
 
     btn.disabled = true;
     btn.textContent = 'Sending…';
