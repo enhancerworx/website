@@ -1,649 +1,316 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enhancerworx — EdTech App Development Studio</title>
-  <meta name="description" content="Enhancerworx builds world-class EdTech apps, educational platforms, and digital learning solutions for Android, iOS &amp; Web." />
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/font-awesome.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enhancerworx | EdTech app studio for learning apps on Android, iOS and web</title>
+  <meta name="description" content="Enhancerworx builds educational apps. 27 learning apps live on Google Play across geography, history, science, maths and programming. We also build custom learning apps for schools and publishers.">
+  <link rel="canonical" href="https://www.enhancerworx.in/">
+  <meta name="theme-color" content="#F8FAFE" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0A1220" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Security: GitHub Pages cannot send HTTP headers, so the policy is set here. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; base-uri 'self'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Enhancerworx">
+  <meta property="og:title" content="Enhancerworx | EdTech app studio">
+  <meta property="og:description" content="Learning apps people finish. 27 apps on Google Play, plus custom EdTech builds.">
+  <meta property="og:url" content="https://www.enhancerworx.in/">
+  <meta property="og:image" content="https://www.enhancerworx.in/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" href="fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Enhancerworx",
+    "url": "https://www.enhancerworx.in/",
+    "logo": "https://www.enhancerworx.in/icon-512.png",
+    "foundingDate": "2018",
+    "email": "enhancerworx@gmail.com",
+    "description": "EdTech app studio building educational apps for Android, iOS and the web."
+  }
+  </script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-<!-- CURSOR -->
-<div class="c-dot" id="cDot"></div>
-<div class="c-ring" id="cRing"></div>
+  <header class="site-header" id="top">
+    <div class="wrap bar">
+      <a class="brand" href="#top" aria-label="Enhancerworx home">
+        <img src="img/mark.webp" width="40" height="40" alt="">
+        <span class="brand-name">Enhancer<span>worx</span></span>
+      </a>
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-box">
-    <div class="loader-logo">
-      <img src="img/latestlogo.png" alt="Enhancerworx" style="width:100%;height:100%;object-fit:contain;border-radius:14px;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
-    </div>
-    <div class="loader-track"><div class="loader-bar"></div></div>
-    <span class="loader-text">Loading...</span>
-  </div>
-</div>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#apps">Apps</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<!-- ═══ NAV ═══ -->
-<nav class="nav" id="nav">
-  <div class="nav-wrap">
-    <a href="#home" class="nav-brand">
-      <span class="brand-mark" style="overflow:hidden;padding:0;">
-        <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
-      </span>
-      <span class="brand-name">Enhancerworx</span>
-    </a>
-
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="#home"      class="nm-link active">Home</a></li>
-      <li><a href="#about"     class="nm-link">About</a></li>
-      <li><a href="#services"  class="nm-link">Services</a></li>
-      <li><a href="#portfolio" class="nm-link">Apps</a></li>
-      <li><a href="#reviews"   class="nm-link">Reviews</a></li>
-      <li><a href="#contact"   class="nm-link">Contact</a></li>
-    </ul>
-
-    <div class="nav-actions">
-      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-        <svg class="t-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="t-sun"  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
-      <a href="#contact" class="btn-cta">Get Started ↗</a>
-      <button class="burger" id="burger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile drawer -->
-  <div class="nav-drawer" id="navDrawer">
-    <ul class="drawer-menu">
-      <li><a href="#home"      class="dm-link">Home</a></li>
-      <li><a href="#about"     class="dm-link">About</a></li>
-      <li><a href="#services"  class="dm-link">Services</a></li>
-      <li><a href="#portfolio" class="dm-link">Apps</a></li>
-      <li><a href="#reviews"   class="dm-link">Reviews</a></li>
-      <li><a href="#contact"   class="dm-link">Contact</a></li>
-    </ul>
-    <div class="drawer-footer">
-      <button class="theme-btn-mob" id="themeBtnMob">
-        <span class="tmob-icon">🌙</span>
-        <span class="tmob-label">Switch Theme</span>
-      </button>
-      <a href="#contact" class="btn-cta" style="text-align:center">Get Started ↗</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ═══ HERO ═══ -->
-<section class="hero" id="home">
-  <div class="hero-bg">
-    <div class="hb-orb hb-o1"></div>
-    <div class="hb-orb hb-o2"></div>
-    <div class="hb-orb hb-o3"></div>
-    <div class="hb-grid"></div>
-  </div>
-
-  <div class="hero-layout">
-    <!-- Left text -->
-    <div class="hero-text">
-      <div class="hero-badge">
-        <span class="hb-pulse"></span>
-        EdTech App Development Studio &nbsp;·&nbsp; Since 2018
-      </div>
-
-      <h1 class="hero-h1">
-        <span>Design.</span>
-        <span>Build.</span>
-        <span class="h1-grad">Educate.</span>
-      </h1>
-
-      <p class="hero-p">
-        We craft world-class educational apps &amp; digital learning experiences —
-        helping learners master knowledge, <em>one app at a time.</em>
-      </p>
-
-      <div class="hero-actions">
-        <a href="#services" class="btn-primary">Explore Services</a>
-        <a href="#portfolio" class="btn-ghost">View Our Apps <span class="arrow">→</span></a>
-      </div>
-
-      <div class="hero-counters">
-        <div class="hc-item">
-          <span class="hc-num" data-target="15">0</span><span class="hc-suffix">+</span>
-          <span class="hc-label">Apps Launched</span>
-        </div>
-        <div class="hc-sep"></div>
-        <div class="hc-item">
-          <span class="hc-num" data-target="100">0</span><span class="hc-suffix">K+</span>
-          <span class="hc-label">Learners</span>
-        </div>
-        <div class="hc-sep"></div>
-        <div class="hc-item">
-          <span class="hc-num" data-target="5">0</span><span class="hc-suffix">★</span>
-          <span class="hc-label">Avg Rating</span>
-        </div>
+      <div class="bar-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">
+          <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <a class="btn btn-sm btn-solid hide-sm" href="#contact">Start a project</a>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
       </div>
     </div>
+  </header>
 
-    <!-- Right slider -->
-    <div class="hero-slider-wrap">
-      <div class="slider-stage">
+  <main id="main">
 
-        <!-- Decorative glow ring behind card -->
-        <div class="slider-glow-ring"></div>
-
-        <!-- Main slider card -->
-        <div class="slider-card">
-          <!-- Card top bar with dots + label -->
-          <div class="slider-card-bar">
-            <div class="slider-card-dots"><i></i><i></i><i></i></div>
-            <div class="slider-card-counter"><span id="slideCurrentNum">1</span><span class="scc-sep">/</span><span>8</span></div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker">EdTech app studio, building since 2018</p>
+          <h1>Learning apps that people actually finish.</h1>
+          <p class="lead">We design and build educational apps for Android, iOS and the web. Twenty-seven of our own are live on Google Play, covering geography, history, science, maths and programming. We also build custom apps for schools, institutions and publishers.</p>
+          <div class="hero-cta">
+            <a class="btn btn-solid" href="#apps">See our apps</a>
+            <a class="btn btn-line" href="#contact">Start a project</a>
           </div>
+          <dl class="facts">
+            <div><dt>Apps on Google Play</dt><dd>27</dd></div>
+            <div><dt>Downloads</dt><dd>100K+</dd></div>
+            <div><dt>Building apps since</dt><dd>2018</dd></div>
+          </dl>
+        </div>
 
-          <!-- Viewport clips the track -->
-          <div class="slider-viewport">
-            <div class="slide-track" id="slideTrack">
-
-              <div class="slide" data-label="Educational Apps" data-icon="fa-graduation-cap">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage1.png" alt="App Screenshot 1" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="slide" data-label="Learning Games" data-icon="fa-gamepad">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage2.png" alt="App Screenshot 2" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="slide" data-label="Science Apps" data-icon="fa-flask">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage3.png" alt="App Screenshot 3" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="slide" data-label="History Apps" data-icon="fa-book">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage4.png" alt="App Screenshot 4" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="slide" data-label="Geography Apps" data-icon="fa-map-marker">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage5.png" alt="App Screenshot 5" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="slide" data-label="IT Training Apps" data-icon="fa-code">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage6.png" alt="App Screenshot 6" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="slide" data-label="Word Puzzles" data-icon="fa-puzzle-piece">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage7.png" alt="App Screenshot 7" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="slide" data-label="Utility Apps" data-icon="fa-cog">
-                <div class="slide-img-wrap">
-                  <img src="img/webnewimage8.png" alt="App Screenshot 8" loading="lazy" />
-                </div>
-              </div>
-
-            </div><!-- /slide-track -->
-          </div><!-- /slider-viewport -->
-
-          <!-- Card bottom controls -->
-          <div class="slider-card-footer">
-            <button class="sc-arr" id="scPrev" aria-label="Previous slide">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <div class="sc-dots" id="scDots">
-              <button class="sc-dot active" data-idx="0"></button>
-              <button class="sc-dot" data-idx="1"></button>
-              <button class="sc-dot" data-idx="2"></button>
-              <button class="sc-dot" data-idx="3"></button>
-              <button class="sc-dot" data-idx="4"></button>
-              <button class="sc-dot" data-idx="5"></button>
-              <button class="sc-dot" data-idx="6"></button>
-              <button class="sc-dot" data-idx="7"></button>
-            </div>
-            <button class="sc-arr" id="scNext" aria-label="Next slide">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
+        <div class="wall" aria-label="Screenshots of Enhancerworx apps" role="group">
+          <div class="wall-col c1">
+            <img src="img/shot1.webp" width="520" height="932" alt="Learn India Map: an interactive map of Uttarakhand with notes, favourites and info buttons" fetchpriority="high">
+            <img src="img/shot5.webp" width="520" height="840" alt="Learn Biology Diagrams: tap an organ in a labelled diagram to see its details" loading="lazy">
           </div>
-        </div><!-- /slider-card -->
-
-        <!-- Trust pills -->
-        <div class="trust-pill tp-a">
-          <i class="fa fa-star"></i>
-          <div><strong>4.8/5</strong><span>Play Store</span></div>
+          <div class="wall-col c2">
+            <img src="img/shot8.webp" width="520" height="924" alt="Snake Word: a word puzzle game with Play, Share, Rate and Exit buttons" fetchpriority="high">
+            <img src="img/shot4.webp" width="520" height="989" alt="Learn Docker: master containerization with interactive lessons and quizzes" loading="lazy">
+          </div>
+          <div class="wall-col c3">
+            <img src="img/shot7.webp" width="520" height="932" alt="Learn World Maps: explore every country, with support for 12 Indian languages" fetchpriority="high">
+            <img src="img/shot3.webp" width="520" height="672" alt="Art Grid: lay a drawing grid over a reference photo" loading="lazy">
+          </div>
         </div>
-        <div class="trust-pill tp-b">
-          <i class="fa fa-download"></i>
-          <div><strong>100K+</strong><span>Downloads</span></div>
+      </div>
+    </section>
+
+    <!-- APPS -->
+    <section class="section" id="apps" aria-labelledby="apps-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="apps-h">All our apps, by subject</h2>
+          <p>Every app is free to install from Google Play. Jump to a subject, or search by name or topic.</p>
+          <a class="btn btn-line" href="https://play.google.com/store/apps/dev?id=4708968670969888010" target="_blank" rel="noopener noreferrer">See our full Google Play page<span class="sr"> (opens in a new tab)</span></a>
         </div>
 
-      </div><!-- /slider-stage -->
-    </div><!-- /hero-slider-wrap -->
-  </div><!-- /hero-layout -->
+        <div class="app-tools">
+          <nav class="filters" aria-label="Jump to a subject"><!--NAV:START--><a class="chip" href="#cat-geography">Geography and maps</a><a class="chip" href="#cat-humanities">Humanities and languages</a><a class="chip" href="#cat-science">Science and maths</a><a class="chip" href="#cat-tech">Programming and IT</a><a class="chip" href="#cat-games">Games and creativity</a><!--NAV:END--></nav>
+          <div class="search">
+            <label for="appSearch" class="sr">Search apps</label>
+            <input id="appSearch" type="search" placeholder="Search apps, for example Python or maps" autocomplete="off" maxlength="60">
+          </div>
+        </div>
+        <p class="filter-note" id="filterNote" role="status" aria-live="polite">Showing all <span id="appTotal">28</span> apps.</p>
 
-  <a href="#about" class="scroll-cue" aria-label="Scroll down">
-    <div class="sc-wheel"><div class="sc-drop"></div></div>
-  </a>
+        <div id="appGroups">
+<!--APPS:START-->
+<section class="cat" id="cat-geography" aria-labelledby="h-geography">
+  <div class="cat-head"><h3 id="h-geography">Geography and maps <span class="count">4</span></h3><p>Tap-to-learn maps, flags and capitals. Most work offline.</p></div>
+  <ul class="apps">
+    <li data-search="learn india map &amp; geography interactive india maps in english and hindi with 700+ places, 1000+ quiz questions and notes. works offline."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.indiamap" target="_blank" rel="noopener noreferrer"><img src="img/app-india.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn India Map &amp; Geography</strong><span>Interactive India maps in English and Hindi with 700+ places, 1000+ quiz questions and notes. Works offline.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn world flags and capitals flags and capitals of 245 countries and territories, with memory games and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.flags" target="_blank" rel="noopener noreferrer"><img src="img/app-flags.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn World Flags and Capitals</strong><span>Flags and capitals of 245 countries and territories, with memory games and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="world water bodies - offline tap oceans, seas, rivers and lakes on a map, then take a timed quiz. works offline."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.worldwaterbodies" target="_blank" rel="noopener noreferrer"><img src="img/app-water.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>World Water Bodies - Offline</strong><span>Tap oceans, seas, rivers and lakes on a map, then take a timed quiz. Works offline.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn world map (offline) a touch-based world map for learning countries and continents. works offline."><a href="https://play.google.com/store/apps/dev?id=4708968670969888010" target="_blank" rel="noopener noreferrer"><img src="img/app-world.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn World Map (Offline)</strong><span>A touch-based world map for learning countries and continents. Works offline.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+  </ul>
 </section>
-
-<!-- ═══ MARQUEE ═══ -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span>EdTech Solutions</span><span class="msep">◆</span>
-    <span>Android Development</span><span class="msep">◆</span>
-    <span>iOS Development</span><span class="msep">◆</span>
-    <span>Educational Games</span><span class="msep">◆</span>
-    <span>Geography Apps</span><span class="msep">◆</span>
-    <span>Science Apps</span><span class="msep">◆</span>
-    <span>History Apps</span><span class="msep">◆</span>
-    <span>Constitution Apps</span><span class="msep">◆</span>
-    <span>Word Puzzles</span><span class="msep">◆</span>
-    <span>IT Training Apps</span><span class="msep">◆</span>
-    <span>Web Applications</span><span class="msep">◆</span>
-    <span>LMS Platforms</span><span class="msep">◆</span>
-    <span>Gamified Learning</span><span class="msep">◆</span>
-    <!-- duplicate for seamless loop -->
-    <span>EdTech Solutions</span><span class="msep">◆</span>
-    <span>Android Development</span><span class="msep">◆</span>
-    <span>iOS Development</span><span class="msep">◆</span>
-    <span>Educational Games</span><span class="msep">◆</span>
-    <span>Geography Apps</span><span class="msep">◆</span>
-    <span>Science Apps</span><span class="msep">◆</span>
-    <span>History Apps</span><span class="msep">◆</span>
-    <span>Constitution Apps</span><span class="msep">◆</span>
-    <span>Word Puzzles</span><span class="msep">◆</span>
-    <span>IT Training Apps</span><span class="msep">◆</span>
-    <span>Web Applications</span><span class="msep">◆</span>
-    <span>LMS Platforms</span><span class="msep">◆</span>
-    <span>Gamified Learning</span><span class="msep">◆</span>
-  </div>
-</div>
-
-<!-- ═══ ABOUT ═══ -->
-<section class="about sec-pad" id="about">
-  <div class="container">
-    <div class="about-grid">
-
-      <div class="about-visual">
-        <div class="av-card">
-          <img src="img/about-img.jpg" alt="Enhancerworx EdTech Studio" class="av-img"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-          <div class="av-fallback">
-            <i class="fa fa-graduation-cap"></i>
-            <span>Enhancerworx Studio</span>
-          </div>
-        </div>
-        <div class="av-pill pill-1">
-          <div class="avp-icon"><i class="fa fa-graduation-cap"></i></div>
-          <div><strong>Since 2018</strong><span>EdTech Innovation</span></div>
-        </div>
-        <div class="av-pill pill-2">
-          <div class="avp-icon green"><i class="fa fa-check"></i></div>
-          <div><strong>Quality Assured</strong><span>Play Store Verified</span></div>
-        </div>
-        <div class="av-pill pill-3">
-          <div class="avp-icon orange"><i class="fa fa-users"></i></div>
-          <div><strong>100K+ Learners</strong><span>Worldwide</span></div>
-        </div>
-      </div>
-
-      <div class="about-content">
-        <div class="eyebrow">About Us</div>
-        <h2 class="sec-title">Pioneering <em>EdTech</em> app development since 2018</h2>
-        <p class="about-lead">A specialized app development studio with deep expertise in educational technology — building engaging, interactive learning applications for Android, iOS, and the Web.</p>
-        <p class="about-body">We believe learning should be intuitive, engaging, and accessible. From interactive quizzes to full-fledged LMS platforms — we design and build digital education products that produce real outcomes for real learners.</p>
-
-        <div class="pillars">
-          <div class="pillar">
-            <div class="pillar-icon"><i class="fa fa-lightbulb-o"></i></div>
-            <div><strong>Learning-First Design</strong><p>Every UI grounded in pedagogy and learner psychology</p></div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><i class="fa fa-bolt"></i></div>
-            <div><strong>Offline-Ready</strong><p>All apps work seamlessly without internet connectivity</p></div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><i class="fa fa-trophy"></i></div>
-            <div><strong>Gamified Outcomes</strong><p>Badges, quizzes &amp; progress tracking to motivate learners</p></div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><i class="fa fa-mobile"></i></div>
-            <div><strong>Cross-Platform</strong><p>Android, iOS &amp; Web — reach learners everywhere</p></div>
-          </div>
-        </div>
-
-        <a href="#contact" class="btn-primary">Work With Us ↗</a>
-      </div>
-    </div>
-  </div>
+<section class="cat" id="cat-humanities" aria-labelledby="h-humanities">
+  <div class="cat-head"><h3 id="h-humanities">Humanities and languages <span class="count">5</span></h3><p>History, civics, economics and English for school and exam preparation.</p></div>
+  <ul class="apps">
+    <li data-search="ancient indian history maps maps, a timeline, short lessons and mcqs from the stone age to the cholas. works offline."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.ancientindianhistory" target="_blank" rel="noopener noreferrer"><img src="img/app-history.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Ancient Indian History Maps</strong><span>Maps, a timeline, short lessons and MCQs from the Stone Age to the Cholas. Works offline.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="world history master study world history with lessons and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.worldhistory" target="_blank" rel="noopener noreferrer"><span class="tile t1" aria-hidden="true">WH</span><span class="app-text"><strong>World History Master</strong><span>Study world history with lessons and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn indian constitution read and revise the indian constitution with quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.newindianconstitution" target="_blank" rel="noopener noreferrer"><img src="img/app-const.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn Indian Constitution</strong><span>Read and revise the Indian Constitution with quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn economics: notes &amp; quiz economics notes with quizzes to test yourself."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learneconomics" target="_blank" rel="noopener noreferrer"><span class="tile t3" aria-hidden="true">LE</span><span class="app-text"><strong>Learn Economics: Notes &amp; Quiz</strong><span>Economics notes with quizzes to test yourself.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="english grammar &amp; vocabulary practise english grammar and build your vocabulary."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.englishgrammar" target="_blank" rel="noopener noreferrer"><span class="tile t4" aria-hidden="true">EG</span><span class="app-text"><strong>English Grammar &amp; Vocabulary</strong><span>Practise English grammar and build your vocabulary.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+  </ul>
 </section>
-
-<!-- ═══ SERVICES ═══ -->
-<section class="services sec-pad sec-alt" id="services">
-  <div class="svc-blob"></div>
-  <div class="container">
-    <div class="sec-header">
-      <div class="eyebrow">What We Do</div>
-      <h2 class="sec-title">Full-spectrum EdTech &amp;<br>app development services</h2>
-      <p class="sec-sub">From concept to classroom — every layer of your educational digital product, built by specialists.</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc-card">
-        <div class="svc-num">01</div>
-        <div class="svc-icon"><i class="fa fa-graduation-cap"></i></div>
-        <h3>EdTech App Development</h3>
-        <p>LMS platforms, interactive courses, quizzes, flashcards, and adaptive learning systems — designed and built end to end.</p>
-        <div class="svc-tags"><span>LMS</span><span>Adaptive</span><span>Offline</span></div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">02</div>
-        <div class="svc-icon"><i class="fa fa-android"></i></div>
-        <h3>Android Development</h3>
-        <p>Scalable, performant Android apps built with modern Kotlin architecture — optimized for every device and screen size.</p>
-        <div class="svc-tags"><span>Kotlin</span><span>Java</span><span>Jetpack</span></div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">03</div>
-        <div class="svc-icon"><i class="fa fa-apple"></i></div>
-        <h3>iOS Development</h3>
-        <p>High-quality iOS learning apps deeply integrated with Apple's ecosystem, built with Swift and SwiftUI.</p>
-        <div class="svc-tags"><span>Swift</span><span>SwiftUI</span><span>UIKit</span></div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">04</div>
-        <div class="svc-icon"><i class="fa fa-globe"></i></div>
-        <h3>Web Learning Apps</h3>
-        <p>Responsive web learning portals with rich media, assessments, progress dashboards, and admin panels.</p>
-        <div class="svc-tags"><span>React</span><span>Node.js</span><span>Vue</span></div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">05</div>
-        <div class="svc-icon"><i class="fa fa-gamepad"></i></div>
-        <h3>Educational Games</h3>
-        <p>Gamified learning experiences that make education fun — from word puzzles to geography challenges and quiz battles.</p>
-        <div class="svc-tags"><span>Game Design</span><span>Gamified</span><span>Engaging</span></div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">06</div>
-        <div class="svc-icon"><i class="fa fa-code"></i></div>
-        <h3>IT Training Apps</h3>
-        <p>Developer skill-building apps for modern tech stacks — Python, Docker, .NET, Vue.js, Angular, React and more.</p>
-        <div class="svc-tags"><span>Python</span><span>React</span><span>Docker</span></div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">07</div>
-        <div class="svc-icon"><i class="fa fa-paint-brush"></i></div>
-        <h3>Custom Learning Solutions</h3>
-        <p>White-label EdTech platforms, branded learning portals, and curriculum-aligned apps tailored to your institution.</p>
-        <div class="svc-tags"><span>White-label</span><span>Custom</span><span>Branded</span></div>
-      </div>
-    </div>
-  </div>
+<section class="cat" id="cat-science" aria-labelledby="h-science">
+  <div class="cat-head"><h3 id="h-science">Science and maths <span class="count">6</span></h3><p>Biology, physics, chemistry, maths and astronomy with quizzes and notes.</p></div>
+  <ul class="apps">
+    <li data-search="biology diagrams &amp; quizzes interactive biology diagrams, study chapters and 500+ quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.biologydiagrams" target="_blank" rel="noopener noreferrer"><img src="img/app-biology.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Biology Diagrams &amp; Quizzes</strong><span>Interactive biology diagrams, study chapters and 500+ quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn biology: notes &amp; quiz biology notes with quizzes to test yourself."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnbiology" target="_blank" rel="noopener noreferrer"><span class="tile t1" aria-hidden="true">LB</span><span class="app-text"><strong>Learn Biology: Notes &amp; Quiz</strong><span>Biology notes with quizzes to test yourself.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn physics: notes &amp; quiz physics notes with quizzes to test yourself."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnphysics" target="_blank" rel="noopener noreferrer"><span class="tile t2" aria-hidden="true">LP</span><span class="app-text"><strong>Learn Physics: Notes &amp; Quiz</strong><span>Physics notes with quizzes to test yourself.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn maths: jee, boards, cuet maths practice for jee, board exams and cuet."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnmaths" target="_blank" rel="noopener noreferrer"><span class="tile t3" aria-hidden="true">LM</span><span class="app-text"><strong>Learn Maths: JEE, Boards, CUET</strong><span>Maths practice for JEE, board exams and CUET.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn periodic table (offline) tap any element for its details, then play games and take quizzes. works offline."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.periodictableoffline" target="_blank" rel="noopener noreferrer"><span class="tile t4" aria-hidden="true">PT</span><span class="app-text"><strong>Learn Periodic Table (Offline)</strong><span>Tap any element for its details, then play games and take quizzes. Works offline.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="solar system: touch &amp; learn touch the planets and learn about the solar system."><a href="https://play.google.com/store/apps/dev?id=4708968670969888010" target="_blank" rel="noopener noreferrer"><img src="img/app-solar.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Solar System: Touch &amp; Learn</strong><span>Touch the planets and learn about the solar system.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+  </ul>
 </section>
-
-<!-- ═══ PORTFOLIO ═══ -->
-<section class="portfolio sec-pad" id="portfolio">
-  <div class="container">
-    <div class="sec-header">
-      <div class="eyebrow">Our Apps</div>
-      <h2 class="sec-title">Apps we've built &amp; shipped</h2>
-      <p class="sec-sub">Published educational applications on the Google Play Store — loved by learners worldwide.</p>
-    </div>
-
-    <div class="pf-filters" id="pfFilters">
-      <button class="pf-btn active" data-filter="all">All</button>
-      <button class="pf-btn" data-filter="edapp">Educational</button>
-      <button class="pf-btn" data-filter="game">Games</button>
-      <button class="pf-btn" data-filter="ittraining">IT Training</button>
-      <button class="pf-btn" data-filter="utility">Utility</button>
-    </div>
-
-    <div class="pf-grid" id="pfGrid">
-
-      <!-- Educational Games -->
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.snakewordpuzzles" class="pf-card game" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/snake.png" alt="Snake Word Puzzle" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Game</span><h4>Snake Word Puzzle</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.flags" class="pf-card game" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/flags.png" alt="Learn World Flags" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Game</span><h4>Learn World Flags</h4></div>
-      </a>
-
-      <!-- Educational Apps -->
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.indiamap" class="pf-card edapp" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/india.jpg" alt="Learn India Map" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn India Map (Offline)</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.ancientindianhistory" class="pf-card edapp" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/history.png" alt="Ancient Indian History" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Ancient Indian History</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.biologydiagrams" class="pf-card edapp" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/biology.png" alt="Biology Diagrams" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn Biology Diagrams</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.newindianconstitution" class="pf-card edapp" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/const.png" alt="Indian Constitution" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Educational App</span><h4>Learn Indian Constitution</h4></div>
-      </a>
-
-      <!-- IT Training Apps -->
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnpython" class="pf-card ittraining" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/logopython.jpg" alt="Learn Python" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Python</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learndocker" class="pf-card ittraining" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/logodocker.jpg" alt="Learn Docker" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Docker</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnaspnet" class="pf-card ittraining" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/logodotnet.jpg" alt="Learn .NET" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn .NET</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnvuejs" class="pf-card ittraining" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/logovuejs.jpg" alt="Learn Vue.js" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Vue.js</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnangular" class="pf-card ittraining" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/logoangular.jpg" alt="Learn Angular" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn Angular</h4></div>
-      </a>
-
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnreact" class="pf-card ittraining" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/logoreact.jpg" alt="Learn React" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat pfc-cat--it">IT Training</span><h4>Learn React</h4></div>
-      </a>
-
-      <!-- Utility -->
-      <a href="https://play.google.com/store/apps/details?id=com.enhancerworx.artgrid" class="pf-card utility" target="_blank" rel="noopener">
-        <div class="pfc-img"><img src="img/art.png" alt="Art Grid" loading="lazy"><div class="pfc-overlay"><i class="fa fa-external-link"></i> Play Store</div></div>
-        <div class="pfc-info"><span class="pfc-cat">Utility</span><h4>Art Grid</h4></div>
-      </a>
-
-    </div><!-- /pf-grid -->
-
-    <div class="pf-cta-strip">
-      <div class="ics-left">
-        <div class="ics-icon"><i class="fa fa-envelope-o"></i></div>
-        <div>
-          <strong>Have an idea for an educational app?</strong>
-          <p>We build custom EdTech apps for schools, institutions, and ed-publishers.</p>
-        </div>
-      </div>
-      <a href="mailto:enhancerworx@gmail.com?subject=Custom App Development Requirement&body=Hi, I would like to discuss a custom educational app. My requirements are:" class="btn-primary">
-        Discuss Your Project ↗
-      </a>
-    </div>
-  </div>
+<section class="cat" id="cat-tech" aria-labelledby="h-tech">
+  <div class="cat-head"><h3 id="h-tech">Programming and IT <span class="count">9</span></h3><p>Video lessons, labs, quizzes and certificates for developers and IT learners.</p></div>
+  <ul class="apps">
+    <li data-search="python pro: complete course video tutorials, lessons, quizzes and notes to learn python step by step."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnpython" target="_blank" rel="noopener noreferrer"><img src="img/app-python.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Python Pro: Complete Course</strong><span>Video tutorials, lessons, quizzes and notes to learn Python step by step.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn git: full masterclass git tutorials with animations, quizzes, notes and interview practice."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learngit" target="_blank" rel="noopener noreferrer"><span class="tile t2" aria-hidden="true">Git</span><span class="app-text"><strong>Learn Git: Full Masterclass</strong><span>Git tutorials with animations, quizzes, notes and interview practice.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn docker: full masterclass docker lessons with progress tracking, quizzes and a completion certificate."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learndocker" target="_blank" rel="noopener noreferrer"><img src="img/app-docker.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn Docker: Full Masterclass</strong><span>Docker lessons with progress tracking, quizzes and a completion certificate.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn asp.net core: pro guide learn asp.net core with lessons and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnaspnet" target="_blank" rel="noopener noreferrer"><img src="img/app-dotnet.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn ASP.NET Core: Pro Guide</strong><span>Learn ASP.NET Core with lessons and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn vue.js: master &amp; quiz learn vue.js with lessons and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnvuejs" target="_blank" rel="noopener noreferrer"><img src="img/app-vue.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn Vue.js: Master &amp; Quiz</strong><span>Learn Vue.js with lessons and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn angular: master &amp; quiz learn angular with lessons and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnangular" target="_blank" rel="noopener noreferrer"><img src="img/app-angular.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn Angular: Master &amp; Quiz</strong><span>Learn Angular with lessons and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="learn react learn react with lessons and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnreact" target="_blank" rel="noopener noreferrer"><img src="img/app-react.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Learn React</strong><span>Learn React with lessons and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="ai master: learn ai &amp; ml learn artificial intelligence and machine learning with lessons and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnaiml" target="_blank" rel="noopener noreferrer"><span class="tile t3" aria-hidden="true">AI</span><span class="app-text"><strong>AI Master: Learn AI &amp; ML</strong><span>Learn artificial intelligence and machine learning with lessons and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="networking and security ccna-focused video lessons, animations, 28 hands-on labs and quizzes."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.learnccna" target="_blank" rel="noopener noreferrer"><span class="tile t4" aria-hidden="true">NS</span><span class="app-text"><strong>Networking and Security</strong><span>CCNA-focused video lessons, animations, 28 hands-on labs and quizzes.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+  </ul>
 </section>
-
-<!-- ═══ REVIEWS ═══ -->
-<section class="reviews sec-pad sec-alt" id="reviews">
-  <div class="rv-blob"></div>
-  <div class="container">
-    <div class="sec-header">
-      <div class="eyebrow">Testimonials</div>
-      <h2 class="sec-title">What our learners say</h2>
-      <p class="sec-sub">Real feedback from real users across our published apps.</p>
-    </div>
-    <div class="rv-stage">
-      <div class="rv-track" id="rvTrack">
-        <div class="rv-card">
-          <div class="rv-stars">★★★★★</div>
-          <p>"Very attractive app design with audio feedback. Perfect example how CAI/CBT can be used to enhance learning effortlessly. Please keep adding more topics!"</p>
-          <div class="rv-author"><div class="rv-av">AS</div><div><strong>Aman Sharma</strong><span>Learn India Map</span></div></div>
-        </div>
-        <div class="rv-card">
-          <div class="rv-stars">★★★★★</div>
-          <p>"Excellent application with all necessary details. Enough to guide while studying Indian geography. 5 stars to this app."</p>
-          <div class="rv-author"><div class="rv-av">GK</div><div><strong>Ganesh Kumar</strong><span>Learn India Map</span></div></div>
-        </div>
-        <div class="rv-card">
-          <div class="rv-stars">★★★★★</div>
-          <p>"This is spectacular!! Really amazing — hats off, guys! Please make a world map version too!"</p>
-          <div class="rv-author"><div class="rv-av">AA</div><div><strong>Adeena Ameen</strong><span>Learn India Map</span></div></div>
-        </div>
-        <div class="rv-card">
-          <div class="rv-stars">★★★★★</div>
-          <p>"Baccho ke liye mast app hai. Easy to understand. My kids love using it for their studies!"</p>
-          <div class="rv-author"><div class="rv-av">AN</div><div><strong>Anupama Sharma</strong><span>Learn India Map</span></div></div>
-        </div>
-        <div class="rv-card">
-          <div class="rv-stars">★★★★★</div>
-          <p>"I love this app. Please add more questions in the diagram quiz section. Extremely helpful for biology students."</p>
-          <div class="rv-author"><div class="rv-av">VS</div><div><strong>Virendra Saran</strong><span>Learn Biology Diagrams</span></div></div>
-        </div>
-        <div class="rv-card">
-          <div class="rv-stars">★★★★★</div>
-          <p>"Exceptional experience, very good app for easy learning. Covers all the major world maps in a simple and intuitive way."</p>
-          <div class="rv-author"><div class="rv-av">PM</div><div><strong>Pasupureeddy Mahendra</strong><span>Learn World Maps</span></div></div>
-        </div>
-      </div>
-      <div class="rv-controls">
-        <button class="rv-arr" id="rvPrev">←</button>
-        <div class="rv-dots" id="rvDots"></div>
-        <button class="rv-arr" id="rvNext">→</button>
-      </div>
-    </div>
-  </div>
+<section class="cat" id="cat-games" aria-labelledby="h-games">
+  <div class="cat-head"><h3 id="h-games">Games and creativity <span class="count">4</span></h3><p>Puzzle games and a sketching toolkit.</p></div>
+  <ul class="apps">
+    <li data-search="snake word: word puzzle fun a word puzzle game with a snake twist."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.snakewordpuzzles" target="_blank" rel="noopener noreferrer"><img src="img/app-snake.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Snake Word: Word Puzzle Fun</strong><span>A word puzzle game with a snake twist.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="merge balls 2048: drop puzzle drop and merge balls in a 2048-style puzzle."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.mergeballs2048" target="_blank" rel="noopener noreferrer"><span class="tile t1" aria-hidden="true">MB</span><span class="app-text"><strong>Merge Balls 2048: Drop Puzzle</strong><span>Drop and merge balls in a 2048-style puzzle.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="rock balance master a rock-balancing puzzle game."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.rockbalancemaster" target="_blank" rel="noopener noreferrer"><span class="tile t2" aria-hidden="true">RB</span><span class="app-text"><strong>Rock Balance Master</strong><span>A rock-balancing puzzle game.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+    <li data-search="art grid: learn to sketch put a grid over a photo and sketch with accurate proportions."><a href="https://play.google.com/store/apps/details?id=com.enhancerworx.artgrid" target="_blank" rel="noopener noreferrer"><img src="img/app-art.webp" width="64" height="64" alt="" loading="lazy"><span class="app-text"><strong>Art Grid: Learn to Sketch</strong><span>Put a grid over a photo and sketch with accurate proportions.</span></span><span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>
+  </ul>
 </section>
-
-<!-- ═══ CONTACT ═══ -->
-<section class="contact sec-pad" id="contact">
-  <div class="ct-shape"></div>
-  <div class="container">
-    <div class="ct-grid">
-      <div class="ct-left">
-        <div class="eyebrow">Get In Touch</div>
-        <h2 class="sec-title">Have an EdTech idea?<br><em>Let's build it.</em></h2>
-        <p>Whether it's an interactive learning app, educational game, or a full LMS — describe your project and we'll get back within 24 hours.</p>
-        <div class="ct-info-list">
-          <div class="ct-info-row">
-            <div class="ct-info-icon"><i class="fa fa-envelope"></i></div>
-            <div><label>Email</label><a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></div>
-          </div>
-          <div class="ct-info-row">
-            <div class="ct-info-icon"><i class="fa fa-globe"></i></div>
-            <div><label>Website</label><a href="http://www.enhancerworx.in" target="_blank" rel="noopener">www.enhancerworx.in</a></div>
-          </div>
-        </div>
-        <div class="ct-social">
-          <a href="#" class="ctsoc" aria-label="Android"><i class="fa fa-android"></i></a>
-          <a href="#" class="ctsoc" aria-label="Apple"><i class="fa fa-apple"></i></a>
-          <a href="mailto:enhancerworx@gmail.com" class="ctsoc" aria-label="Email"><i class="fa fa-envelope"></i></a>
+<!--APPS:END-->
         </div>
       </div>
+    </section>
 
-      <div class="ct-right">
-        <form class="ct-form" id="contactForm" novalidate>
-          <div class="ctf-row">
-            <div class="ctf-group">
-              <label for="fname">Your Name</label>
-              <input type="text" id="fname" placeholder="John Doe" required />
-            </div>
-            <div class="ctf-group">
-              <label for="femail">Email Address</label>
-              <input type="email" id="femail" placeholder="john@example.com" required />
-            </div>
+    <!-- SERVICES -->
+    <section class="section tint" id="services" aria-labelledby="services-h">
+      <div class="wrap split">
+        <div class="section-head sticky">
+          <h2 id="services-h">What we build for you</h2>
+          <p>From first sketch to Play Store or App Store release, one small team handles design, development and launch.</p>
+          <a class="btn btn-solid" href="#contact">Describe your project</a>
+        </div>
+        <ul class="services">
+          <li><h3>Learning apps</h3><p>Courses, quizzes, flashcards and adaptive practice, built end to end for the topic you teach.</p></li>
+          <li><h3>Android apps</h3><p>Native apps in Kotlin that run well on small phones and large tablets alike.</p></li>
+          <li><h3>iOS apps</h3><p>Swift and SwiftUI apps that follow Apple's design conventions.</p></li>
+          <li><h3>Web learning portals</h3><p>Responsive sites with lessons, assessments, progress dashboards and an admin area.</p></li>
+          <li><h3>Educational games</h3><p>Word puzzles, geography challenges and quiz battles that make practice feel like play.</p></li>
+          <li><h3>Programming courses</h3><p>Skill-building apps for Python, Docker, .NET, Vue.js, Angular, React and other stacks.</p></li>
+          <li><h3>White-label platforms</h3><p>Your branding, your curriculum, your institution, on a platform we build and hand over.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about" aria-labelledby="about-h">
+      <div class="wrap about">
+        <div class="section-head">
+          <h2 id="about-h">Small studio. One focus: learning.</h2>
+          <p>Enhancerworx started in 2018 with a simple belief: learning apps should be easy to start, pleasant to use and rewarding to finish. We build them for Android, iOS and the web, and we keep every one of them up to date after launch.</p>
+        </div>
+        <ul class="principles">
+          <li><h3>Designed around the learner</h3><p>Every screen is built for how people study, with short sessions, clear feedback and visible progress.</p></li>
+          <li><h3>Works without internet</h3><p>Our apps are made to work offline, so learning is not tied to a connection.</p></li>
+          <li><h3>Practice that motivates</h3><p>Quizzes, badges and progress tracking give learners a reason to come back.</p></li>
+          <li><h3>One team, every platform</h3><p>Android, iOS and web products share one design language and one point of contact.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section tint" id="reviews" aria-labelledby="reviews-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="reviews-h">What learners say</h2>
+          <p>Reviews left by users on Google Play.</p>
+        </div>
+        <ul class="reviews" tabindex="0" aria-label="User reviews, scroll sideways to read more">
+          <li><blockquote><p>Very attractive app design with audio feedback. Perfect example how CAI/CBT can be used to enhance learning effortlessly. Please keep adding more topics!</p></blockquote><p class="who"><strong>Aman Sharma</strong> on Learn India Map</p></li>
+          <li><blockquote><p>Excellent application with all necessary details. Enough to guide while studying Indian geography. 5 stars to this app.</p></blockquote><p class="who"><strong>Ganesh Kumar</strong> on Learn India Map</p></li>
+          <li><blockquote><p>This is spectacular!! Really amazing, hats off, guys! Please make a world map version too!</p></blockquote><p class="who"><strong>Adeena Ameen</strong> on Learn India Map</p></li>
+          <li><blockquote><p>Baccho ke liye mast app hai. Easy to understand. My kids love using it for their studies!</p></blockquote><p class="who"><strong>Anupama Sharma</strong> on Learn India Map</p></li>
+          <li><blockquote><p>I love this app. Please add more questions in the diagram quiz section. Extremely helpful for biology students.</p></blockquote><p class="who"><strong>Virendra Saran</strong> on Learn Biology Diagrams</p></li>
+          <li><blockquote><p>Exceptional experience, very good app for easy learning. Covers all the major world maps in a simple and intuitive way.</p></blockquote><p class="who"><strong>Pasupureeddy Mahendra</strong> on Learn World Maps</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-h">
+      <div class="wrap split">
+        <div class="section-head">
+          <h2 id="contact-h">Tell us what you want to teach</h2>
+          <p>Describe your idea in a few lines. We reply within one business day, usually with a few questions and a rough plan.</p>
+          <p class="mail-line">Prefer email? Write to <a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></p>
+        </div>
+
+        <form class="form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <div class="field">
+            <label for="fname">Your name</label>
+            <input id="fname" name="name" type="text" autocomplete="name" required maxlength="100">
           </div>
-          <div class="ctf-group">
-            <label for="ftype">Project Type</label>
-            <select id="ftype">
-              <option value="">Select a service...</option>
-              <option>EdTech App Development</option>
-              <option>Android App Development</option>
-              <option>iOS App Development</option>
-              <option>Web Learning Application</option>
-              <option>Educational Game</option>
-              <option>IT Training App</option>
-              <option>LMS / Learning Platform</option>
-              <option>Custom Learning Solution</option>
-              <option>Other</option>
+          <div class="field">
+            <label for="femail">Email address</label>
+            <input id="femail" name="email" type="email" autocomplete="email" required maxlength="150">
+          </div>
+          <div class="field">
+            <label for="ftype">What do you need?</label>
+            <select id="ftype" name="project_type">
+              <option value="">Choose one</option>
+              <option>Learning app</option>
+              <option>Android app</option>
+              <option>iOS app</option>
+              <option>Web learning portal</option>
+              <option>Educational game</option>
+              <option>Programming course app</option>
+              <option>White-label platform</option>
+              <option>Something else</option>
             </select>
           </div>
-          <div class="ctf-group">
-            <label for="fmsg">Message</label>
-            <textarea id="fmsg" rows="5" placeholder="Tell us about your project, target audience, and timeline..."></textarea>
+          <div class="field">
+            <label for="fmsg">Your message</label>
+            <textarea id="fmsg" name="message" rows="5" maxlength="2000"></textarea>
           </div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Send Message ↗</button>
-          <p class="ctf-note">Replied within 24 hours · <a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a></p>
+          <!-- Spam trap: real people never see or fill this field -->
+          <div class="trap" aria-hidden="true">
+            <label for="fweb">Leave this empty</label>
+            <input id="fweb" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <button class="btn btn-solid" type="submit" id="sendBtn">Send message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form-fine">We only use your details to reply to this message. See our <a href="privacyPolicy.html">privacy policy</a>.</p>
         </form>
       </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <img src="img/mark.webp" width="36" height="36" alt="">
+        <span class="brand-name">Enhancer<span>worx</span></span>
+      </a>
+      <p class="tag">Learn. Build. Grow.</p>
+      <nav aria-label="Footer">
+        <a href="privacyPolicy.html">Privacy policy</a>
+        <a href="termsOfService.html">Terms of service</a>
+        <a href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a>
+      </nav>
+      <p class="copy">&copy; <span id="year">2026</span> Enhancerworx. All rights reserved.</p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="ft-brand">
-        <span class="brand-mark sm" style="overflow:hidden;padding:0;">
-          <img src="img/latestlogo.png" alt="EW" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.textContent='EW'">
-        </span>
-        <span class="brand-name">Enhancerworx</span>
-      </div>
-      <p class="ft-copy">© 2026 Enhancerworx. All rights reserved. · EdTech App Development Studio</p>
-      <div class="ft-links">
-        <a href="privacyPolicy.html">Privacy Policy</a>
-        <a href="termsOfService.html">Terms</a>
-        <a href="mailto:enhancerworx@gmail.com">Contact</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Back to top -->
-<a href="#home" class="btt" id="btt" aria-label="Back to top">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-    <polyline points="18 15 12 9 6 15"/>
-  </svg>
-</a>
-
-<script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

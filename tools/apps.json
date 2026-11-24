@@ -1,0 +1,44 @@
+{
+  "developer_url": "https://play.google.com/store/apps/dev?id=4708968670969888010",
+  "categories": [
+    {"id": "geography", "title": "Geography and maps", "blurb": "Tap-to-learn maps, flags and capitals. Most work offline."},
+    {"id": "humanities", "title": "Humanities and languages", "blurb": "History, civics, economics and English for school and exam preparation."},
+    {"id": "science", "title": "Science and maths", "blurb": "Biology, physics, chemistry, maths and astronomy with quizzes and notes."},
+    {"id": "tech", "title": "Programming and IT", "blurb": "Video lessons, labs, quizzes and certificates for developers and IT learners."},
+    {"id": "games", "title": "Games and creativity", "blurb": "Puzzle games and a sketching toolkit."}
+  ],
+  "apps": [
+    {"slug": "india", "name": "Learn India Map & Geography", "cat": "geography", "pkg": "com.enhancerworx.indiamap", "desc": "Interactive India maps in English and Hindi with 700+ places, 1000+ quiz questions and notes. Works offline."},
+    {"slug": "flags", "name": "Learn World Flags and Capitals", "cat": "geography", "pkg": "com.enhancerworx.flags", "desc": "Flags and capitals of 245 countries and territories, with memory games and quizzes."},
+    {"slug": "water", "name": "World Water Bodies - Offline", "cat": "geography", "pkg": "com.enhancerworx.worldwaterbodies", "desc": "Tap oceans, seas, rivers and lakes on a map, then take a timed quiz. Works offline."},
+    {"slug": "world", "name": "Learn World Map (Offline)", "cat": "geography", "pkg": "", "desc": "A touch-based world map for learning countries and continents. Works offline."},
+
+    {"slug": "history", "name": "Ancient Indian History Maps", "cat": "humanities", "pkg": "com.enhancerworx.ancientindianhistory", "desc": "Maps, a timeline, short lessons and MCQs from the Stone Age to the Cholas. Works offline."},
+    {"slug": "worldhistory", "name": "World History Master", "cat": "humanities", "pkg": "com.enhancerworx.worldhistory", "desc": "Study world history with lessons and quizzes.", "initials": "WH"},
+    {"slug": "const", "name": "Learn Indian Constitution", "cat": "humanities", "pkg": "com.enhancerworx.newindianconstitution", "desc": "Read and revise the Indian Constitution with quizzes."},
+    {"slug": "economics", "name": "Learn Economics: Notes & Quiz", "cat": "humanities", "pkg": "com.enhancerworx.learneconomics", "desc": "Economics notes with quizzes to test yourself.", "initials": "LE"},
+    {"slug": "english", "name": "English Grammar & Vocabulary", "cat": "humanities", "pkg": "com.enhancerworx.englishgrammar", "desc": "Practise English grammar and build your vocabulary.", "initials": "EG"},
+
+    {"slug": "biology", "name": "Biology Diagrams & Quizzes", "cat": "science", "pkg": "com.enhancerworx.biologydiagrams", "desc": "Interactive biology diagrams, study chapters and 500+ quizzes."},
+    {"slug": "learnbiology", "name": "Learn Biology: Notes & Quiz", "cat": "science", "pkg": "com.enhancerworx.learnbiology", "desc": "Biology notes with quizzes to test yourself.", "initials": "LB"},
+    {"slug": "physics", "name": "Learn Physics: Notes & Quiz", "cat": "science", "pkg": "com.enhancerworx.learnphysics", "desc": "Physics notes with quizzes to test yourself.", "initials": "LP"},
+    {"slug": "maths", "name": "Learn Maths: JEE, Boards, CUET", "cat": "science", "pkg": "com.enhancerworx.learnmaths", "desc": "Maths practice for JEE, board exams and CUET.", "initials": "LM"},
+    {"slug": "periodic", "name": "Learn Periodic Table (Offline)", "cat": "science", "pkg": "com.enhancerworx.periodictableoffline", "desc": "Tap any element for its details, then play games and take quizzes. Works offline.", "initials": "PT"},
+    {"slug": "solar", "name": "Solar System: Touch & Learn", "cat": "science", "pkg": "", "desc": "Touch the planets and learn about the solar system."},
+
+    {"slug": "python", "name": "Python Pro: Complete Course", "cat": "tech", "pkg": "com.enhancerworx.learnpython", "desc": "Video tutorials, lessons, quizzes and notes to learn Python step by step."},
+    {"slug": "git", "name": "Learn Git: Full Masterclass", "cat": "tech", "pkg": "com.enhancerworx.learngit", "desc": "Git tutorials with animations, quizzes, notes and interview practice.", "initials": "Git"},
+    {"slug": "docker", "name": "Learn Docker: Full Masterclass", "cat": "tech", "pkg": "com.enhancerworx.learndocker", "desc": "Docker lessons with progress tracking, quizzes and a completion certificate."},
+    {"slug": "dotnet", "name": "Learn ASP.NET Core: Pro Guide", "cat": "tech", "pkg": "com.enhancerworx.learnaspnet", "desc": "Learn ASP.NET Core with lessons and quizzes."},
+    {"slug": "vue", "name": "Learn Vue.js: Master & Quiz", "cat": "tech", "pkg": "com.enhancerworx.learnvuejs", "desc": "Learn Vue.js with lessons and quizzes."},
+    {"slug": "angular", "name": "Learn Angular: Master & Quiz", "cat": "tech", "pkg": "com.enhancerworx.learnangular", "desc": "Learn Angular with lessons and quizzes."},
+    {"slug": "react", "name": "Learn React", "cat": "tech", "pkg": "com.enhancerworx.learnreact", "desc": "Learn React with lessons and quizzes."},
+    {"slug": "ai", "name": "AI Master: Learn AI & ML", "cat": "tech", "pkg": "com.enhancerworx.learnaiml", "desc": "Learn artificial intelligence and machine learning with lessons and quizzes.", "initials": "AI"},
+    {"slug": "ccna", "name": "Networking and Security", "cat": "tech", "pkg": "com.enhancerworx.learnccna", "desc": "CCNA-focused video lessons, animations, 28 hands-on labs and quizzes.", "initials": "NS"},
+
+    {"slug": "snake", "name": "Snake Word: Word Puzzle Fun", "cat": "games", "pkg": "com.enhancerworx.snakewordpuzzles", "desc": "A word puzzle game with a snake twist."},
+    {"slug": "merge", "name": "Merge Balls 2048: Drop Puzzle", "cat": "games", "pkg": "com.enhancerworx.mergeballs2048", "desc": "Drop and merge balls in a 2048-style puzzle.", "initials": "MB"},
+    {"slug": "rock", "name": "Rock Balance Master", "cat": "games", "pkg": "com.enhancerworx.rockbalancemaster", "desc": "A rock-balancing puzzle game.", "initials": "RB"},
+    {"slug": "art", "name": "Art Grid: Learn to Sketch", "cat": "games", "pkg": "com.enhancerworx.artgrid", "desc": "Put a grid over a photo and sketch with accurate proportions."}
+  ]
+}

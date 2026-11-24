@@ -1,0 +1,12 @@
+{
+  "name": "Enhancerworx",
+  "short_name": "Enhancerworx",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F8FAFE",
+  "theme_color": "#1558E8",
+  "icons": [
+    {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
