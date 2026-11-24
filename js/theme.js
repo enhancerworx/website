@@ -1,9 +1,10 @@
 /* Runs before first paint so the page never flashes the wrong theme. */
 (function () {
-  var t = null;
+  var d = document.documentElement, t = null;
+  d.classList.add('js');
   try { t = localStorage.getItem('ew-theme'); } catch (e) {}
   if (t !== 'light' && t !== 'dark') {
     t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-  document.documentElement.setAttribute('data-theme', t);
+  d.setAttribute('data-theme', t);
 })();

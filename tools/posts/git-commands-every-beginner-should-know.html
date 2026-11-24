@@ -1,0 +1,74 @@
+<!--
+{
+  "title": "12 Git commands every beginner should know",
+  "description": "The Git commands you will actually use every day, explained in plain English with examples, plus how to fix the most common beginner mistakes.",
+  "date": "2026-11-24",
+  "order": 4,
+  "category": "Programming",
+  "cover": "tech",
+  "apps": ["git", "docker"]
+}
+-->
+<p>Git has well over a hundred commands, but day-to-day work uses about a dozen. Learn these well and you can work confidently on your own projects and in a team. Every command below is something you can try in a folder on your computer in a few minutes.</p>
+
+<h2>Setting up</h2>
+<h3>1. git config</h3>
+<p>Tell Git who you are. This name and email appear on every commit you make.</p>
+<pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+
+<h3>2. git init and git clone</h3>
+<p><code>git init</code> turns the current folder into a new repository. <code>git clone</code> downloads an existing repository, with its full history, from a site such as GitHub.</p>
+<pre><code>git init
+git clone https://github.com/user/project.git</code></pre>
+
+<h2>The everyday loop</h2>
+<h3>3. git status</h3>
+<p>Shows which files have changed, which are staged for the next commit and which Git is not tracking. Run it often; it is the quickest way to understand where you are.</p>
+
+<h3>4. git add</h3>
+<p>Stages changes, which means choosing what goes into the next commit. <code>git add file.txt</code> stages one file; <code>git add .</code> stages everything in the current folder.</p>
+
+<h3>5. git commit</h3>
+<p>Saves a snapshot of the staged changes with a message. Write messages that say <em>what</em> changed and <em>why</em>, such as &ldquo;Fix crash when quiz has no questions&rdquo;.</p>
+<pre><code>git commit -m "Add dark mode toggle"</code></pre>
+
+<h3>6. git log</h3>
+<p>Lists past commits. <code>git log --oneline</code> gives a compact one-line-per-commit view that is easier to scan.</p>
+
+<h3>7. git diff</h3>
+<p>Shows exactly what changed, line by line. On its own it shows unstaged changes; <code>git diff --staged</code> shows what you are about to commit.</p>
+
+<h2>Branches</h2>
+<h3>8. git branch and git switch</h3>
+<p>A branch lets you work on a feature without touching the main code. Create one and move to it in a single step:</p>
+<pre><code>git switch -c feature/login
+git branch            # list branches
+git switch main       # go back to main</code></pre>
+<p>Older tutorials use <code>git checkout</code> for this. It still works, but <code>git switch</code> is clearer.</p>
+
+<h3>9. git merge</h3>
+<p>Brings the changes from one branch into the current branch. To merge a finished feature, switch to <code>main</code> and run <code>git merge feature/login</code>. If both branches changed the same lines, Git asks you to resolve a conflict by editing the file and committing the result.</p>
+
+<h2>Working with a remote</h2>
+<h3>10. git pull</h3>
+<p>Downloads new commits from the remote repository and merges them into your branch. Pull before you start work so you build on the latest version.</p>
+
+<h3>11. git push</h3>
+<p>Uploads your commits to the remote. The first time you push a new branch, use <code>git push -u origin feature/login</code> so Git remembers where it belongs.</p>
+<aside class="callout"><strong>Seeing &ldquo;rejected (non-fast-forward)&rdquo;?</strong> It means the remote has commits that you do not have locally. Run <code>git pull</code>, resolve any conflicts, then push again. Avoid <code>git push --force</code> on shared branches, because it can delete other people&rsquo;s work.</aside>
+
+<h2>Undoing mistakes</h2>
+<h3>12. git restore and git commit --amend</h3>
+<p>Everyone makes mistakes; Git makes most of them easy to undo.</p>
+<ul>
+  <li><code>git restore file.txt</code> throws away unstaged changes to a file. Be careful: those changes are gone.</li>
+  <li><code>git restore --staged file.txt</code> unstages a file but keeps your changes.</li>
+  <li><code>git commit --amend</code> lets you fix the message of your last commit or add a forgotten file to it. Only amend commits you have not pushed yet.</li>
+</ul>
+
+<h2>A good habit to start with</h2>
+<p>Commit small and often. A commit that does one thing is easy to understand, easy to review and easy to undo. Combine that with a quick <code>git status</code> before every commit and you will avoid most beginner problems.</p>
+
+<h2>Keep learning</h2>
+<p>Once these commands feel natural, explore <code>git stash</code>, <code>git rebase</code> and pull requests. Our <a href="/apps/git.html">Learn Git: Full Masterclass</a> app teaches all of this with animations that show what each command does to your history, plus quizzes and interview practice. When you are ready to package and ship your projects, <a href="/apps/docker.html">Learn Docker</a> is a natural next step.</p>

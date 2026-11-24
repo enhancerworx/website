@@ -10,6 +10,8 @@
   "effective_date": "24 November 2026",
   "governing_law": "the laws of India",
   "skip_category_clauses": ["art"],
+  "all_ages": ["snake", "merge", "rock"],
+  "min_age": 13,
 
   "categories": {
     "geography": {

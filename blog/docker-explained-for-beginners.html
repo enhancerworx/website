@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Docker explained for beginners: images, containers and your first app</title>
+  <meta name="description" content="What Docker is, how images and containers differ, how containers compare with virtual machines, and the commands to run and build your first container.">
+  <link rel="canonical" href="https://www.enhancerworx.in/blog/docker-explained-for-beginners.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Enhancerworx">
+  <meta name="theme-color" content="#F7F9FD" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0A1220" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'self'; manifest-src 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Enhancerworx">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:title" content="Docker explained for beginners: images, containers and your first app">
+  <meta property="og:description" content="What Docker is, how images and containers differ, how containers compare with virtual machines, and the commands to run and build your first container.">
+  <meta property="og:url" content="https://www.enhancerworx.in/blog/docker-explained-for-beginners.html">
+  <meta property="og:image" content="https://www.enhancerworx.in/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Docker explained for beginners: images, containers and your first app">
+  <meta name="twitter:description" content="What Docker is, how images and containers differ, how containers compare with virtual machines, and the commands to run and build your first container.">
+  <meta name="twitter:image" content="https://www.enhancerworx.in/img/og-image.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Enhancerworx blog" href="/blog/feed.xml">
+  <link rel="preload" href="/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/js/theme.js?v=20261124c"></script>
+  <link rel="stylesheet" href="/css/style.css?v=20261124c">
+  <meta property="article:published_time" content="2026-11-24">
+  <meta property="article:section" content="Programming">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker explained for beginners: images, containers and your first app","description":"What Docker is, how images and containers differ, how containers compare with virtual machines, and the commands to run and build your first container.","datePublished":"2026-11-24","dateModified":"2026-11-24","articleSection":"Programming","wordCount":652,"image":"https://www.enhancerworx.in/img/og-image.jpg","mainEntityOfPage":"https://www.enhancerworx.in/blog/docker-explained-for-beginners.html","inLanguage":"en-IN","author":{"@type":"Organization","name":"Enhancerworx","url":"https://www.enhancerworx.in/"},"publisher":{"@type":"Organization","name":"Enhancerworx","logo":{"@type":"ImageObject","url":"https://www.enhancerworx.in/icon-512.png"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.enhancerworx.in/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.enhancerworx.in/blog/"},{"@type":"ListItem","position":3,"name":"Docker explained for beginners: images, containers and your first app","item":"https://www.enhancerworx.in/blog/docker-explained-for-beginners.html"}]}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <div class="wrap bar">
+      <a class="brand" href="/" aria-label="Enhancerworx home">
+        <img src="/img/mark.webp" width="40" height="40" alt="">
+        <span class="brand-name">Enhancer<span>worx</span></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="/#apps">Apps</a><a href="/#services">Services</a><a href="/#process">Process</a><a href="/#about">About</a><a href="/blog/" aria-current="page">Blog</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a>
+        <a class="nav-cta" href="/#contact">Start a project</a>
+      </nav>
+      <div class="bar-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme"><svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        <a class="btn btn-sm btn-solid hide-sm" href="/#contact">Start a project</a>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="m1" d="M4 7h16"/><path class="m2" d="M4 12h16"/><path class="m3" d="M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="post-hero">
+        <div class="wrap post-hero-grid">
+          <div>
+            <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Docker explained for beginners: images, containers and your first app</span></nav>
+            <p class="eyebrow">Programming</p>
+            <h1>Docker explained for beginners: images, containers and your first app</h1>
+            <p class="page-lead">What Docker is, how images and containers differ, how containers compare with virtual machines, and the commands to run and build your first container.</p>
+            <p class="post-byline"><img src="/img/mark.webp" width="32" height="32" alt=""><span>By <strong>Enhancerworx team</strong><br><time datetime="2026-11-24">24 November 2026</time> · 3 min read</span></p>
+          </div>
+          <div class="cover cover-tech cover-lg" aria-hidden="true"><span class="cover-cat">Programming</span><span class="cover-icons"><img src="/img/app-docker.webp" width="64" height="64" alt="" loading="lazy"><img src="/img/app-git.webp" width="64" height="64" alt="" loading="lazy"></span></div>
+        </div>
+      </header>
+      <div class="wrap post-layout">
+        <div class="prose">
+<p>&ldquo;It works on my machine&rdquo; is one of the oldest problems in software. Your app runs perfectly on your laptop, then fails on a colleague&rsquo;s computer or on the server because of a different library version or a missing setting. Docker solves this by packaging an application together with everything it needs to run.</p>
+
+<h2>What Docker actually does</h2>
+<p>Docker lets you put your code, its runtime, its libraries and its configuration into a single package called an <strong>image</strong>. Anyone with Docker can run that image and get the same result, whether they use Windows, macOS or Linux.</p>
+
+<h2>Images and containers</h2>
+<p>These two words cause the most confusion, so it is worth getting them clear:</p>
+<ul>
+  <li>An <strong>image</strong> is a read-only template. Think of it as a recipe, or as a class in programming.</li>
+  <li>A <strong>container</strong> is a running instance of an image. It is the dish cooked from the recipe, or an object created from the class.</li>
+</ul>
+<p>You can start many containers from the same image, and each one runs in isolation from the others.</p>
+
+<h2>Containers versus virtual machines</h2>
+<p>A virtual machine runs a complete guest operating system on top of virtual hardware. A container shares the host computer&rsquo;s operating system kernel and isolates only the application and its dependencies. As a result, containers usually start in seconds, use less memory and are much smaller to store and share. Virtual machines still make sense when you need a different operating system or stronger isolation.</p>
+
+<h2>Your first container</h2>
+<p>After installing Docker, try this:</p>
+<pre><code>docker run hello-world</code></pre>
+<p>Docker downloads the <code>hello-world</code> image from Docker Hub, starts a container and prints a message. Next, run a real web server:</p>
+<pre><code>docker run -d -p 8080:80 --name web nginx</code></pre>
+<p>Open <code>http://localhost:8080</code> in your browser and you will see the nginx welcome page. Here <code>-d</code> runs the container in the background, and <code>-p 8080:80</code> maps port 8080 on your computer to port 80 inside the container.</p>
+
+<h2>Commands you will use every day</h2>
+<ul>
+  <li><code>docker ps</code> lists running containers; add <code>-a</code> to include stopped ones.</li>
+  <li><code>docker images</code> lists the images on your machine.</li>
+  <li><code>docker logs web</code> shows a container&rsquo;s output.</li>
+  <li><code>docker stop web</code> and <code>docker rm web</code> stop and remove a container.</li>
+  <li><code>docker exec -it web sh</code> opens a shell inside a running container.</li>
+</ul>
+
+<h2>Building your own image with a Dockerfile</h2>
+<p>A Dockerfile is a text file of instructions for building an image. Here is one for a small Python app:</p>
+<pre><code>FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]</code></pre>
+<p>Build and run it:</p>
+<pre><code>docker build -t my-app .
+docker run my-app</code></pre>
+<p>Notice that <code>requirements.txt</code> is copied and installed before the rest of the code. Docker caches each step, so when you change only your code, it skips reinstalling the libraries and rebuilds much faster.</p>
+
+<h2>Keeping data with volumes</h2>
+<p>Anything written inside a container is lost when the container is removed. To keep data, such as a database&rsquo;s files, use a <strong>volume</strong>:</p>
+<pre><code>docker run -d -v pgdata:/var/lib/postgresql/data -e POSTGRES_PASSWORD=secret postgres</code></pre>
+<p>The data now lives in the <code>pgdata</code> volume and survives restarts and upgrades.</p>
+
+<h2>Running several containers with Docker Compose</h2>
+<p>Real applications often need several services, such as a web app, a database and a cache. Docker Compose describes them all in one <code>compose.yaml</code> file and starts them together with <code>docker compose up</code>. It is the usual next step once single containers feel comfortable.</p>
+
+<aside class="callout"><strong>Tip:</strong> Keep your Dockerfile and compose file in Git with the rest of your code. Then anyone who clones the project can start it with one command.</aside>
+
+<h2>Where to go next</h2>
+<p>Practise by containerising a small project of your own, then add a database with Compose. Our <a href="/apps/docker.html">Learn Docker: Full Masterclass</a> app walks through images, networking, volumes and Compose step by step, with quizzes and a completion certificate. If version control is new to you, start with <a href="/blog/git-commands-every-beginner-should-know.html">the Git commands every beginner should know</a>.</p>
+        </div>
+        <aside class="post-aside" aria-label="Related apps">
+          <div class="aside-box"><h2>Apps in this article</h2><ul class="app-minis"><li class="app-mini">
+              <a href="/apps/docker.html"><img src="/img/app-docker.webp" width="48" height="48" alt="" loading="lazy"><span><strong>Learn Docker: Full Masterclass</strong><small>Programming and IT · 13+</small></span></a>
+              <a class="app-go" href="https://play.google.com/store/apps/details?id=com.enhancerworx.learndocker" target="_blank" rel="noopener noreferrer">Install on Google Play<span class="sr"> Learn Docker: Full Masterclass on Google Play (opens in a new tab)</span></a>
+            </li><li class="app-mini">
+              <a href="/apps/git.html"><img src="/img/app-git.webp" width="48" height="48" alt="" loading="lazy"><span><strong>Learn Git: Full Masterclass</strong><small>Programming and IT · 13+</small></span></a>
+              <a class="app-go" href="https://play.google.com/store/apps/details?id=com.enhancerworx.learngit" target="_blank" rel="noopener noreferrer">Install on Google Play<span class="sr"> Learn Git: Full Masterclass on Google Play (opens in a new tab)</span></a>
+            </li></ul></div>
+          <div class="aside-box aside-cta">
+            <h2>Building a learning app?</h2>
+            <p>We design and build educational apps for schools, institutes and publishers.</p>
+            <a class="btn btn-solid btn-sm" href="/#contact">Start a project</a>
+          </div>
+          <button class="btn btn-line btn-sm share-btn" type="button" data-share="https://www.enhancerworx.in/blog/docker-explained-for-beginners.html" data-title="Docker explained for beginners: images, containers and your first app"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4M21 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm12 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Share article</span></button>
+          <p class="share-note" role="status" aria-live="polite"></p>
+        </aside>
+      </div>
+    </article>
+    <section class="section tint" aria-labelledby="more-h">
+      <div class="wrap">
+        <div class="section-head row-head"><div><p class="eyebrow">Keep reading</p><h2 id="more-h">More from the blog</h2></div><a class="btn btn-line" href="/blog/">All articles</a></div>
+        <div class="post-grid"><article class="post-card" data-cat="Exam preparation">
+          <a class="post-card-link" href="/blog/learn-india-map-for-competitive-exams.html">
+            <div class="cover cover-geo" aria-hidden="true"><span class="cover-cat">Exam preparation</span><span class="cover-icons"><img src="/img/app-india.webp" width="64" height="64" alt="" loading="lazy"><img src="/img/app-history.webp" width="64" height="64" alt="" loading="lazy"></span></div>
+            <div class="post-card-body">
+              <p class="post-meta"><span>Exam preparation</span><span>4 min read</span></p>
+              <h3>How to learn the map of India for UPSC, SSC and state exams</h3>
+              <p>A step-by-step method to learn India&#x27;s map for competitive exams: build a frame, add layers, practise recall on blank maps and revise with spaced repetition.</p>
+              <span class="read-more">Read article <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </article><article class="post-card" data-cat="Study tips">
+          <a class="post-card-link" href="/blog/memorise-world-flags-and-capitals.html">
+            <div class="cover cover-geo" aria-hidden="true"><span class="cover-cat">Study tips</span><span class="cover-icons"><img src="/img/app-flags.webp" width="64" height="64" alt="" loading="lazy"><img src="/img/app-world.webp" width="64" height="64" alt="" loading="lazy"></span></div>
+            <div class="post-card-body">
+              <p class="post-meta"><span>Study tips</span><span>3 min read</span></p>
+              <h3>How to memorise world flags and capitals: 7 techniques that work</h3>
+              <p>Learn the world&#x27;s flags and capitals faster with seven proven techniques: group by region, spot flag families, learn the tricky capitals and test yourself.</p>
+              <span class="read-more">Read article <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </article><article class="post-card" data-cat="Programming">
+          <a class="post-card-link" href="/blog/git-commands-every-beginner-should-know.html">
+            <div class="cover cover-tech" aria-hidden="true"><span class="cover-cat">Programming</span><span class="cover-icons"><img src="/img/app-git.webp" width="64" height="64" alt="" loading="lazy"><img src="/img/app-docker.webp" width="64" height="64" alt="" loading="lazy"></span></div>
+            <div class="post-card-body">
+              <p class="post-meta"><span>Programming</span><span>3 min read</span></p>
+              <h3>12 Git commands every beginner should know</h3>
+              <p>The Git commands you will actually use every day, explained in plain English with examples, plus how to fix the most common beginner mistakes.</p>
+              <span class="read-more">Read article <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </article></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="/" aria-label="Enhancerworx home">
+            <img src="/img/mark.webp" width="36" height="36" alt="">
+            <span class="brand-name">Enhancer<span>worx</span></span>
+          </a>
+          <p>Educational apps for Android, iOS and the web. Learn. Build. Grow.</p>
+          <a class="foot-mail" href="mailto:enhancerworx@gmail.com">enhancerworx@gmail.com</a>
+        </div>
+        <nav aria-label="Apps by subject">
+          <h2>Apps</h2>
+          <a href="/#cat-geography">Geography and maps</a><a href="/#cat-humanities">Humanities and languages</a><a href="/#cat-science">Science and maths</a><a href="/#cat-tech">Programming and IT</a><a href="/#cat-games">Games and creativity</a>
+          <a href="https://play.google.com/store/apps/dev?id=4708968670969888010" target="_blank" rel="noopener noreferrer">All apps on Google Play</a>
+        </nav>
+        <nav aria-label="Company">
+          <h2>Company</h2>
+          <a href="/#services">Services</a>
+          <a href="/#process">How we work</a>
+          <a href="/#about">About</a>
+          <a href="/blog/">Blog</a>
+          <a href="/#faq">FAQ</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <nav aria-label="Legal">
+          <h2>Legal</h2>
+          <a href="/terms/">App terms of service</a>
+          <a href="/privacyPolicy.html">Privacy policy</a>
+          <a href="/termsOfService.html">Website terms</a>
+          <a href="/blog/feed.xml">RSS feed</a>
+        </nav>
+      </div>
+      <div class="copy">
+        <p>&copy; <span id="year">2026</span> Enhancerworx. All rights reserved.</p>
+        <p>Google Play is a trademark of Google LLC.</p>
+      </div>
+    </div>
+  </footer>
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <script src="/js/main.js?v=20261124c" defer></script>
+</body>
+</html>

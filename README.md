@@ -1,25 +1,38 @@
 # Enhancerworx website
 
-Static site for https://www.enhancerworx.in, hosted on GitHub Pages. No build step, no dependencies.
+Static site for https://www.enhancerworx.in, hosted on GitHub Pages. The pages in this folder are ready to publish as they are; the build script only regenerates them after you change the data.
 
-## Edit the app list
-1. Open `tools/apps.json` and add, change or remove an app.
-2. Square icon at `img/app-<slug>.webp`. Optional screenshots at `img/screens/<slug>-1.webp`, `-2.webp`, ...
-3. Run `python3 tools/build_apps.py` (needs Python 3 and `pip install pillow`). It rewrites the app lists in `index.html`.
-4. Commit and push.
+## Rebuild after any change
+```
+python3 tools/build.py        (Windows: py tools\build.py)
+```
+This regenerates the homepage app list, the shared header and footer on every page, the blog, one page per app (`/apps/`), one Terms of Service page per app (`/terms/`), `sitemap.xml` and the RSS feed (`/blog/feed.xml`). Pillow (`pip install pillow`) is optional and only used to read screenshot sizes.
 
-## App Terms of Service (for Google Play Console)
-Every app has its own page at `https://www.enhancerworx.in/terms/<slug>.html`, with a list of all of them at `/terms/`.
-- Paste each app's URL into Play Console > App content (or Store settings) > Terms of Service. All URLs are listed in `tools/terms-urls.csv`.
-- Shared wording lives in `tools/build_terms.py`; developer details, dates and app-specific clauses live in `tools/terms.json`.
-- `python3 tools/build_apps.py` rebuilds the app list and all terms pages and the sitemap. Run `python3 tools/build_terms.py` to rebuild only the terms.
-- New app? Add it to `tools/apps.json` (and optionally to `tools/terms.json`), run the build, and its terms page is created automatically.
+## Common edits
+| What | Where |
+|---|---|
+| Add, change or remove an app | `tools/apps.json`, icon at `img/app-<slug>.webp`, screenshots at `img/screens/<slug>-1.webp` |
+| Write a blog post | Add `tools/posts/<url-name>.html` (copy an existing post: JSON header, then the article HTML) |
+| Terms of Service wording, ages, developer details | `tools/terms.json` (data) and `tools/build_terms.py` (wording) |
+| Header, footer, menu, SEO tags | `tools/layout.py` |
+| Homepage text | `index.html` (edit outside the `<!--NAME:START-->...<!--NAME:END-->` markers) |
+| Styles / scripts | `css/style.css`, `js/main.js` |
 
-## Contact form
-Sends through Formspree. Create a form at formspree.io, then replace `YOUR_FORM_ID` in `index.html` (search for it) with your form ID.
+## Ages
+All apps are 13+ except the games listed under `"all_ages"` in `tools/terms.json` (Snake Word, Merge Balls 2048, Rock Balance Master).
 
-## Do not delete
-`CNAME`, `app-ads.txt` and `google7f809a8f1b46f7d8.html` (Search Console ownership).
+## Play Console: Terms of Service URLs
+Each app: `https://www.enhancerworx.in/terms/<slug>.html`. The full list is in `tools/terms-urls.csv`.
 
 ## After changing CSS or JS
-Browsers keep old copies of `css/style.css` and `js/*.js`. When you change them, bump the `?v=` number on their links (search for `?v=` in the HTML files and `tools/build_terms.py`, then run the build) so visitors get the new version immediately.
+Browsers cache `css/style.css` and `js/*.js`. Bump `ASSET_V` in `tools/layout.py` and run the build so visitors get the new files immediately.
+
+## Contact form
+Sends through Formspree (form ID in `index.html`, search for `formspree.io/f/`).
+
+## SEO checklist after publishing
+1. In Google Search Console, submit `https://www.enhancerworx.in/sitemap.xml`.
+2. Use URL Inspection on the homepage and one blog post to request indexing.
+
+## Do not delete
+`CNAME`, `app-ads.txt`, `.nojekyll` and `google7f809a8f1b46f7d8.html` (Search Console ownership).

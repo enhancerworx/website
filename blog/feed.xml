@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Enhancerworx Blog</title>
+    <link>https://www.enhancerworx.in/blog/</link>
+    <atom:link href="https://www.enhancerworx.in/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Study guides, programming tutorials and learning-app advice from Enhancerworx.</description>
+    <language>en-in</language>
+    <item>
+      <title>How to learn the map of India for UPSC, SSC and state exams</title>
+      <link>https://www.enhancerworx.in/blog/learn-india-map-for-competitive-exams.html</link>
+      <guid isPermaLink="true">https://www.enhancerworx.in/blog/learn-india-map-for-competitive-exams.html</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0530</pubDate>
+      <category>Exam preparation</category>
+      <description>A step-by-step method to learn India&#x27;s map for competitive exams: build a frame, add layers, practise recall on blank maps and revise with spaced repetition.</description>
+    </item>
+    <item>
+      <title>How to memorise world flags and capitals: 7 techniques that work</title>
+      <link>https://www.enhancerworx.in/blog/memorise-world-flags-and-capitals.html</link>
+      <guid isPermaLink="true">https://www.enhancerworx.in/blog/memorise-world-flags-and-capitals.html</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0530</pubDate>
+      <category>Study tips</category>
+      <description>Learn the world&#x27;s flags and capitals faster with seven proven techniques: group by region, spot flag families, learn the tricky capitals and test yourself.</description>
+    </item>
+    <item>
+      <title>12 Git commands every beginner should know</title>
+      <link>https://www.enhancerworx.in/blog/git-commands-every-beginner-should-know.html</link>
+      <guid isPermaLink="true">https://www.enhancerworx.in/blog/git-commands-every-beginner-should-know.html</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0530</pubDate>
+      <category>Programming</category>
+      <description>The Git commands you will actually use every day, explained in plain English with examples, plus how to fix the most common beginner mistakes.</description>
+    </item>
+    <item>
+      <title>Docker explained for beginners: images, containers and your first app</title>
+      <link>https://www.enhancerworx.in/blog/docker-explained-for-beginners.html</link>
+      <guid isPermaLink="true">https://www.enhancerworx.in/blog/docker-explained-for-beginners.html</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0530</pubDate>
+      <category>Programming</category>
+      <description>What Docker is, how images and containers differ, how containers compare with virtual machines, and the commands to run and build your first container.</description>
+    </item>
+    <item>
+      <title>How to study biology diagrams for board exams and NEET</title>
+      <link>https://www.enhancerworx.in/blog/study-biology-diagrams-effectively.html</link>
+      <guid isPermaLink="true">https://www.enhancerworx.in/blog/study-biology-diagrams-effectively.html</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0530</pubDate>
+      <category>Exam preparation</category>
+      <description>A practical routine for learning biology diagrams: understand function first, draw from memory, label with blanks, use colour and practise the diagrams examiners ask most.</description>
+    </item>
+    <item>
+      <title>Planning a learning app for your school or institute: a checklist</title>
+      <link>https://www.enhancerworx.in/blog/planning-a-learning-app-for-your-institute.html</link>
+      <guid isPermaLink="true">https://www.enhancerworx.in/blog/planning-a-learning-app-for-your-institute.html</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0530</pubDate>
+      <category>For institutions</category>
+      <description>What to decide before you build an educational app: learners and outcomes, content, offline use, platforms, assessments, privacy, budget and ownership.</description>
+    </item>
+  </channel>
+</rss>
