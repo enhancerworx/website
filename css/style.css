@@ -425,3 +425,41 @@ body.dlg-open { overflow: hidden; }
 .legal-nav { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; }
 .legal-nav a { color: var(--ink-2); text-decoration: none; }
 .legal-nav a:hover { color: var(--azure); text-decoration: underline; }
+
+/* WhatsApp */
+:root { --wa: #25D366; --wa-hover: #1EBE5A; --wa-ink: #05240F; }
+.btn-wa { background: var(--wa); color: var(--wa-ink); gap: .6rem; }
+.btn-wa:hover { background: var(--wa-hover); color: var(--wa-ink); }
+.btn-wa svg { flex: none; }
+.btn-wa:focus-visible, .wa-fab:focus-visible { outline-color: var(--ink); }
+.wa-icon { color: #128C4A; }
+:root[data-theme="dark"] .wa-icon { color: var(--wa); }
+.wa-icon:hover { color: var(--wa-ink); background: var(--wa); border-color: var(--wa); }
+.wa-fab {
+  position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 41; width: 58px; height: 58px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--wa); color: var(--wa-ink); text-decoration: none;
+  box-shadow: 0 8px 22px rgba(5, 36, 15, .35); transition: transform .18s, background-color .18s;
+}
+.wa-fab:hover { background: var(--wa-hover); color: var(--wa-ink); transform: scale(1.06); }
+.to-top { bottom: 5.4rem; right: 1.45rem; width: 40px; height: 40px; }
+
+/* Contact: ways to reach us */
+.ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2.2rem; }
+.ways li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; display: flex; flex-direction: column; align-items: flex-start; gap: .7rem; }
+.ways h3 { font-size: 1.25rem; }
+.ways p { color: var(--ink-2); flex: 1; }
+.ways .btn { margin-top: .6rem; max-width: 100%; }
+.contact-split { margin-top: 3.5rem; }
+.wa-box { position: sticky; top: 110px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 20px; padding: clamp(1.4rem, 3vw, 2rem); display: grid; gap: 1rem; }
+.wa-box h3, .form h3 { font-size: 1.3rem; }
+.wa-box > p { color: var(--ink-2); }
+.wa-box form { display: grid; gap: 1rem; }
+.wa-box .btn { justify-self: start; }
+.wa-hint { min-height: 1.4em; color: var(--ink-2); font-size: .95rem; }
+.wa-box .field input, .wa-box .field select, .wa-box .field textarea { background: var(--surface); }
+.dlg-actions .btn-wa { order: 2; }
+
+@media (max-width: 960px) {
+  .ways { grid-template-columns: 1fr; }
+  .wa-box { position: static; }
+}

@@ -71,7 +71,7 @@ nav = ''.join(f'<a class="chip" href="#cat-{c["id"]}">{esc(c["title"])}</a>' for
 
 gal = []
 for a in apps:
-    for p in screens(a):
+    for p in screens(a)[:1]:
         w, h = size(p)
         gal.append(f'<li><button type="button" class="shot" data-open="{a["slug"]}" aria-label="Open details for {esc(a["name"])}">'
                    f'<img src="{p}" width="{w}" height="{h}" alt="Screenshot of {esc(a["name"])}" loading="lazy"><span>{esc(a["name"])}</span></button></li>')

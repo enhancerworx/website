@@ -9,7 +9,10 @@ Static site for https://www.enhancerworx.in, hosted on GitHub Pages. No build st
 4. Commit and push.
 
 ## Contact form
-Sends through FormSubmit to enhancerworx@gmail.com. The very first submission triggers an activation email: click the link in it once.
+Sends through Formspree. Create a form at formspree.io, then replace `YOUR_FORM_ID` in `index.html` (search for it) with your form ID.
+
+## WhatsApp
+Number is +91 89207 95732 (wa.me/918920795732). To change it, search `918920795732` in `index.html` and `js/main.js`.
 
 ## Do not delete
 `CNAME`, `app-ads.txt` and `google7f809a8f1b46f7d8.html` (Search Console ownership).
