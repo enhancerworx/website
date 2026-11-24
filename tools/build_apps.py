@@ -1,56 +1,97 @@
 #!/usr/bin/env python3
-"""Rebuilds the apps section of index.html from tools/apps.json.
+"""Rebuilds the app lists in index.html from tools/apps.json.
 
-Add an app:  add one entry to tools/apps.json, then run:  python3 tools/build_apps.py
-Icon:        put a square image at img/app-<slug>.webp (or .png/.jpg). With no icon, a coloured tile with initials is used.
-Link:        "pkg" is the part after id= in the Play Store URL. Leave it empty to link to your developer page instead.
+Add an app:
+  1. Add an entry to tools/apps.json ("pkg" is what follows id= in the Play Store URL; leave "" to link to your developer page).
+  2. Put its icon at img/app-<slug>.webp (square). No icon? A coloured tile with initials is used.
+  3. Optional screenshots: img/screens/<slug>-1.webp, <slug>-2.webp ... (they appear in the app's detail window and the gallery).
+  4. Run:  python3 tools/build_apps.py
+Requires Python 3 and, for screenshot sizes, Pillow (pip install pillow).
 """
-import json, html, os, re, sys
+import json, html, os, re, sys, glob
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-data = json.load(open(os.path.join(ROOT, 'tools', 'apps.json'), encoding='utf-8'))
-dev = data['developer_url']
-apps = data['apps']
-cats = data['categories']
-TILES = 5
+os.chdir(ROOT)
+data = json.load(open('tools/apps.json', encoding='utf-8'))
+dev, apps, cats = data['developer_url'], data['apps'], data['categories']
+esc = lambda s: html.escape(s, quote=True)
+cat_title = {c['id']: c['title'] for c in cats}
 
-def icon_for(a, i):
+def play_url(a):
+    return f'https://play.google.com/store/apps/details?id={a["pkg"]}' if a.get('pkg') else dev
+
+def icon(a, i):
     for ext in ('webp', 'png', 'jpg'):
         p = f"img/app-{a['slug']}.{ext}"
-        if os.path.exists(os.path.join(ROOT, p)):
-            return f'<img src="{p}" width="64" height="64" alt="" loading="lazy">'
-    ini = a.get('initials') or ''.join(w[0] for w in re.findall(r'[A-Za-z]+', a['name'])[:2]).upper()
-    return f'<span class="tile t{i % TILES + 1}" aria-hidden="true">{html.escape(ini)}</span>'
+        if os.path.exists(p):
+            return p
+    return None
 
-out = []
-n = 0
-for c in cats:
+def screens(a):
+    return sorted(glob.glob(f"img/screens/{a['slug']}-*.*"))
+
+def size(p):
+    try:
+        from PIL import Image
+        w, h = Image.open(p).size
+        return w, h
+    except Exception:
+        return 166, 296
+
+used = [c for c in cats if any(a['cat'] == c['id'] for a in apps)]
+blocks, n = [], 0
+for c in used:
     items = [a for a in apps if a['cat'] == c['id']]
-    if not items:
-        continue
-    out.append(f'<section class="cat" id="cat-{c["id"]}" aria-labelledby="h-{c["id"]}">')
-    out.append(f'  <div class="cat-head"><h3 id="h-{c["id"]}">{html.escape(c["title"])} <span class="count">{len(items)}</span></h3><p>{html.escape(c["blurb"])}</p></div>')
-    out.append('  <ul class="apps">')
+    blocks.append(f'<section class="cat" id="cat-{c["id"]}" aria-labelledby="h-{c["id"]}">')
+    blocks.append(f'  <div class="cat-head"><h3 id="h-{c["id"]}">{esc(c["title"])} <span class="count">{len(items)}</span></h3><p>{esc(c["blurb"])}</p></div>')
+    blocks.append('  <ul class="apps">')
     for a in items:
-        url = f'https://play.google.com/store/apps/details?id={a["pkg"]}' if a.get('pkg') else dev
-        name, desc = html.escape(a['name']), html.escape(a['desc'])
-        search = html.escape((a['name'] + ' ' + a['desc']).lower(), quote=True)
-        out.append(f'    <li data-search="{search}"><a href="{url}" target="_blank" rel="noopener noreferrer">{icon_for(a, n)}'
-                   f'<span class="app-text"><strong>{name}</strong><span>{desc}</span></span>'
-                   f'<span class="app-go">Google Play<span class="sr"> (opens in a new tab)</span></span></a></li>')
+        ic = icon(a, n)
+        sc = screens(a)
+        if ic:
+            img = f'<img src="{ic}" width="64" height="64" alt="" loading="lazy">'
+        else:
+            ini = a.get('initials') or ''.join(w[0] for w in re.findall(r'[A-Za-z]+', a['name'])[:2]).upper()
+            img = f'<span class="tile t{n % 5 + 1}" aria-hidden="true">{esc(ini)}</span>'
+        attrs = (f'data-slug="{a["slug"]}" data-name="{esc(a["name"])}" data-desc="{esc(a["desc"])}" '
+                 f'data-cat="{esc(cat_title[a["cat"]])}" data-url="{esc(play_url(a))}" data-icon="{ic or ""}" '
+                 f'data-points="{esc("|".join(a.get("points", [])))}" data-screens="{esc(",".join(sc))}" '
+                 f'data-search="{esc((a["name"] + " " + a["desc"] + " " + cat_title[a["cat"]]).lower())}"')
+        blocks.append(
+            f'    <li {attrs}><div class="app-row">'
+            f'<button type="button" class="app-open" aria-haspopup="dialog">{img}'
+            f'<span class="app-text"><strong>{esc(a["name"])}</strong><span>{esc(a["desc"])}</span></span></button>'
+            f'<a class="app-go" href="{esc(play_url(a))}" target="_blank" rel="noopener noreferrer">Install<span class="sr"> {esc(a["name"])} on Google Play (opens in a new tab)</span></a>'
+            f'</div></li>')
         n += 1
-    out.append('  </ul>')
-    out.append('</section>')
+    blocks.append('  </ul>')
+    blocks.append('</section>')
 
-block = '\n'.join(out)
-nav = ''.join(f'<a class="chip" href="#cat-{c["id"]}">{html.escape(c["title"])}</a>' for c in cats if any(a['cat'] == c['id'] for a in apps))
+nav = ''.join(f'<a class="chip" href="#cat-{c["id"]}">{esc(c["title"])}</a>' for c in used)
 
-path = os.path.join(ROOT, 'index.html')
-t = open(path, encoding='utf-8').read()
-t, k1 = re.subn(r'<!--APPS:START-->.*?<!--APPS:END-->', lambda m: f'<!--APPS:START-->\n{block}\n<!--APPS:END-->', t, flags=re.S)
-t, k2 = re.subn(r'<!--NAV:START-->.*?<!--NAV:END-->', lambda m: f'<!--NAV:START-->{nav}<!--NAV:END-->', t, flags=re.S)
-t = re.sub(r'(<span id="appTotal">)\d+(</span>)', lambda m: f'{m.group(1)}{n}{m.group(2)}', t)
-if not (k1 and k2):
-    sys.exit('Markers not found in index.html')
-open(path, 'w', encoding='utf-8').write(t)
-print(f'Built {n} apps in {len([c for c in cats if any(a["cat"]==c["id"] for a in apps)])} categories.')
+gal = []
+for a in apps:
+    for p in screens(a):
+        w, h = size(p)
+        gal.append(f'<li><button type="button" class="shot" data-open="{a["slug"]}" aria-label="Open details for {esc(a["name"])}">'
+                   f'<img src="{p}" width="{w}" height="{h}" alt="Screenshot of {esc(a["name"])}" loading="lazy"><span>{esc(a["name"])}</span></button></li>')
+
+foot = ''.join(f'<a href="#cat-{c["id"]}">{esc(c["title"])}</a>' for c in used)
+
+ld = {"@context": "https://schema.org", "@type": "ItemList", "name": "Enhancerworx apps on Google Play",
+      "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": a["name"], "url": play_url(a)}
+                          for i, a in enumerate([a for a in apps if a.get('pkg')])]}
+
+t = open('index.html', encoding='utf-8').read()
+def sub(tag, body):
+    global t
+    t, k = re.subn(rf'<!--{tag}:START-->.*?<!--{tag}:END-->', lambda m: f'<!--{tag}:START-->{body}<!--{tag}:END-->', t, flags=re.S)
+    if not k: sys.exit(f'Marker {tag} not found in index.html')
+sub('APPS', '\n' + '\n'.join(blocks) + '\n')
+sub('NAV', nav)
+sub('GALLERY', '\n'.join(gal))
+sub('FOOTCATS', foot)
+sub('LDAPPS', '<script type="application/ld+json">\n' + json.dumps(ld, indent=2) + '\n</script>')
+t = re.sub(r'(<span class="js-total">)\d+(</span>)', lambda m: f'{m.group(1)}{n}{m.group(2)}', t)
+open('index.html', 'w', encoding='utf-8').write(t)
+print(f'Built {n} apps, {len(used)} categories, {len(gal)} gallery screenshots.')
