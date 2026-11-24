@@ -17,21 +17,50 @@
   });
 })();
 
-/* Mobile menu */
+/* Mobile menu: slide-down panel, locks page scroll, closes on outside tap */
 (function () {
   var btn = document.getElementById('menuBtn');
   var nav = document.getElementById('nav');
   if (!btn || !nav) return;
   function setOpen(open) {
     nav.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
     btn.setAttribute('aria-expanded', String(open));
     btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   }
-  btn.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
-  nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+  btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false);
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); btn.focus(); }
   });
+  window.addEventListener('resize', function () { if (window.innerWidth > 820 && nav.classList.contains('open')) setOpen(false); });
+})();
+
+/* Highlight the subject chip for the category on screen */
+(function () {
+  var chips = document.querySelectorAll('.filters .chip');
+  if (!chips.length || !('IntersectionObserver' in window)) return;
+  var byId = {};
+  chips.forEach(function (c) { byId[c.getAttribute('href').slice(1)] = c; });
+  var current = null;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var chip = byId[en.target.id];
+      if (!chip || chip === current) return;
+      if (current) current.classList.remove('is-active');
+      chip.classList.add('is-active');
+      current = chip;
+      var bar = chip.parentNode;
+      if (bar.scrollWidth > bar.clientWidth) {
+        bar.scrollTo({ left: chip.offsetLeft - bar.offsetLeft - 16, behavior: 'smooth' });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('.cat').forEach(function (s) { io.observe(s); });
 })();
 
 /* App search */
@@ -95,6 +124,8 @@
       shots.appendChild(im);
     });
     el('dlgPlay').href = li.getAttribute('data-url');
+    var terms = el('dlgTerms');
+    if (terms) terms.href = li.getAttribute('data-terms') || 'terms/';
     el('dlgWa').href = WA + '?text=' + encodeURIComponent('Hi Enhancerworx, I have a question about ' + li.getAttribute('data-name') + '.');
     el('dlgNote').textContent = '';
     dlg.setAttribute('data-slug', slug);
@@ -249,7 +280,7 @@
     if (d._gotcha) return; /* a bot filled the hidden field */
 
     var endpoint = form.getAttribute('action');
-    if (endpoint.indexOf('mdegpvov') !== -1) { setStatus(failMessage(d), 'err'); return; } /* Formspree ID not set yet */
+    if (endpoint.indexOf('YOUR_FORM_ID') !== -1) { setStatus(failMessage(d), 'err'); return; } /* Formspree ID not set yet */
 
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -284,4 +315,28 @@
     var w = window.open(url, '_blank', 'noopener');
     hint.textContent = w ? 'WhatsApp opened in a new tab. Press send there to deliver your message.' : 'Your browser blocked the new tab. Allow pop-ups, or use the WhatsApp button above.';
   });
+})();
+
+/* Terms pages: collapse the contents list on small screens, highlight the current section */
+(function () {
+  var toc = document.querySelector('.toc');
+  if (!toc) return;
+  if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) toc.removeAttribute('open');
+  toc.addEventListener('click', function (e) {
+    if (e.target.closest('a') && window.innerWidth <= 900) toc.removeAttribute('open');
+  });
+  if (!('IntersectionObserver' in window)) return;
+  var links = {};
+  toc.querySelectorAll('a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  var cur = null;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var a = links[en.target.id];
+      if (!a || a === cur) return;
+      if (cur) cur.classList.remove('is-active');
+      a.classList.add('is-active'); cur = a;
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('.terms-body section[id]').forEach(function (s) { io.observe(s); });
 })();

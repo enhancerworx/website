@@ -1,0 +1,127 @@
+{
+  "_help": "Data for the per-app Terms of Service pages. Edit, then run: python3 tools/build_apps.py (it also rebuilds the terms pages). 'apps' adds extra clauses for one app; 'categories' adds clauses for every app in a category.",
+  "developer": {
+    "name": "Enhancerworx",
+    "country": "India",
+    "email": "enhancerworx@gmail.com",
+    "phone": "+91 89207 95732",
+    "phone_link": "+918920795732",
+    "website": "https://www.enhancerworx.in",
+    "address": ""
+  },
+  "effective_date": "24 November 2026",
+  "governing_law": "the laws of India",
+  "skip_category_clauses": ["art"],
+
+  "categories": {
+    "geography": {
+      "content": [
+        "Maps in the App are simplified illustrations made for learning. They are not drawn to scale and are not an authoritative depiction of international or internal boundaries. For official boundaries, refer to the relevant government survey authority, such as the Survey of India.",
+        "Including a country, territory or place in the App does not express any view on its political or legal status."
+      ]
+    },
+    "humanities": {
+      "content": [
+        "Exam names mentioned in the App or its listing (for example UPSC, SSC, state PSC or banking exams) are used only to describe who the content may help. Enhancerworx is not affiliated with, endorsed by or connected to any examination body, and using the App does not guarantee any exam result."
+      ]
+    },
+    "science": {
+      "content": [
+        "The App is a study aid. It is not professional, medical or safety advice, and it does not replace your textbooks, teachers or official syllabus.",
+        "Exam names mentioned in the App or its listing are used only to describe who the content may help. Enhancerworx is not affiliated with any examination body or school board, and using the App does not guarantee any exam result."
+      ]
+    },
+    "tech": {
+      "content": [
+        "Code samples, commands and configurations in the App are provided for learning. Try them in a safe test environment first. You are responsible for anything you run on your own or anyone else's systems.",
+        "A certificate of completion issued in the App is a record that you finished the course in the App. It is issued by Enhancerworx, not by any technology vendor, and it is not an official or industry certification.",
+        "Technology names and logos mentioned in the App are trademarks of their respective owners. They are used only to identify the technology being taught. Enhancerworx is not affiliated with or endorsed by those owners."
+      ]
+    },
+    "games": {
+      "content": [
+        "Scores, levels, coins, hints and other in-game items have no monetary value. They cannot be exchanged for money, transferred or sold, and they may be lost if you uninstall the App or clear its data.",
+        "Please play fairly. Do not use cheats, automation, modified versions of the App or any method that manipulates scores, rewards or ads."
+      ]
+    }
+  },
+
+  "apps": {
+    "india": [
+      "The App presents content in English and Hindi. If the two versions differ, the English version is the reference for these terms.",
+      "Notes and favourites you create are saved on your device."
+    ],
+    "flags": [
+      "Flags are shown in a simplified form for learning and may differ in small details, such as proportions or shades, from official specifications."
+    ],
+    "water": [],
+    "world": [],
+    "history": [
+      "Historical dates, maps and interpretations are simplified for learning. Historians sometimes disagree, and dates for ancient periods are often approximate.",
+      "If you make voice or photo notes, the App asks for microphone or camera access. Those notes are saved on your device. You can refuse or withdraw these permissions in your phone's settings; the rest of the App still works."
+    ],
+    "worldhistory": [
+      "Historical dates and interpretations are simplified for learning. Historians sometimes disagree, and dates for ancient periods are often approximate."
+    ],
+    "const": [
+      "The App is a learning aid. It is not the official text of the Constitution of India and may not reflect the most recent amendments or court judgments. For the authoritative text, refer to official Government of India publications.",
+      "Nothing in the App is legal advice. For a legal question, consult a qualified lawyer."
+    ],
+    "economics": [
+      "Nothing in the App is financial, investment or tax advice."
+    ],
+    "english": [],
+    "biology": [
+      "Nothing in the App is medical advice. For health questions, consult a qualified doctor."
+    ],
+    "learnbiology": [
+      "Nothing in the App is medical advice. For health questions, consult a qualified doctor."
+    ],
+    "physics": [
+      "Do not attempt experiments described in the App without proper equipment and supervision by a teacher or other qualified adult."
+    ],
+    "chemistry": [
+      "Do not attempt chemical experiments described in the App without proper equipment, protective gear and supervision by a teacher or other qualified adult. Some chemicals are hazardous."
+    ],
+    "maths": [
+      "JEE and CUET are conducted by the National Testing Agency, and board exams by the respective boards. Enhancerworx is not affiliated with any of them."
+    ],
+    "python": [
+      "\"Python\" is a registered trademark of the Python Software Foundation."
+    ],
+    "git": [
+      "Git and the Git logo are trademarks of the Software Freedom Conservancy.",
+      "The interview practice feature asks for microphone access to record your answers. Recordings stay on your device. You can refuse or withdraw this permission in your phone's settings; the rest of the App still works."
+    ],
+    "docker": [
+      "Docker and the Docker logo are trademarks of Docker, Inc."
+    ],
+    "dotnet": [
+      "Microsoft, .NET and ASP.NET are trademarks of the Microsoft group of companies."
+    ],
+    "vue": [
+      "Vue.js is a trademark of its creator, Evan You."
+    ],
+    "angular": [
+      "Angular is a trademark of Google LLC."
+    ],
+    "react": [
+      "React is a trademark of Meta Platforms, Inc."
+    ],
+    "ai": [
+      "You are responsible for how you use any AI or machine-learning technique you learn from the App, including compliance with data-protection law and the rights of others."
+    ],
+    "ccna": [
+      "Cisco, CCNA and Cisco IOS are trademarks of Cisco Systems, Inc. The App is not Cisco training, and finishing it does not give you a Cisco certification.",
+      "Only run lab commands on simulators or on equipment you own or are authorised to configure. Never test security techniques on networks without the owner's written permission."
+    ],
+    "snake": [],
+    "merge": [],
+    "rock": [],
+    "art": [
+      "When you import a photo or use the camera, the image is processed on your device. Enhancerworx does not upload or claim any rights in your photos or sketches.",
+      "Only use photos you have the right to use. You are responsible for respecting copyright and the privacy of people shown in your images.",
+      "The App asks for camera or photo access only when you use those features. You can refuse or withdraw these permissions in your phone's settings."
+    ]
+  }
+}

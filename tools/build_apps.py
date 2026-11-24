@@ -55,6 +55,7 @@ for c in used:
             img = f'<span class="tile t{n % 5 + 1}" aria-hidden="true">{esc(ini)}</span>'
         attrs = (f'data-slug="{a["slug"]}" data-name="{esc(a["name"])}" data-desc="{esc(a["desc"])}" '
                  f'data-cat="{esc(cat_title[a["cat"]])}" data-url="{esc(play_url(a))}" data-icon="{ic or ""}" '
+                 f'data-terms="terms/{a["slug"]}.html" '
                  f'data-points="{esc("|".join(a.get("points", [])))}" data-screens="{esc(",".join(sc))}" '
                  f'data-search="{esc((a["name"] + " " + a["desc"] + " " + cat_title[a["cat"]]).lower())}"')
         blocks.append(
@@ -95,3 +96,8 @@ sub('LDAPPS', '<script type="application/ld+json">\n' + json.dumps(ld, indent=2)
 t = re.sub(r'(<span class="js-total">)\d+(</span>)', lambda m: f'{m.group(1)}{n}{m.group(2)}', t)
 open('index.html', 'w', encoding='utf-8').write(t)
 print(f'Built {n} apps, {len(used)} categories, {len(gal)} gallery screenshots.')
+
+# Per-app Terms of Service pages (terms/<slug>.html), terms index and sitemap
+sys.path.insert(0, os.path.join(ROOT, 'tools'))
+import build_terms
+build_terms.main()
