@@ -9,10 +9,17 @@
   },
   "effective_date": "24 November 2026",
   "governing_law": "the laws of India",
-  "skip_category_clauses": ["art"],
-  "all_ages": ["snake", "merge", "rock"],
+  "skip_category_clauses": [
+    "art"
+  ],
+  "all_ages": [
+    "snake",
+    "merge",
+    "rock",
+    "wordmaze",
+    "touchpuzzle"
+  ],
   "min_age": 13,
-
   "categories": {
     "geography": {
       "content": [
@@ -45,7 +52,6 @@
       ]
     }
   },
-
   "apps": {
     "india": [
       "The App presents content in English and Hindi. If the two versions differ, the English version is the reference for these terms.",
@@ -122,6 +128,15 @@
       "When you import a photo or use the camera, the image is processed on your device. Enhancerworx does not upload or claim any rights in your photos or sketches.",
       "Only use photos you have the right to use. You are responsible for respecting copyright and the privacy of people shown in your images.",
       "The App asks for camera or photo access only when you use those features. You can refuse or withdraw these permissions in your phone's settings."
-    ]
+    ],
+    "devops": [
+      "Linux is a registered trademark of Linus Torvalds. Docker is a trademark of Docker, Inc. Kubernetes and Jenkins are trademarks of The Linux Foundation. AWS is a trademark of Amazon.com, Inc. or its affiliates. Terraform is a trademark of HashiCorp, Inc. Grafana is a trademark of Grafana Labs.",
+      "Practise infrastructure, deployment and cloud commands only on systems and accounts you own or are authorised to use. Cloud services may charge you for resources you create while practising; you are responsible for those costs."
+    ],
+    "nodejs": [
+      "Node.js is a trademark of the OpenJS Foundation."
+    ],
+    "wordmaze": [],
+    "touchpuzzle": []
   }
 }

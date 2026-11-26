@@ -20,7 +20,7 @@ This regenerates the homepage app list, the shared header and footer on every pa
 | Styles / scripts | `css/style.css`, `js/main.js` |
 
 ## Ages
-All apps are 13+ except the games listed under `"all_ages"` in `tools/terms.json` (Snake Word, Merge Balls 2048, Rock Balance Master).
+All apps are 13+ except the games listed under `"all_ages"` in `tools/terms.json` (Snake Word, Merge Balls 2048, Rock Balance Master, Word Maze, Touch Puzzle).
 
 ## Play Console: Privacy Policy and Terms of Service URLs
 - Privacy policy: `https://www.enhancerworx.in/privacy/<slug>.html`

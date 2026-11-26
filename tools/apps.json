@@ -65,6 +65,10 @@
     {"slug": "ccna", "name": "Networking and Security", "cat": "tech", "pkg": "com.enhancerworx.learnccna",
      "desc": "CCNA-focused video lessons, animations, 28 hands-on labs and quizzes.",
      "points": ["Video tutorials and animated walkthroughs", "28 hands-on labs with real Cisco IOS commands", "Quizzes plus daily, weekly and monthly challenges", "Interview prep and a completion certificate"]},
+    {"slug": "devops", "name": "Learn DevOps: Complete Course", "cat": "tech", "pkg": "com.enhancerworx.devops",
+     "desc": "Learn DevOps step by step: Linux, Docker, Kubernetes, CI/CD, Terraform, cloud and monitoring."},
+    {"slug": "nodejs", "name": "Node.js Tutorial & Course", "cat": "tech", "pkg": "com.enhancerworx.nodejs",
+     "desc": "Learn Node.js from the basics to building servers, APIs and database-backed apps."},
 
     {"slug": "snake", "name": "Snake Word: Word Puzzle Fun", "cat": "games", "pkg": "com.enhancerworx.snakewordpuzzles",
      "desc": "A word puzzle game with a snake twist: guide the snake to eat the letters in order and spell each word."},
@@ -72,6 +76,10 @@
      "desc": "Drop and merge balls in a 2048-style puzzle."},
     {"slug": "rock", "name": "Rock Balance Master", "cat": "games", "pkg": "com.enhancerworx.rockbalancemaster",
      "desc": "A rock-balancing puzzle game."},
+    {"slug": "wordmaze", "name": "Word Maze", "cat": "games", "pkg": "com.enhancerworx.wordmaze",
+     "desc": "A word puzzle game set in colourful mazes: collect letters and spell words to win."},
+    {"slug": "touchpuzzle", "name": "Touch Puzzle", "cat": "games", "pkg": "com.enhancerworx.touchpuzzle",
+     "desc": "Connect the numbered dots in order to solve each puzzle. Simple to learn, fun to master."},
     {"slug": "art", "name": "Art Grid: Learn to Sketch", "cat": "games", "pkg": "com.enhancerworx.artgrid",
      "desc": "Put a grid over a photo and sketch with accurate proportions.",
      "points": ["Import a photo or use the camera", "Set rows, columns, grid colour and line thickness", "Diagonal guides and number/letter labels", "Compare your sketch to the original with the camera"]}
