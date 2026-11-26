@@ -14,6 +14,7 @@ This regenerates the homepage app list, the shared header and footer on every pa
 | Add, change or remove an app | `tools/apps.json`, icon at `img/app-<slug>.webp`, screenshots at `img/screens/<slug>-1.webp` |
 | Write a blog post | Add `tools/posts/<url-name>.html` (copy an existing post: JSON header, then the article HTML) |
 | Terms of Service wording, ages, developer details | `tools/terms.json` (data) and `tools/build_terms.py` (wording) |
+| Privacy policies: SDKs, permissions, on-device data | `tools/privacy.json` (data) and `tools/build_privacy.py` (wording) |
 | Header, footer, menu, SEO tags | `tools/layout.py` |
 | Homepage text | `index.html` (edit outside the `<!--NAME:START-->...<!--NAME:END-->` markers) |
 | Styles / scripts | `css/style.css`, `js/main.js` |
@@ -21,8 +22,11 @@ This regenerates the homepage app list, the shared header and footer on every pa
 ## Ages
 All apps are 13+ except the games listed under `"all_ages"` in `tools/terms.json` (Snake Word, Merge Balls 2048, Rock Balance Master).
 
-## Play Console: Terms of Service URLs
-Each app: `https://www.enhancerworx.in/terms/<slug>.html`. The full list is in `tools/terms-urls.csv`.
+## Play Console: Privacy Policy and Terms of Service URLs
+- Privacy policy: `https://www.enhancerworx.in/privacy/<slug>.html`
+- Terms of service: `https://www.enhancerworx.in/terms/<slug>.html`
+
+The full list for every app is in `tools/app-links.csv`. Privacy wording lives in `tools/build_privacy.py`; third-party services, permissions and on-device data per app are in `tools/privacy.json`.
 
 ## After changing CSS or JS
 Browsers cache `css/style.css` and `js/*.js`. Bump `ASSET_V` in `tools/layout.py` and run the build so visitors get the new files immediately.

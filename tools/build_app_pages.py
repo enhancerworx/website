@@ -57,7 +57,7 @@ def build(a, posts):
     if a.get('pkg'):
         info.append(('Package', f'<code>{esc(a["pkg"])}</code>'))
     info.append(('Terms', f'<a href="{terms_page(a)}">Terms of Service</a>'))
-    info.append(('Privacy', f'<a href="{esc(play_url(a))}" target="_blank" rel="noopener noreferrer">Privacy policy on Google Play</a>'))
+    info.append(('Privacy', f'<a href="{privacy_page(a)}">Privacy Policy</a>'))
     body = f'''
   <main id="main">
     <div class="page-hero app-hero">

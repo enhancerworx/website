@@ -1,0 +1,99 @@
+{
+  "_help": "Data for the per-app privacy policy pages (privacy/<slug>.html). 'services' are the third-party SDKs used by every app unless an app lists its own 'services' under 'apps'. 'permissions' and 'on_device' add app-specific details. After editing run: python3 tools/build.py",
+  "effective_date": "26 November 2026",
+  "services": {
+    "play": {
+      "name": "Google Play Services",
+      "url": "https://policies.google.com/privacy",
+      "purpose": "Core Android services the App relies on, such as installing, updating and verifying the App."
+    },
+    "admob": {
+      "name": "Google AdMob",
+      "url": "https://support.google.com/admob/answer/6128543",
+      "purpose": "Shows ads in the App and measures how ads perform. It may use your device's advertising ID, IP address and approximate location (derived from your IP address) and information about your device and ad interactions."
+    },
+    "firebase": {
+      "name": "Google Analytics for Firebase",
+      "url": "https://firebase.google.com/support/privacy",
+      "purpose": "Helps us understand how the App is used (for example which screens are opened and how long sessions last), and records app errors so we can fix them. It uses an app-instance identifier and device information."
+    },
+    "onesignal": {
+      "name": "OneSignal",
+      "url": "https://onesignal.com/privacy_policy",
+      "purpose": "Sends push notifications, such as reminders and news about new content. It uses a push token and device identifier, together with device and notification-interaction information."
+    }
+  },
+  "default_services": [
+    "play",
+    "admob",
+    "firebase",
+    "onesignal"
+  ],
+  "apps": {
+    "india": {
+      "on_device": [
+        "notes and favourites you add to places"
+      ]
+    },
+    "history": {
+      "permissions": [
+        [
+          "Microphone",
+          "Only when you record a voice note. Recordings are saved on your device and are not uploaded by us."
+        ],
+        [
+          "Camera",
+          "Only when you take a photo for a note. Photos are saved on your device and are not uploaded by us."
+        ]
+      ],
+      "on_device": [
+        "voice notes, photo notes and text notes"
+      ]
+    },
+    "git": {
+      "permissions": [
+        [
+          "Microphone",
+          "Only when you use interview practice to record your answers. Recordings are saved on your device and are not uploaded by us."
+        ]
+      ],
+      "on_device": [
+        "interview practice recordings",
+        "your name as entered for a completion certificate"
+      ]
+    },
+    "docker": {
+      "on_device": [
+        "your name as entered for a completion certificate"
+      ]
+    },
+    "python": {
+      "on_device": [
+        "notes, bookmarks and progress"
+      ],
+      "videos": true
+    },
+    "ccna": {
+      "on_device": [
+        "your name as entered for a completion certificate",
+        "notes and progress"
+      ],
+      "videos": true
+    },
+    "art": {
+      "permissions": [
+        [
+          "Camera",
+          "Only when you take a reference photo inside the App."
+        ],
+        [
+          "Photos and media",
+          "Only when you choose a photo from your gallery or save a sketch grid. Images are processed on your device and are not uploaded by us."
+        ]
+      ],
+      "on_device": [
+        "reference photos you import and the grids you create"
+      ]
+    }
+  }
+}

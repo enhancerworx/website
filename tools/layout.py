@@ -16,8 +16,8 @@ CATS = APPS_DATA['categories']
 CAT = {c['id']: c for c in CATS}
 APPS = APPS_DATA['apps']
 APP = {a['slug']: a for a in APPS}
-ASSET_V = '20261124c'          # bump when css/js change so browsers fetch fresh copies
-TODAY = '2026-11-24'
+ASSET_V = '20261126a'          # bump when css/js change so browsers fetch fresh copies
+TODAY = '2026-11-26'
 OG_DEFAULT = f'{SITE}/img/og-image.jpg'
 
 esc = lambda s: html.escape(str(s), quote=True)
@@ -57,6 +57,10 @@ def app_page(a):
 
 def terms_page(a):
     return f'/terms/{a["slug"]}.html'
+
+
+def privacy_page(a):
+    return f'/privacy/{a["slug"]}.html'
 
 
 def size(p):
@@ -131,7 +135,8 @@ def footer():
         <nav aria-label="Legal">
           <h2>Legal</h2>
           <a href="/terms/">App terms of service</a>
-          <a href="/privacyPolicy.html">Privacy policy</a>
+          <a href="/privacy/">App privacy policies</a>
+          <a href="/privacyPolicy.html">Website privacy policy</a>
           <a href="/termsOfService.html">Website terms</a>
           <a href="/blog/feed.xml">RSS feed</a>
         </nav>

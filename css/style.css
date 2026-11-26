@@ -768,3 +768,24 @@ body.dlg-open { overflow: hidden; }
   .site-header, .site-footer, .toc, .terms-foot-nav, .to-top, .progress, .post-aside, .cta-band { display: none !important; }
   .terms-layout, .post-layout { display: block; }
 }
+
+/* ---------- Privacy policy tables ---------- */
+.terms-body h3 { font-size: 1.05rem; margin: 1.6rem 0 .5rem; color: var(--ink); }
+.terms-body h3:first-child { margin-top: .4rem; }
+.table-wrap { overflow-x: auto; margin-top: .8rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
+.table-wrap table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.table-wrap th, .table-wrap td { text-align: left; vertical-align: top; padding: .75rem 1rem; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+.table-wrap tr:last-child th, .table-wrap tr:last-child td { border-bottom: 0; }
+.table-wrap th { color: var(--ink); font-weight: 600; }
+.table-wrap thead th { background: var(--paper-2); font-size: .82rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); }
+.kv th { width: 38%; }
+.svc td:last-child { white-space: nowrap; }
+@media (max-width: 600px) {
+  .table-wrap th, .table-wrap td { padding: .65rem .8rem; font-size: .9rem; }
+  .svc, .svc tbody, .svc tr, .svc th, .svc td { display: block; width: auto; }
+  .svc thead { display: none; }
+  .svc tr { padding: .8rem; border-bottom: 1px solid var(--line); }
+  .svc tr:last-child { border-bottom: 0; }
+  .svc th, .svc td { padding: 0; border: 0; }
+  .svc td { margin-top: .3rem; }
+}

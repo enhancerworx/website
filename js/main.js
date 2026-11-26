@@ -160,6 +160,7 @@
     el('dlgPlay').href = li.getAttribute('data-url');
     el('dlgPage').href = li.getAttribute('data-page') || '/apps/';
     el('dlgTerms').href = li.getAttribute('data-terms') || '/terms/';
+    el('dlgPrivacy').href = li.getAttribute('data-privacy') || '/privacy/';
     el('dlgNote').textContent = '';
     dlg.setAttribute('data-slug', li.getAttribute('data-slug'));
   }

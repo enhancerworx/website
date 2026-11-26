@@ -37,8 +37,7 @@ def sections_for(a):
     cat_clauses = [] if skip_cat else T['categories'].get(a['cat'], {}).get('content', [])
     app_clauses = T['apps'].get(a['slug'], [])
     pkg = a.get('pkg')
-    pp_line = (f'The privacy policy for the App is linked on its <a href="{esc(play_url(a))}" target="_blank" rel="noopener noreferrer">Google Play listing</a>, under App support.'
-               if pkg else 'The privacy policy for the App is linked on its Google Play listing, under App support.')
+    pp_line = f'The <a href="{privacy_page(a)}">Privacy Policy for the App</a> is also linked on its Google Play listing, under App support.'
     game = is_game(a)
     tech = a['cat'] == 'tech'
 
@@ -152,6 +151,7 @@ def build_app(a):
         <div class="summary"><h2>In short</h2>{summary}<p class="summary-note">This summary is for convenience. The full terms below are what apply.</p></div>{body_secs}
         <div class="terms-foot-nav">
           <a class="btn btn-solid btn-sm" href="{esc(play_url(a))}" target="_blank" rel="noopener noreferrer">View on Google Play<span class="sr"> (opens in a new tab)</span></a>
+          <a class="btn btn-line btn-sm" href="{privacy_page(a)}">Privacy Policy</a>
           <a class="btn btn-line btn-sm" href="{app_page(a)}">About this app</a>
           <a class="btn btn-line btn-sm" href="/terms/">Terms for our other apps</a>
         </div>
@@ -196,11 +196,6 @@ def build_index():
 def main():
     urls = [build_app(a) for a in APPS]
     build_index()
-    with open('tools/terms-urls.csv', 'w', newline='', encoding='utf-8') as f:
-        w = csv.writer(f)
-        w.writerow(['App name', 'Package name', 'Age', 'Terms of Service URL'])
-        for a, u in zip(APPS, urls):
-            w.writerow([a['name'], a.get('pkg', ''), age_label(a), u])
     print(f'Built {len(urls)} app terms pages and terms/index.html')
     return urls
 

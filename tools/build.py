@@ -11,7 +11,8 @@ Requires Python 3.8+. Pillow (pip install pillow) is optional and only used to r
 import json, os, re, sys, html as _html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from layout import *  # noqa: E402,F401
-import build_blog, build_app_pages, build_terms  # noqa: E402
+import csv
+import build_blog, build_app_pages, build_terms, build_privacy  # noqa: E402
 
 
 def directory_html():
@@ -26,7 +27,7 @@ def directory_html():
         for a in items:
             attrs = (f'data-slug="{a["slug"]}" data-name="{esc(a["name"])}" data-desc="{esc(a["desc"])}" '
                      f'data-cat="{esc(c["title"])} · Age {age_label(a)}" data-url="{esc(play_url(a))}" data-icon="{icon(a)}" '
-                     f'data-page="{app_page(a)}" data-terms="{terms_page(a)}" '
+                     f'data-page="{app_page(a)}" data-terms="{terms_page(a)}" data-privacy="{privacy_page(a)}" '
                      f'data-points="{esc("|".join(a.get("points", [])))}" data-screens="{esc(",".join(screens(a)))}" '
                      f'data-search="{esc((a["name"] + " " + a["desc"] + " " + c["title"]).lower())}"')
             blocks.append(
@@ -90,11 +91,12 @@ def build_static():
 
 
 def build_sitemap(posts):
-    urls = [('/', '1.0'), ('/apps/', '0.9'), ('/blog/', '0.8'), ('/terms/', '0.5'),
+    urls = [('/', '1.0'), ('/apps/', '0.9'), ('/blog/', '0.8'), ('/terms/', '0.5'), ('/privacy/', '0.5'),
             ('/privacyPolicy.html', '0.3'), ('/termsOfService.html', '0.3')]
     urls += [(app_page(a), '0.8') for a in APPS]
     urls += [(p['url'], '0.7') for p in posts]
     urls += [(terms_page(a), '0.4') for a in APPS]
+    urls += [(privacy_page(a), '0.4') for a in APPS]
     rows = ''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod><priority>{pr}</priority></url>\n' for u, pr in urls)
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + rows + '</urlset>\n')
     print(f'Built sitemap.xml: {len(urls)} URLs')
@@ -104,9 +106,20 @@ def main():
     posts = build_blog.main()
     build_app_pages.main(posts)
     build_terms.main()
+    build_privacy.main()
     build_index(posts)
     build_static()
     build_sitemap(posts)
+    build_links_csv()
+
+
+def build_links_csv():
+    with open('tools/app-links.csv', 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['App name', 'Package name', 'Age', 'Privacy Policy URL', 'Terms of Service URL', 'App page'])
+        for a in APPS:
+            w.writerow([a['name'], a.get('pkg', ''), age_label(a), SITE + privacy_page(a), SITE + terms_page(a), SITE + app_page(a)])
+    print('Wrote tools/app-links.csv')
 
 
 if __name__ == '__main__':
